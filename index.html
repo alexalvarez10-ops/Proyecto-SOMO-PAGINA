@@ -213,45 +213,6 @@
     }
 
     /* =====================================================================
-       DOCK SOCIAL FLOTANTE (ESTILO IMAGEN DE REFERENCIA: COSTADO IZQUIERDO)
-       ===================================================================== */
-    .floating-social-bar {
-      position: fixed;
-      left: 1.25rem;
-      top: 38%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      z-index: 90;
-    }
-
-    .social-dock-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(17, 23, 38, 0.85);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px);
-      transition: var(--transition-smooth);
-    }
-
-    .social-dock-btn:hover {
-      transform: translateX(4px) scale(1.1);
-      color: #fff;
-    }
-
-    .social-dock-btn.fb:hover { background: #1877f2; border-color: #1877f2; }
-    .social-dock-btn.tw:hover { background: #000; border-color: #333; }
-    .social-dock-btn.yt:hover { background: #ff0000; border-color: #ff0000; }
-    .social-dock-btn.gh:hover { background: #333; border-color: var(--primary-blue); color: var(--primary-blue); }
-
-    /* =====================================================================
        NAVBAR SUPERIOR Y DROPDOWNS
        ===================================================================== */
     .top-navbar {
@@ -1659,146 +1620,6 @@
     }
 
     /* =====================================================================
-       WIDGET FLOTANTE DE MENSAJE (RÉPLICA EXACTA DE LA IMAGEN: ESQUINA INFERIOR IZQ)
-       "Por favor deje su mensaje"
-       ===================================================================== */
-    .floating-chat-widget {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      width: 320px;
-      background: #ffffff;
-      color: #1e293b;
-      border-radius: var(--radius-md);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
-      z-index: 99;
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      transition: var(--transition-smooth);
-      font-size: 0.85rem;
-    }
-
-    .floating-chat-widget.minimized {
-      height: 44px;
-      overflow: hidden;
-    }
-
-    .floating-chat-widget.closed {
-      display: none;
-    }
-
-    .chat-header {
-      background: #004b87;
-      color: #ffffff;
-      padding: 0.7rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .chat-title {
-      font-weight: 600;
-      font-size: 0.88rem;
-    }
-
-    .chat-header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-    }
-
-    .chat-btn-action {
-      background: transparent;
-      color: #ffffff;
-      opacity: 0.85;
-      cursor: pointer;
-      font-size: 0.9rem;
-      line-height: 1;
-      padding: 2px;
-      transition: var(--transition-smooth);
-    }
-
-    .chat-btn-action:hover {
-      opacity: 1;
-      transform: scale(1.15);
-    }
-
-    .chat-body {
-      padding: 1.1rem;
-      background: #ffffff;
-    }
-
-    .chat-notice {
-      color: #475569;
-      font-size: 0.78rem;
-      line-height: 1.45;
-      margin-bottom: 0.9rem;
-    }
-
-    .chat-input-field {
-      width: 100%;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      padding: 0.5rem 0.65rem;
-      font-size: 0.82rem;
-      color: #1e293b;
-      margin-bottom: 0.55rem;
-    }
-
-    .chat-input-field:focus {
-      border-color: #0084ff;
-      outline: none;
-    }
-
-    .chat-textarea {
-      resize: none;
-      min-height: 65px;
-    }
-
-    .chat-submit-btn {
-      width: 100%;
-      background: #004b87;
-      color: #ffffff;
-      padding: 0.6rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .chat-submit-btn:hover {
-      background: #003662;
-    }
-
-    /* Launcher button when chat is closed */
-    .chat-launcher-btn {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: #004b87;
-      color: #ffffff;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 98;
-      border: 2px solid #ffffff;
-      transition: var(--transition-smooth);
-    }
-
-    .chat-launcher-btn:hover {
-      transform: scale(1.08);
-      background: #0084ff;
-    }
-
-    /* =====================================================================
        MODAL INTERACTIVO DE DETALLES DEL TALLER (ETHAZI)
        ===================================================================== */
     .modal-overlay {
@@ -2049,10 +1870,7 @@
       .workshops-grid {
         grid-template-columns: 1fr;
       }
-      .floating-social-bar {
-        display: none; /* Se oculta o integra en mobile */
-      }
-      .countdown-card-wrapper {
+.countdown-card-wrapper {
         flex-direction: column;
         text-align: center;
         align-items: center;
@@ -2060,12 +1878,7 @@
       .countdown-actions {
         flex-direction: row;
       }
-      .floating-chat-widget {
-        left: 0.75rem;
-        right: 0.75rem;
-        width: auto;
-      }
-    }
+}
 
     @media (max-width: 600px) {
       .form-row {
@@ -2243,23 +2056,7 @@
 </head>
 <body>
 
-  <!-- =====================================================================
-       BARRA SOCIAL FLOTANTE LATERAL (COMO EN LA IMAGEN DE REFERENCIA)
-       ===================================================================== -->
-  <aside class="floating-social-bar" aria-label="Redes Sociales Somorrostro">
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-dock-btn fb" title="Facebook Somorrostro">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
-    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-dock-btn tw" title="Twitter / X">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-dock-btn yt" title="YouTube Somorrostro">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-    </a>
-    <a href="https://github.com/alexalvarez10-ops/" target="_blank" rel="noopener noreferrer" class="social-dock-btn gh" title="GitHub Alumno Creador">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-    </a>
-  </aside>
+
 
   <!-- =====================================================================
        NAVBAR PRINCIPAL CON LOGO, MENÚS DROPDOWN Y ACCIONES
@@ -2997,39 +2794,7 @@
     </section>
   </main>
 
-  <!-- =====================================================================
-       WIDGET FLOTANTE DE MENSAJE (COMO EN LA IMAGEN DE REFERENCIA)
-       "Por favor deje su mensaje" (Esquina Inferior Izquierda)
-       ===================================================================== -->
-  <aside id="floatingChatWidget" class="floating-chat-widget" aria-label="Widget de asistencia rápida">
-    <div class="chat-header" id="chatHeaderToggle" title="Click para minimizar o desplegar">
-      <span class="chat-title">Por favor deje su mensaje</span>
-      <div class="chat-header-actions">
-        <button type="button" class="chat-btn-action" id="btnMinimizeChat" title="Minimizar">⌄</button>
-        <button type="button" class="chat-btn-action" id="btnExpandChat" title="Ajustar">⤢</button>
-        <button type="button" class="chat-btn-action" id="btnCloseChat" title="Cerrar">✕</button>
-      </div>
-    </div>
-    
-    <div class="chat-body" id="chatBody">
-      <p class="chat-notice">
-        En este momento estamos en prácticas de taller, pero eso no significa que no podamos ayudarte. Déjanos tus datos y te contactaremos lo antes posible.
-      </p>
-      
-      <form id="widgetChatForm" onsubmit="handleWidgetChatSubmit(event)">
-        <input type="text" id="widgetName" class="chat-input-field" placeholder="* Nombre" required>
-        <input type="email" id="widgetEmail" class="chat-input-field" placeholder="* Correo electrónico" required>
-        <textarea id="widgetMsg" class="chat-input-field chat-textarea" placeholder="* Mensaje" required></textarea>
-        
-        <button type="submit" class="chat-submit-btn">Enviar</button>
-      </form>
-    </div>
-  </aside>
 
-  <!-- Botón lanzador para reabrir el chat si se cierra -->
-  <button id="chatLauncherBtn" class="chat-launcher-btn" title="Abrir mensajería rápida">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  </button>
 
   <!-- =====================================================================
        MODAL INFORMATIVO DE RETOS Y TALLERES (INTERACTIVO)
@@ -3312,74 +3077,6 @@
 
       showToast(`Modo visual cambiado a: ${themeName}`);
     });
-
-    // -------------------------------------------------------------
-    // 4. WIDGET FLOTANTE DE MENSAJE ("Por favor deje su mensaje")
-    // -------------------------------------------------------------
-    const chatWidget = document.getElementById('floatingChatWidget');
-    const chatBody = document.getElementById('chatBody');
-    const btnMinimizeChat = document.getElementById('btnMinimizeChat');
-    const btnExpandChat = document.getElementById('btnExpandChat');
-    const btnCloseChat = document.getElementById('btnCloseChat');
-    const chatLauncherBtn = document.getElementById('chatLauncherBtn');
-
-    // Minimizar / Restaurar
-    btnMinimizeChat.addEventListener('click', (e) => {
-      e.stopPropagation();
-      chatWidget.classList.toggle('minimized');
-      btnMinimizeChat.textContent = chatWidget.classList.contains('minimized') ? '⌃' : '⌄';
-    });
-
-    document.getElementById('chatHeaderToggle').addEventListener('click', () => {
-      chatWidget.classList.toggle('minimized');
-      btnMinimizeChat.textContent = chatWidget.classList.contains('minimized') ? '⌃' : '⌄';
-    });
-
-    // Expandir / Normal
-    btnExpandChat.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (chatWidget.style.width === '380px') {
-        chatWidget.style.width = '320px';
-      } else {
-        chatWidget.style.width = '380px';
-      }
-    });
-
-    // Cerrar
-    btnCloseChat.addEventListener('click', (e) => {
-      e.stopPropagation();
-      chatWidget.classList.add('closed');
-      chatLauncherBtn.style.display = 'flex';
-    });
-
-    // Reabrir
-    chatLauncherBtn.addEventListener('click', () => {
-      chatWidget.classList.remove('closed');
-      chatWidget.classList.remove('minimized');
-      btnMinimizeChat.textContent = '⌄';
-      chatLauncherBtn.style.display = 'none';
-    });
-
-    // Envío del Widget -> Enlace a alex.alvarez10@somo.eus
-    function handleWidgetChatSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById('widgetName').value.trim();
-      const email = document.getElementById('widgetEmail').value.trim();
-      const msg = document.getElementById('widgetMsg').value.trim();
-
-      const subject = encodeURIComponent(`[Somorrostro Web] Mensaje rápido de: ${name}`);
-      const body = encodeURIComponent(
-        `Nombre: ${name}\nCorreo de contacto: ${email}\n\nMensaje:\n${msg}\n\n---\nEnviado desde el widget flotante de la web de Somorrostro.`
-      );
-
-      // Redirigir al correo de estudiante
-      window.location.href = `mailto:alex.alvarez10@somo.eus?subject=${subject}&body=${body}`;
-
-      showToast(`¡Gracias ${name}! Conectando con alex.alvarez10@somo.eus...`);
-      document.getElementById('widgetChatForm').reset();
-      chatWidget.classList.add('minimized');
-      btnMinimizeChat.textContent = '⌃';
-    }
 
     // -------------------------------------------------------------
     // 5. FORMULARIO PRINCIPAL DE CONTACTO
