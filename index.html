@@ -8,9 +8,11 @@
   <!-- =====================================================================
        METADATOS SEO PRIMARIOS - FP BÁSICA EN SOMORROSTRO (MUSKIZ)
        ===================================================================== -->
-  <title>FP Básica en Informática y Comunicaciones | Centro de Formación Somorrostro (Muskiz)</title>
+  <title>FP Básica en Informática – Somorrostro (Muskiz)</title>
   <meta name="title" content="FP Básica en Informática y Comunicaciones | Centro de Formación Somorrostro (Muskiz)">
-  <meta name="description" content="Descubre la FP Básica en Informática y Comunicaciones en Somorrostro (San Juan 10, Muskiz). Aprendizaje práctico por retos (Ethazi), talleres de montaje de ordenadores, redes locales y desarrollo web. +95% inserción laboral.">
+  <meta name="description" content="FP Básica en Somorrostro: aprende montaje, redes y desarrollo web con metodología por retos y alta inserción laboral.">
+  <meta property="og:title" content="FP Básica en Informática – Somorrostro (Muskiz)">
+  <meta property="og:description" content="FP Básica en Somorrostro: aprendizaje práctico en montaje, redes y desarrollo web con alta inserción laboral.">>
   <meta name="keywords" content="FP Básica Somorrostro, Formación Profesional Básica Informática, FP Informática Muskiz, Centro Formación Somorrostro, Retos Ethazi, Montaje Hardware, Redes Cisco, Desarrollo Web, FP Bizkaia, San Juan 10 Muskiz">
   <meta name="author" content="Alex Álvarez">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -974,6 +976,15 @@
       background: #080d17;
       border: 1.5px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
+      padding: 1.2rem 1.5rem; /* increased padding for mobile tap comfort */
+      font-size: 0.92rem;
+      color: #ffffff;
+      transition: var(--transition-smooth);
+    }
+      width: 100%;
+      background: #080d17;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
       padding: 0.9rem 1.15rem;
       font-size: 0.92rem;
       color: #ffffff;
@@ -992,6 +1003,25 @@
     }
 
     .btn-submit-pro {
+      width: 100%;
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-radius: var(--radius-pill);
+      padding: 1rem 2rem;
+      font-size: 0.94rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      box-shadow: 0 8px 22px var(--primary-blue-glow);
+      transition: var(--transition-smooth);
+      margin-top: 0.5rem;
+      min-height: 44px; /* accessible tap target */
+    }
       width: 100%;
       background: var(--primary-blue);
       color: #ffffff;
@@ -1690,6 +1720,26 @@
 
               </div>
             </form>
+    <script>
+      // Simple client‑side validation for required fields
+      const form = document.getElementById('mainContactForm');
+      form.addEventListener('submit', function (e) {
+        // Gather required inputs
+        const name = document.getElementById('contactName');
+        const email = document.getElementById('contactEmail');
+        const message = document.getElementById('contactMessage');
+        // Simple check for non‑empty values
+        if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+          e.preventDefault(); // stop form submission
+          // Show a temporary toast message (reuse existing toast UI)
+          const toast = document.getElementById('toastPopup');
+          const msg = document.getElementById('toastMessage');
+          msg.textContent = 'Por favor completa todos los campos obligatorios.';
+          toast.style.display = 'flex';
+          setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+      });
+    </script>
           </div>
 
         </div>
