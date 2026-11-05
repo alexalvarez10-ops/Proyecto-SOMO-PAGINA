@@ -93,62 +93,48 @@
   }
   </script>
 
-  <!-- Fuentes Tipográficas Preconectadas -->
+  <!-- Google Fonts: Caveat (Firma Somorrostro) + Plus Jakarta Sans + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* =====================================================================
        VARIABLES DE COLOR Y DISEÑO (ESTILO RUTA A: #0b101b, #0084ff, #ff7700)
+       DISEÑO PROFESIONAL & EDITORIAL
        ===================================================================== */
     :root {
       --bg-dark: #0b101b;
-      --bg-surface: #111726;
-      --bg-surface-elevated: #162035;
-      --bg-surface-subtle: rgba(255, 255, 255, 0.03);
+      --bg-surface: #101625;
+      --bg-surface-elevated: #162033;
+      --bg-surface-card: #121927;
       --primary-blue: #0084ff;
       --primary-blue-hover: #0070db;
-      --primary-blue-glow: rgba(0, 132, 255, 0.35);
+      --primary-blue-glow: rgba(0, 132, 255, 0.3);
       --accent-orange: #ff7700;
       --accent-orange-hover: #e66b00;
-      --accent-orange-glow: rgba(255, 119, 0, 0.35);
+      --accent-orange-glow: rgba(255, 119, 0, 0.3);
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       --text-muted: #64748b;
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-bright: rgba(0, 132, 255, 0.3);
+      --border-hover: rgba(0, 132, 255, 0.4);
       --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-signature: 'Caveat', cursive, sans-serif;
       --radius-sm: 8px;
       --radius-md: 14px;
-      --radius-lg: 22px;
+      --radius-lg: 20px;
       --radius-pill: 9999px;
       --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 25px var(--primary-blue-glow);
+      --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
     [data-theme="orange"] {
       --primary-blue: #ff7700;
       --primary-blue-hover: #e66b00;
-      --primary-blue-glow: rgba(255, 119, 0, 0.4);
       --accent-orange: #0084ff;
       --accent-orange-hover: #0070db;
-      --accent-orange-glow: rgba(0, 132, 255, 0.4);
-      --border-bright: rgba(255, 119, 0, 0.35);
-      --shadow-glow: 0 0 25px var(--primary-blue-glow);
-    }
-
-    [data-theme="cyber"] {
-      --bg-dark: #05080f;
-      --bg-surface: #0c121e;
-      --bg-surface-elevated: #131c2e;
-      --primary-blue: #00e5ff;
-      --primary-blue-glow: rgba(0, 229, 255, 0.45);
-      --accent-orange: #ff3366;
-      --accent-orange-glow: rgba(255, 51, 102, 0.45);
-      --border-bright: rgba(0, 229, 255, 0.4);
     }
 
     /* Reset & Base */
@@ -172,22 +158,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      position: relative;
-    }
-
-    /* Subtle background grid pattern */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(0, 132, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(255, 119, 0, 0.06) 0%, transparent 40%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-      pointer-events: none;
-      z-index: 0;
     }
 
     a {
@@ -205,240 +175,153 @@
 
     .container {
       width: 100%;
-      max-width: 1240px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
+      padding: 0 2rem;
     }
 
     /* =====================================================================
-       NAVBAR SUPERIOR Y DROPDOWNS
+       NAVBAR SUPERIOR MINIMALISTA & ELEGANTE (INSPIRADA EN LA IMAGEN)
        ===================================================================== */
-    .top-navbar {
+    .top-header {
       position: sticky;
       top: 0;
-      background: rgba(11, 16, 27, 0.92);
-      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 27, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-subtle);
       z-index: 100;
-      transition: var(--transition-smooth);
     }
 
-    .nav-wrapper {
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
+      height: 80px;
     }
 
-    /* Logo Brand */
-    .brand-logo {
+    /* Logo con estilo de firma elegante como en la imagen */
+    .brand-signature-wrap {
       display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-weight: 800;
+      align-items: baseline;
+      gap: 0.6rem;
     }
 
-    .brand-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--primary-blue), #0056b3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      box-shadow: 0 0 15px var(--primary-blue-glow);
-    }
-
-    .brand-text h1 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
+    .brand-signature {
+      font-family: var(--font-signature);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
       letter-spacing: -0.5px;
-      line-height: 1.1;
-      color: #fff;
+      transition: var(--transition-smooth);
     }
 
-    .brand-text span {
-      font-size: 0.72rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--accent-orange);
-      font-weight: 700;
-    }
-
-    /* Menu Links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      list-style: none;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      padding: 0.6rem 0.95rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      border-radius: var(--radius-pill);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .nav-link.active {
-      background: rgba(0, 132, 255, 0.15);
+    .brand-signature:hover {
       color: var(--primary-blue);
-      border: 1px solid rgba(0, 132, 255, 0.3);
+      transform: scale(1.03);
     }
 
-    /* Dropdown Menus (estilo screenshot) */
-    .dropdown-menu {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      min-width: 240px;
-      background: #111726;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-      padding: 0.5rem 0;
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: var(--transition-smooth);
-      z-index: 105;
-    }
-
-    .nav-item:hover .dropdown-menu,
-    .nav-item:focus-within .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.25rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
+    .brand-subtag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: var(--transition-smooth);
-    }
-
-    .dropdown-link:hover {
-      background: rgba(0, 132, 255, 0.12);
-      color: #fff;
-      padding-left: 1.5rem;
-    }
-
-    .dropdown-link span.arrow {
-      font-size: 0.75rem;
       color: var(--accent-orange);
     }
 
-    /* Right actions in navbar */
-    .nav-actions {
+    /* Enlaces Centrales con Subrayado Activo */
+    .main-nav-links {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 2.2rem;
+      list-style: none;
     }
 
-    /* Search Bar in Nav */
-    .nav-search-box {
+    .nav-link-item a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #cbd5e1;
+      padding: 0.5rem 0;
       position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-search-input {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 0.5rem 1rem 0.5rem 2.2rem;
-      font-size: 0.82rem;
-      width: 170px;
-      color: var(--text-primary);
       transition: var(--transition-smooth);
     }
 
-    .nav-search-input:focus {
-      width: 220px;
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 10px var(--primary-blue-glow);
+    .nav-link-item a:hover {
+      color: #ffffff;
     }
 
-    .nav-search-icon {
+    /* Subrayado azul activo idéntico al de la imagen */
+    .nav-link-item a.active {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .nav-link-item a.active::after {
+      content: "";
       position: absolute;
-      left: 0.75rem;
-      width: 15px;
-      height: 15px;
-      color: var(--text-muted);
-      pointer-events: none;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: var(--primary-blue);
+      border-radius: var(--radius-pill);
     }
 
-    /* Theme Switcher Button */
-    .theme-mode-btn {
-      background: var(--bg-surface);
+    /* Acciones Derecha (Buscador, Iconos limpios, Theme Switcher) */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .search-nav-pill {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
-      width: 38px;
-      height: 38px;
+      border-radius: var(--radius-pill);
+      padding: 0.4rem 0.9rem;
+      transition: var(--transition-smooth);
+    }
+
+    .search-nav-pill:focus-within {
+      border-color: var(--primary-blue);
+      background: rgba(0, 132, 255, 0.08);
+    }
+
+    .search-nav-input {
+      background: transparent;
+      font-size: 0.82rem;
+      color: #fff;
+      width: 130px;
+      margin-left: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .search-nav-input:focus {
+      width: 170px;
+    }
+
+    .header-icon-link {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #94a3b8;
+      border: 1px solid var(--border-subtle);
       transition: var(--transition-smooth);
     }
 
-    .theme-mode-btn:hover {
-      border-color: var(--accent-orange);
-      color: var(--accent-orange);
-      transform: rotate(20deg);
-    }
-
-    /* Primary Nav CTA */
-    .btn-nav-cta {
-      background: var(--primary-blue);
-      color: #fff;
-      padding: 0.55rem 1.25rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: var(--radius-pill);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      box-shadow: 0 4px 14px var(--primary-blue-glow);
-      transition: var(--transition-smooth);
-    }
-
-    .btn-nav-cta:hover {
-      background: var(--primary-blue-hover);
-      box-shadow: 0 6px 20px var(--primary-blue-glow);
+    .header-icon-link:hover {
+      color: #ffffff;
+      border-color: var(--primary-blue);
       transform: translateY(-2px);
     }
 
-    /* Mobile hamburger */
-    .mobile-menu-toggle {
+    .mobile-nav-toggle {
       display: none;
       background: transparent;
       color: #fff;
@@ -447,1186 +330,813 @@
     }
 
     /* =====================================================================
-       HERO PRINCIPAL (BASADO EN EL LAYOUT Y TIPOGRAFÍA DE LA IMAGEN)
+       HERO PRINCIPAL CINEMATOGRÁFICO (RÉPLICA FIEL DEL ESTILO DE LA IMAGEN)
        ===================================================================== */
-    .hero-section {
-      padding: 4.5rem 0 3.5rem;
+    .cinematic-hero {
       position: relative;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      gap: 3rem;
-    }
-
-    .hero-content {
+      min-height: 580px;
       display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* Fondo fotográfico con velo oscuro sutil de alta legibilidad */
+    .hero-photo-backdrop {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(90deg, rgba(11, 16, 27, 0.96) 0%, rgba(11, 16, 27, 0.85) 45%, rgba(11, 16, 27, 0.4) 100%),
+        url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=85');
+      background-size: cover;
+      background-position: center right;
+      z-index: 1;
+    }
+
+    .hero-content-wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 4.5rem 0;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tagline::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--accent-orange);
+    }
+
+    /* Tipografía Hero sobria e imponente como en la imagen de referencia */
+    .hero-title-editorial {
+      font-size: clamp(2.5rem, 4.8vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-desc-editorial {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin-bottom: 2.2rem;
+      max-width: 580px;
+      font-weight: 400;
+    }
+
+    /* Botón Píldora Azul Idéntico a la imagen (Descubrir mi obra ›) */
+    .btn-pill-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.96rem;
+      font-weight: 600;
+      padding: 0.85rem 1.9rem;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 25px var(--primary-blue-glow);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-pill-action:hover {
+      background: var(--primary-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px var(--primary-blue-glow);
+      padding-right: 2.2rem;
+    }
+
+    /* Indicador Mouse Scroll Down en la esquina inferior izquierda */
+    .mouse-scroll-indicator {
+      display: inline-flex;
       flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 3.5rem;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: var(--transition-smooth);
+    }
+
+    .mouse-scroll-indicator:hover {
+      opacity: 1;
+      color: var(--primary-blue);
+    }
+
+    .mouse-icon {
+      width: 20px;
+      height: 32px;
+      border: 2px solid currentColor;
+      border-radius: 12px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mouse-wheel {
+      width: 3px;
+      height: 6px;
+      background: currentColor;
+      border-radius: 2px;
+      margin-top: 5px;
+      animation: wheelBounce 1.6s infinite;
+    }
+
+    @keyframes wheelBounce {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(6px); opacity: 0.3; }
+    }
+
+    /* =====================================================================
+       SPRINT COUNTDOWN BAR (VIERNES 14:00) - DISEÑO PROFESIONAL PULIDO
+       ===================================================================== */
+    .sprint-bar-section {
+      background: #080d17;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.5rem 0;
+    }
+
+    .sprint-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 1.5rem;
     }
 
-    .badge-route-a {
-      display: inline-flex;
+    .sprint-left {
+      display: flex;
       align-items: center;
-      gap: 0.6rem;
-      background: rgba(0, 132, 255, 0.12);
-      border: 1px solid rgba(0, 132, 255, 0.35);
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #60a5fa;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      width: fit-content;
+      gap: 1rem;
     }
 
-    .pulsing-dot {
-      width: 8px;
-      height: 8px;
+    .sprint-pulse {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: var(--accent-orange);
       box-shadow: 0 0 10px var(--accent-orange);
       animation: pulse 1.8s infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.5; }
-    }
-
-    .hero-title-group h2 {
+    .sprint-text h4 {
       font-size: 0.95rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-secondary);
       font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.3rem, 4.6vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -1.2px;
       color: #fff;
     }
 
-    .highlight-blue {
-      color: var(--primary-blue);
-      text-shadow: 0 0 25px var(--primary-blue-glow);
-    }
-
-    .highlight-orange {
-      color: var(--accent-orange);
-      text-shadow: 0 0 25px var(--accent-orange-glow);
-    }
-
-    .hero-subtitle {
-      font-size: 1.08rem;
-      color: var(--text-secondary);
-      max-width: 580px;
-      line-height: 1.65;
-    }
-
-    /* Hero CTA Button pair (como en la imagen: un botón azul/color y otro blanco) */
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.15rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-    }
-
-    .btn-pill-primary {
-      background: var(--primary-blue);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius-pill);
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      box-shadow: 0 10px 24px var(--primary-blue-glow);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .btn-pill-primary:hover {
-      background: var(--primary-blue-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px var(--primary-blue-glow);
-    }
-
-    .btn-pill-secondary {
-      background: #ffffff;
-      color: #0b101b;
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius-pill);
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .btn-pill-secondary:hover {
-      background: #e2e8f0;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 26px rgba(255, 255, 255, 0.35);
-    }
-
-    .hero-chips {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .hero-chip-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-chip-item svg {
-      color: var(--accent-orange);
-    }
-
-    /* Hero Visual Mockup (Representando pantallas y taller tecnológico) */
-    .hero-showcase {
-      position: relative;
-    }
-
-    .mockup-stack {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .screen-main {
-      width: 90%;
-      height: 310px;
-      background: #0f172a;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(0, 132, 255, 0.4);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px var(--primary-blue-glow);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 2;
-      transform: perspective(1000px) rotateY(-6deg) rotateX(4deg);
-      transition: var(--transition-smooth);
-    }
-
-    .screen-main:hover {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
-    }
-
-    .screen-bar {
-      height: 32px;
-      background: #1e293b;
-      display: flex;
-      align-items: center;
-      padding: 0 0.8rem;
-      gap: 6px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .window-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #eab308; }
-    .dot-green { background: #22c55e; }
-
-    .screen-title {
-      margin-left: 0.5rem;
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      font-family: monospace;
-    }
-
-    .screen-body {
-      padding: 1.2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: linear-gradient(145deg, #0f172a 0%, #090e18 100%);
-      font-family: 'Courier New', monospace;
+    .sprint-text p {
       font-size: 0.8rem;
-      color: #38bdf8;
+      color: var(--text-secondary);
     }
 
-    .code-line {
-      line-height: 1.5;
-    }
-    .code-keyword { color: var(--accent-orange); font-weight: bold; }
-    .code-fn { color: #60a5fa; }
-    .code-str { color: #4ade80; }
-    .code-comment { color: #64748b; font-style: italic; }
-
-    .floating-subcard {
-      position: absolute;
-      background: rgba(17, 23, 38, 0.95);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.9rem 1.2rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
-      z-index: 3;
-    }
-
-    .subcard-top {
-      top: -12px;
-      right: 5px;
-      border-color: rgba(255, 119, 0, 0.35);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .subcard-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 119, 0, 0.15);
-      color: var(--accent-orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .subcard-bottom {
-      bottom: -15px;
-      left: 10px;
-      border-color: rgba(0, 132, 255, 0.35);
+    .countdown-digits-wrap {
       display: flex;
       align-items: center;
       gap: 0.8rem;
     }
 
-    .subcard-blue-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(0, 132, 255, 0.15);
-      color: var(--primary-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* =====================================================================
-       CONTADOR INTERACTIVO JAVASCRIPT: VIERNES 14:00 (RETOS ETHAZI)
-       ===================================================================== */
-    .countdown-section {
-      background: linear-gradient(180deg, rgba(17, 23, 38, 0.7) 0%, rgba(11, 16, 27, 0.9) 100%);
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 2.8rem 0;
-      position: relative;
-    }
-
-    .countdown-card-wrapper {
-      background: radial-gradient(circle at 50% 50%, rgba(0, 132, 255, 0.08) 0%, transparent 80%),
-                  var(--bg-surface);
-      border: 1px solid var(--border-bright);
-      border-radius: var(--radius-lg);
-      padding: 2rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-      flex-wrap: wrap;
-    }
-
-    .countdown-info {
-      max-width: 480px;
-    }
-
-    .countdown-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-orange);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.4rem;
-    }
-
-    .countdown-info h3 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: #fff;
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
-    }
-
-    .countdown-info p {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-    }
-
-    .countdown-timer-display {
-      display: flex;
-      gap: 0.9rem;
-      align-items: center;
-    }
-
-    .time-slot {
+    .count-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #0b101b;
-      border: 1px solid rgba(0, 132, 255, 0.25);
-      border-radius: var(--radius-md);
-      padding: 0.8rem 1.1rem;
-      min-width: 76px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-      transition: var(--transition-smooth);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.85rem;
+      min-width: 58px;
     }
 
-    .time-slot:hover {
-      border-color: var(--accent-orange);
-      transform: translateY(-2px);
-    }
-
-    .time-number {
+    .count-num {
       font-family: var(--font-display);
-      font-size: 1.95rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #ffffff;
-      line-height: 1;
+      line-height: 1.1;
     }
 
-    .time-label {
-      font-size: 0.68rem;
+    .count-lbl {
+      font-size: 0.65rem;
       color: var(--text-muted);
       text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: 0.8px;
-      margin-top: 0.35rem;
+      letter-spacing: 0.5px;
     }
 
-    .time-colon {
-      font-size: 1.8rem;
+    .count-sep {
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--primary-blue);
-      margin-top: -15px;
-    }
-
-    .countdown-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .btn-timer-action {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 0.45rem 1rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: var(--transition-smooth);
-    }
-
-    .btn-timer-action:hover {
-      background: var(--accent-orange);
-      border-color: var(--accent-orange);
-      color: #fff;
+      margin-top: -10px;
     }
 
     /* =====================================================================
-       SECCIÓN TALLERES DE INFORMÁTICA (ESTILO PORTAFOLIO DE SERVICIOS)
+       SECCIÓN DE TALLERES (ESTILO "MI OBRA" CON SUBRAYADO Y BOTÓN ESQUINA)
        ===================================================================== */
-    .workshops-section {
+    .section-workshops {
       padding: 5.5rem 0;
       position: relative;
     }
 
-    .section-header-center {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto 3rem;
+    /* Cabecera idéntica a la imagen: Título a la izq con raya azul + Botón a la der */
+    .section-editorial-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.8rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
     }
 
-    .section-category {
+    .editorial-title-box h2 {
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Raya azul bajo el título */
+    .editorial-title-box h2::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 60px;
+      height: 3.5px;
+      background: var(--primary-blue);
+      border-radius: var(--radius-pill);
+    }
+
+    .editorial-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-top: 0.6rem;
+    }
+
+    /* Botón Outline esquina derecha idéntico a "Ver todas las obras ›" */
+    .btn-outline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.65rem 1.45rem;
+      border-radius: var(--radius-pill);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-outline-pill:hover {
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+      background: rgba(0, 132, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Grid de 4 Cards Fotográficas de Talleres */
+    .workshops-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .photo-workshop-card {
+      background: var(--bg-surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .photo-workshop-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hover);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .card-photo-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .card-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .photo-workshop-card:hover .card-photo-img {
+      transform: scale(1.08);
+    }
+
+    .card-badge-overlay {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(11, 16, 27, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.5px;
+    }
+
+    .card-photo-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-photo-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .card-photo-desc {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .card-footer-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--primary-blue);
       font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--accent-orange);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
-    }
-
-    .section-divider {
-      width: 70px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
-      margin: 1rem auto 1.25rem;
-      border-radius: var(--radius-pill);
-    }
-
-    .section-subtitle {
-      color: var(--text-secondary);
-      font-size: 0.98rem;
-      line-height: 1.6;
-    }
-
-    /* Search & Filter Bar */
-    .workshop-filter-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      padding: 0.85rem 1.4rem;
-      border-radius: var(--radius-md);
-    }
-
-    .filter-pills-group {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 0.4rem 1rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-subtle);
       cursor: pointer;
-      transition: var(--transition-smooth);
     }
 
-    .filter-pill:hover,
-    .filter-pill.active {
-      background: var(--primary-blue);
-      border-color: var(--primary-blue);
-      color: #fff;
+    .card-footer-link:hover {
+      color: var(--accent-orange);
     }
 
-    .live-search-box {
-      position: relative;
-      min-width: 260px;
+    /* =====================================================================
+       SECCIÓN DE NOTICIAS & CRÓNICAS NARRATIVAS DEL TALLER
+       ===================================================================== */
+    .section-news {
+      padding: 5rem 0;
+      background: #090e18;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .live-search-input {
-      width: 100%;
-      background: #0b101b;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 0.5rem 1rem 0.5rem 2.2rem;
-      font-size: 0.85rem;
-      color: #fff;
-      transition: var(--transition-smooth);
-    }
-
-    .live-search-input:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 12px var(--primary-blue-glow);
-    }
-
-    .live-search-icon {
-      position: absolute;
-      left: 0.85rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 15px;
-      height: 15px;
-      color: var(--text-muted);
-    }
-
-    /* Cards Grid */
-    .workshops-grid {
+    .news-editorial-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
 
-    .workshop-card {
+    .news-editorial-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 2.2rem 1.8rem;
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
       transition: var(--transition-smooth);
     }
 
-    .workshop-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: transparent;
-      transition: var(--transition-smooth);
+    .news-editorial-card:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .workshop-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--border-bright);
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), var(--shadow-glow);
-    }
-
-    .workshop-card:hover::before {
-      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
-    }
-
-    .workshop-icon-wrap {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .icon-hardware {
-      background: rgba(0, 132, 255, 0.12);
-      color: var(--primary-blue);
-      border: 1px solid rgba(0, 132, 255, 0.3);
-    }
-
-    .icon-networks {
-      background: rgba(255, 119, 0, 0.12);
-      color: var(--accent-orange);
-      border: 1px solid rgba(255, 119, 0, 0.3);
-    }
-
-    .icon-webdev {
-      background: rgba(56, 189, 248, 0.12);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-
-    .workshop-card:hover .workshop-icon-wrap {
-      transform: scale(1.1) rotate(4deg);
-    }
-
-    .workshop-badge-ethazi {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--accent-orange);
-      margin-bottom: 0.4rem;
-      display: inline-block;
-    }
-
-    .workshop-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.25;
-      margin-bottom: 0.9rem;
-    }
-
-    .workshop-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 1.4rem;
-      flex: 1;
-    }
-
-    .workshop-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .tag-badge {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-pill);
-      padding: 0.22rem 0.65rem;
-      font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-
-    .btn-workshop-detail {
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 0.65rem 1.2rem;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #fff;
+    .news-meta-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: var(--transition-smooth);
+      margin-bottom: 1rem;
+      font-size: 0.74rem;
+      font-family: monospace;
     }
 
-    .btn-workshop-detail:hover {
-      background: var(--primary-blue);
-      border-color: var(--primary-blue);
-      box-shadow: 0 4px 15px var(--primary-blue-glow);
-    }
-
-    /* =====================================================================
-       BLOQUE DE VIDA EN EL CENTRO (RUTA A: 3 PUNTOS CLAVE)
-       ===================================================================== */
-    .campus-life-section {
-      padding: 5rem 0;
-      background: linear-gradient(180deg, var(--bg-dark) 0%, #0d1322 100%);
-      border-top: 1px solid var(--border-subtle);
-      position: relative;
-    }
-
-    .life-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .life-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem 2rem;
-      position: relative;
-      transition: var(--transition-smooth);
-    }
-
-    .life-card:hover {
-      border-color: rgba(255, 119, 0, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    }
-
-    .life-number {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.08);
-      position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .life-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(255, 119, 0, 0.12);
-      border: 1px solid rgba(255, 119, 0, 0.3);
+    .news-category-tag {
       color: var(--accent-orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
     }
 
-    .life-title {
+    .news-readtime {
+      color: var(--text-muted);
+    }
+
+    .news-headline {
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 0.75rem;
+      line-height: 1.35;
+      margin-bottom: 0.9rem;
     }
 
-    .life-text {
-      color: var(--text-secondary);
+    .news-snippet {
       font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .news-callout-box {
+      background: rgba(11, 16, 27, 0.8);
+      border-left: 3px solid var(--primary-blue);
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      margin-bottom: 1.2rem;
+    }
+
+    /* =====================================================================
+       VIDA EN EL CENTRO (3 PUNTOS CLAVE DE LA RUTA A)
+       ===================================================================== */
+    .section-life {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .life-editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .life-editorial-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.4rem 2rem;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .life-editorial-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-4px);
+    }
+
+    .life-num-accent {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .life-card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.85rem;
+    }
+
+    .life-card-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
       line-height: 1.65;
     }
 
     /* =====================================================================
-       FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
+       FORMULARIO DE CONTACTO PROFESIONAL & INSTITUCIONAL
        ===================================================================== */
-    .contact-section {
+    .section-contact {
       padding: 5.5rem 0;
-      position: relative;
       border-top: 1px solid var(--border-subtle);
+      background: #090e18;
     }
 
-    .contact-grid {
+    .contact-layout-grid {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr 1.35fr;
       gap: 3.5rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    .contact-info-panel h3 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info-panel p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-details-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-
-    .contact-detail-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .contact-detail-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
-      background: rgba(0, 132, 255, 0.12);
-      border: 1px solid rgba(0, 132, 255, 0.3);
-      color: var(--primary-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .contact-detail-text h4 {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--accent-orange);
-      font-weight: 700;
-    }
-
-    .contact-detail-text p,
-    .contact-detail-text a {
-      font-size: 0.95rem;
-      color: #fff;
-      font-weight: 500;
-    }
-
-    .contact-detail-text a:hover {
-      color: var(--primary-blue);
-      text-decoration: underline;
-    }
-
-    /* =====================================================================
-       FORMULARIO DE CONTACTO NEO-BRUTALISTA (RUTA A: CSS GRID & TECH BRUTALISM)
-       ===================================================================== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 3rem;
       align-items: start;
     }
 
-    .contact-info-panel {
+    .contact-left-card {
       background: var(--bg-surface);
-      border: 3px solid rgba(0, 132, 255, 0.45);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: 8px 8px 0px var(--primary-blue);
-      position: relative;
+      padding: 2.8rem 2.4rem;
     }
 
-    .contact-info-panel h3 {
+    .contact-left-card h3 {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: #fff;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
     }
 
-    .contact-info-panel p {
+    .contact-left-card p {
       color: var(--text-secondary);
       font-size: 0.92rem;
       line-height: 1.6;
       margin-bottom: 2rem;
     }
 
-    .contact-details-list {
+    .contact-info-rows {
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
     }
 
-    .contact-detail-item {
+    .info-row-item {
       display: flex;
       align-items: center;
       gap: 1rem;
-      background: rgba(11, 16, 27, 0.7);
-      border: 2px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 0.85rem 1.15rem;
-      transition: var(--transition-smooth);
     }
 
-    .contact-detail-item:hover {
-      border-color: var(--primary-blue);
-      transform: translateX(4px);
-      box-shadow: 4px 4px 0px var(--primary-blue);
-    }
-
-    .contact-detail-icon {
+    .info-icon-badge {
       width: 42px;
       height: 42px;
-      border-radius: 10px;
-      background: rgba(0, 132, 255, 0.15);
-      border: 2px solid var(--primary-blue);
+      border-radius: 50%;
+      background: rgba(0, 132, 255, 0.12);
+      border: 1px solid rgba(0, 132, 255, 0.3);
       color: var(--primary-blue);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 3px 3px 0px var(--accent-orange);
     }
 
-    .contact-detail-text h4 {
-      font-size: 0.75rem;
+    .info-row-text h5 {
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--accent-orange);
-      font-weight: 800;
-      font-family: var(--font-display);
+      font-weight: 700;
     }
 
-    .contact-detail-text p,
-    .contact-detail-text a {
+    .info-row-text p, .info-row-text a {
       font-size: 0.92rem;
       color: #fff;
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    /* Panel Contenedor Brutalista */
-    .brutalist-form-card {
-      background: #0f1626;
-      border: 3.5px solid var(--primary-blue);
+    /* Formulario de Contacto Elegante */
+    .contact-form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      box-shadow: 10px 10px 0px var(--accent-orange);
-      padding: 2.2rem 2.4rem;
-      position: relative;
+      padding: 2.8rem 2.4rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .form-grid-layout {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .col-span-1 { grid-column: span 1; }
+    .col-span-2 { grid-column: 1 / -1; }
+
+    .form-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-input-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .input-pro-field, .select-pro-field, .textarea-pro-field {
+      width: 100%;
+      background: #080d17;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.9rem 1.15rem;
+      font-size: 0.92rem;
+      color: #ffffff;
       transition: var(--transition-smooth);
     }
 
-    .brutalist-form-card:hover {
-      box-shadow: 12px 12px 0px var(--accent-orange);
+    .input-pro-field:focus, .select-pro-field:focus, .textarea-pro-field:focus {
+      border-color: var(--primary-blue);
+      background: #0c1322;
+      box-shadow: 0 0 16px var(--primary-blue-glow);
     }
 
-    /* Cabecera Terminal de Formulario */
-    .brutalist-terminal-bar {
-      display: flex;
+    .textarea-pro-field {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit-pro {
+      width: 100%;
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-radius: var(--radius-pill);
+      padding: 1rem 2rem;
+      font-size: 0.94rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px dashed rgba(0, 132, 255, 0.4);
-      padding-bottom: 1.1rem;
-      margin-bottom: 1.8rem;
-      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem;
+      box-shadow: 0 8px 22px var(--primary-blue-glow);
+      transition: var(--transition-smooth);
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit-pro:hover {
+      background: var(--primary-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px var(--primary-blue-glow);
+    }
+
+    .form-feedback-banner {
+      display: none;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #4ade80;
+      border-radius: 12px;
+      padding: 0.85rem 1.15rem;
+      font-size: 0.85rem;
+      align-items: center;
       gap: 0.6rem;
     }
 
-    .brutalist-tag-label {
-      font-family: var(--font-display);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 1.4px;
-      color: var(--accent-orange);
-      background: rgba(255, 119, 0, 0.12);
-      border: 2px solid var(--accent-orange);
-      border-radius: 8px;
-      padding: 0.3rem 0.75rem;
-      text-transform: uppercase;
-      box-shadow: 3px 3px 0px rgba(0, 132, 255, 0.3);
+    /* =====================================================================
+       FOOTER PROFESIONAL CON FIRMA SOMORROSTRO
+       ===================================================================== */
+    .editorial-footer {
+      background: #060910;
+      border-top: 1px solid var(--border-subtle);
+      padding: 4.5rem 0 2rem;
+      margin-top: auto;
     }
 
-    .brutalist-terminal-status {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.76rem;
-      font-family: monospace;
-      color: #4ade80;
-      font-weight: 800;
-    }
-
-    .status-dot-blink {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 10px #22c55e;
-      animation: pulse 1.4s infinite;
-    }
-
-    /* Rejilla CSS Grid del Formulario Brutalista */
-    .brutalist-grid-form {
+    .footer-content-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.4rem;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
     }
 
-    .form-col-1 {
-      grid-column: span 1;
+    .footer-brand-side h4 {
+      font-family: var(--font-signature);
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+      line-height: 1;
     }
 
-    .form-col-2 {
-      grid-column: 1 / -1;
+    .footer-brand-side p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
     }
 
-    .brutalist-field-wrap {
+    .footer-nav-col h5 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-orange);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-list a {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .footer-list a:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+
+    .footer-author-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .author-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .author-subtitle {
+      font-size: 0.78rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .author-links-group {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
 
-    .brutalist-label-row {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .field-index-tag {
-      font-family: monospace;
-      font-size: 0.74rem;
-      font-weight: 800;
-      color: var(--accent-orange);
-      background: rgba(255, 119, 0, 0.1);
-      padding: 0.1rem 0.35rem;
-      border-radius: 4px;
-    }
-
-    .brutalist-label-text {
-      font-family: var(--font-display);
-      font-size: 0.84rem;
-      font-weight: 800;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-    }
-
-    .star-req {
-      color: var(--primary-blue);
-      font-weight: 800;
-    }
-
-    /* Campos con bordes redondeados y estilo Brutalista */
-    .brutalist-input-field,
-    .brutalist-select-field,
-    .brutalist-textarea-field {
-      width: 100%;
-      background: #080d17;
-      color: #ffffff;
-      border: 2.5px solid rgba(0, 132, 255, 0.45);
-      border-radius: 12px;
-      padding: 0.95rem 1.25rem;
-      font-size: 0.94rem;
-      font-family: var(--font-body);
-      font-weight: 500;
-      box-shadow: 4px 4px 0px rgba(0, 132, 255, 0.3);
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .brutalist-input-field::placeholder,
-    .brutalist-textarea-field::placeholder {
-      color: #64748b;
-      font-size: 0.88rem;
-    }
-
-    .brutalist-input-field:hover,
-    .brutalist-select-field:hover,
-    .brutalist-textarea-field:hover {
-      border-color: var(--primary-blue);
-      box-shadow: 6px 6px 0px rgba(0, 132, 255, 0.5);
-      transform: translateY(-2px);
-    }
-
-    .brutalist-input-field:focus,
-    .brutalist-select-field:focus,
-    .brutalist-textarea-field:focus {
-      outline: none;
-      border-color: var(--accent-orange);
-      background: #0c1424;
-      box-shadow: 6px 6px 0px var(--primary-blue);
-      transform: translateY(-2px);
-    }
-
-    .brutalist-textarea-field {
-      min-height: 125px;
-      resize: vertical;
-    }
-
-    /* Checkbox de Compromiso Ethazi Brutalista */
-    .brutalist-checkbox-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(0, 132, 255, 0.08);
-      border: 2px dashed rgba(0, 132, 255, 0.4);
-      border-radius: 12px;
-      padding: 0.85rem 1.15rem;
-    }
-
-    .brutalist-checkbox {
-      width: 22px;
-      height: 22px;
-      accent-color: var(--accent-orange);
-      cursor: pointer;
-    }
-
-    .brutalist-checkbox-label {
+    .author-pill-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.45rem 0.95rem;
       font-size: 0.8rem;
-      color: var(--text-secondary);
       font-weight: 600;
-      line-height: 1.4;
-      cursor: pointer;
-    }
-
-    /* Botón de Envío Brutalista con Transición Táctil en Hover */
-    .brutalist-btn-submit {
-      width: 100%;
-      background: var(--primary-blue);
       color: #ffffff;
-      border: 3px solid #ffffff;
-      border-radius: 14px;
-      padding: 1.2rem 2.2rem;
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.85rem;
-      box-shadow: 6px 6px 0px var(--accent-orange);
-      transform: translate(0, 0);
-      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
     }
 
-    /* Efecto Hover del Botón Brutalista */
-    .brutalist-btn-submit:hover {
-      background: var(--accent-orange);
-      color: #0b101b;
-      border-color: #ffffff;
-      box-shadow: 10px 10px 0px var(--primary-blue);
-      transform: translate(-4px, -4px);
+    .author-pill-btn:hover {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
     }
 
-    .brutalist-btn-submit:hover .btn-arrow-svg {
-      transform: translateX(8px) scale(1.15);
-    }
-
-    .btn-arrow-svg {
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    /* Efecto Active (Pulsado Físico Brutalista) */
-    .brutalist-btn-submit:active {
-      transform: translate(4px, 4px);
-      box-shadow: 2px 2px 0px var(--primary-blue);
-      transition: all 0.05s ease;
-    }
-
-    /* Feedback Banner Brutalista */
-    .form-feedback-banner {
-      display: none;
-      background: #092015;
-      border: 2.5px solid #22c55e;
-      box-shadow: 5px 5px 0px #22c55e;
-      color: #4ade80;
-      border-radius: 12px;
-      padding: 0.95rem 1.25rem;
-      font-size: 0.88rem;
-      font-weight: 700;
+    .footer-bottom-strip {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.8rem;
+      display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
     }
 
-    @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-      .brutalist-grid-form {
-        grid-template-columns: 1fr;
-      }
-      .form-col-1 {
-        grid-column: 1 / -1;
-      }
-    }
-
-    /* =====================================================================
-       MODAL INTERACTIVO DE DETALLES DEL TALLER (ETHAZI)
-       ===================================================================== */
+    /* Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(11, 16, 27, 0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1636,19 +1146,13 @@
 
     .modal-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border-bright);
+      border: 1px solid var(--border-hover);
       border-radius: var(--radius-lg);
       max-width: 650px;
       width: 100%;
       padding: 2.2rem;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
       position: relative;
-      animation: modalFadeIn 0.25s ease-out;
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.94); }
-      to { opacity: 1; transform: scale(1); }
     }
 
     .modal-close-btn {
@@ -1671,147 +1175,7 @@
       background: var(--accent-orange);
     }
 
-    /* =====================================================================
-       PIE DE PÁGINA (FOOTER CON NOMBRE, GITHUB, PORTFOLIO Y DIRECCIÓN REAL)
-       ===================================================================== */
-    .main-footer {
-      background: #070b14;
-      border-top: 1px solid var(--border-subtle);
-      padding: 4.5rem 0 2rem;
-      margin-top: auto;
-      position: relative;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-      gap: 3rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .footer-brand h4 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-brand p {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-col h5 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--accent-orange);
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-links-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .footer-link-item a {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-link-item a:hover {
-      color: #fff;
-      transform: translateX(4px);
-    }
-
-    /* Author spotlight card in footer */
-    .author-card-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .author-name-tag {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .author-role-tag {
-      font-size: 0.78rem;
-      color: var(--primary-blue);
-      font-weight: 600;
-    }
-
-    .author-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .author-btn-link {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 0.45rem 0.9rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .author-btn-link:hover {
-      background: var(--primary-blue);
-      border-color: var(--primary-blue);
-      color: #fff;
-    }
-
-    .author-btn-link.portfolio:hover {
-      background: var(--accent-orange);
-      border-color: var(--accent-orange);
-    }
-
-    .footer-bottom-bar {
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .footer-badges {
-      display: flex;
-      gap: 0.8rem;
-    }
-
-    .footer-badge-pill {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 0.2rem 0.65rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.72rem;
-    }
-
-    /* Toast Notification */
+    /* Toast */
     .toast-popup {
       position: fixed;
       bottom: 2rem;
@@ -1826,323 +1190,92 @@
       display: none;
       align-items: center;
       gap: 0.75rem;
-      animation: toastIn 0.3s ease;
     }
 
-    @keyframes toastIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* =====================================================================
-       RESPONSIVE BREAKPOINTS
-       ===================================================================== */
+    /* Responsive */
     @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      .mockup-stack {
-        height: 290px;
-      }
-      .workshops-grid {
+      .workshops-photo-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .life-cards-grid {
+      .news-editorial-grid, .life-editorial-grid {
         grid-template-columns: 1fr;
       }
-      .contact-grid {
+      .contact-layout-grid {
         grid-template-columns: 1fr;
       }
-      .footer-grid {
+      .footer-content-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
       }
     }
 
-    @media (max-width: 860px) {
-      .nav-links, .nav-search-box {
+    @media (max-width: 820px) {
+      .main-nav-links {
         display: none;
       }
-      .mobile-menu-toggle {
+      .mobile-nav-toggle {
         display: block;
       }
-      .workshops-grid {
+      .workshops-photo-grid {
         grid-template-columns: 1fr;
       }
-.countdown-card-wrapper {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-      }
-      .countdown-actions {
-        flex-direction: row;
-      }
-}
-
-    @media (max-width: 600px) {
-      .form-row {
+      .footer-content-grid {
         grid-template-columns: 1fr;
       }
-      .footer-grid {
+      .form-grid-layout {
         grid-template-columns: 1fr;
       }
-      .hero-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-      .btn-pill-primary, .btn-pill-secondary {
-        width: 100%;
-        justify-content: center;
+      .col-span-1 {
+        grid-column: 1 / -1;
       }
     }
-  
-    /* =====================================================================
-       SECCIÓN DE NOTICIAS & CRÓNICAS TÉCNICAS DEL TALLER (ANÉCDOTAS REALES)
-       ===================================================================== */
-    .news-section {
-      padding: 5.5rem 0;
-      position: relative;
-      border-top: 1px solid var(--border-subtle);
-      background: linear-gradient(180deg, #090e18 0%, #0b101b 100%);
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .news-card {
-      background: var(--bg-surface);
-      border: 2.5px solid rgba(0, 132, 255, 0.35);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem 1.8rem;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      box-shadow: 6px 6px 0px rgba(0, 132, 255, 0.25);
-      transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .news-card:hover {
-      transform: translate(-4px, -4px);
-      border-color: var(--accent-orange);
-      box-shadow: 10px 10px 0px var(--accent-orange);
-    }
-
-    .news-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.1rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .news-category-badge {
-      font-family: monospace;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-      border: 1.5px solid currentColor;
-    }
-
-    .badge-networks {
-      color: var(--accent-orange);
-      background: rgba(255, 119, 0, 0.1);
-      border-color: var(--accent-orange);
-    }
-
-    .badge-hardware {
-      color: var(--primary-blue);
-      background: rgba(0, 132, 255, 0.1);
-      border-color: var(--primary-blue);
-    }
-
-    .badge-webdev {
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
-      border-color: #38bdf8;
-    }
-
-    .news-read-time {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      font-family: monospace;
-      font-weight: 600;
-    }
-
-    .news-card-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.3;
-      margin-bottom: 0.85rem;
-      letter-spacing: -0.3px;
-    }
-
-    .news-card-author-meta {
-      font-size: 0.76rem;
-      color: var(--primary-blue);
-      font-family: monospace;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .news-card-body {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-      flex: 1;
-    }
-
-    .news-card-body p {
-      margin-bottom: 0.8rem;
-    }
-
-    .news-card-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    .news-tech-callout {
-      background: rgba(11, 16, 27, 0.9);
-      border-left: 3.5px solid var(--accent-orange);
-      border-radius: 0 8px 8px 0;
-      padding: 0.75rem 0.95rem;
-      font-family: monospace;
-      font-size: 0.8rem;
-      color: #cbd5e1;
-      margin-top: 0.8rem;
-    }
-
-    .news-card-footer {
-      border-top: 1px dashed rgba(255, 255, 255, 0.1);
-      padding-top: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .news-tags-group {
-      display: flex;
-      gap: 0.35rem;
-      flex-wrap: wrap;
-    }
-
-    .news-tag {
-      font-size: 0.7rem;
-      font-family: monospace;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-    }
-
-    @media (max-width: 1024px) {
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-
-
   <!-- =====================================================================
-       NAVBAR PRINCIPAL CON LOGO, MENÚS DROPDOWN Y ACCIONES
+       CABECERA SUPERIOR (LOGO FIRMA SOMORROSTRO + ENLACES CON SUBRAYADO AZUL)
        ===================================================================== -->
-  <header class="top-navbar">
-    <div class="container nav-wrapper">
+  <header class="top-header">
+    <div class="container nav-inner">
       
-      <!-- Logo Somorrostro -->
-      <a href="#inicio" class="brand-logo" aria-label="Ir a Inicio Centro Somorrostro">
-        <div class="brand-badge">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
-            <path d="M6 6h10"></path>
-            <path d="M6 10h10"></path>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <h1>SOMORROSTRO</h1>
-          <span>CENTRO DE FORMACIÓN</span>
-        </div>
+      <!-- Logo Firma Somorrostro como en la imagen -->
+      <a href="#inicio" class="brand-signature-wrap" aria-label="Ir a Inicio Somorrostro">
+        <span class="brand-signature">Somorrostro</span>
+        <span class="brand-subtag">FP BÁSICA</span>
       </a>
 
-      <!-- Menú de Enlaces con Dropdown (como en la imagen de ejemplo) -->
+      <!-- Menú Central con Raya Azul Activa -->
       <nav aria-label="Navegación Principal">
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a href="#inicio" class="nav-link active">INICIO</a>
-          </li>
-          <li class="nav-item">
-            <a href="#vida-centro" class="nav-link">
-              NOSOTROS
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#vida-centro" class="dropdown-link">Metodología Ethazi <span class="arrow">›</span></a></li>
-              <li><a href="#vida-centro" class="dropdown-link">Compañerismo & Campus <span class="arrow">›</span></a></li>
-              <li><a href="#vida-centro" class="dropdown-link">Salidas Profesionales <span class="arrow">›</span></a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#talleres" class="nav-link">
-              TALLERES
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#talleres" onclick="filterCategory('hardware')" class="dropdown-link">Montaje de Componentes <span class="arrow">›</span></a></li>
-              <li><a href="#talleres" onclick="filterCategory('networks')" class="dropdown-link">Redes y Telecom <span class="arrow">›</span></a></li>
-              <li><a href="#talleres" onclick="filterCategory('webdev')" class="dropdown-link">Desarrollo Web & Apps <span class="arrow">›</span></a></li>
-              <li><a href="#contador-retos" class="dropdown-link">Retos Ethazi Viernes 14:00 <span class="arrow">›</span></a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#noticias" class="nav-link">CRÓNICAS TALLER</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contador-retos" class="nav-link">RETOS</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contacto" class="nav-link">CONTACTO</a>
-          </li>
+        <ul class="main-nav-links">
+          <li class="nav-link-item"><a href="#inicio" class="active">Inicio</a></li>
+          <li class="nav-link-item"><a href="#vida-centro">Sobre el centro</a></li>
+          <li class="nav-link-item"><a href="#talleres">Talleres</a></li>
+          <li class="nav-link-item"><a href="#contador-retos">Retos Ethazi</a></li>
+          <li class="nav-link-item"><a href="#noticias">Crónicas</a></li>
+          <li class="nav-link-item"><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
-      <!-- Acciones de Cabecera: Buscador Rápido, Selector de Modo y Botón CTA -->
-      <div class="nav-actions">
-        <!-- Buscador integrado en barra -->
-        <div class="nav-search-box" title="Buscador de talleres e información">
-          <svg class="nav-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" id="topNavSearch" class="nav-search-input" placeholder="Buscar taller...">
+      <!-- Acciones Derecha (Buscador & Iconos Limpios) -->
+      <div class="header-actions">
+        <!-- Buscador integrado -->
+        <div class="search-nav-pill" title="Buscar por tecnología">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="topNavSearch" class="search-nav-input" placeholder="Buscar taller...">
         </div>
 
-        <!-- Selector de Modo / Tema (Default Azul Somo / Naranja Ethazi / Cyber) -->
-        <button id="themeSwitcher" class="theme-mode-btn" title="Cambiar tema de color / Modo de visualización" aria-label="Cambiar tema">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-          </svg>
-        </button>
-
-        <!-- Botón de Acción Destacado -->
-        <a href="#contacto" class="btn-nav-cta">
-          <span>MATRÍCULA 2026</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <!-- Icono GitHub -->
+        <a href="https://github.com/alexalvarez10-ops/" target="_blank" rel="noopener noreferrer" class="header-icon-link" title="GitHub de Alex Álvarez">
+          <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
 
-        <!-- Botón Mobile -->
-        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú móvil">☰</button>
+        <!-- Icono Email Directo -->
+        <a href="mailto:alex.alvarez10@somo.eus" class="header-icon-link" title="Escribir a alex.alvarez10@somo.eus">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Abrir navegación móvil">☰</button>
       </div>
 
     </div>
@@ -2150,169 +1283,81 @@
 
   <main>
     <!-- =====================================================================
-         CABECERA PRINCIPAL (HERO SECTION - INSPIRADA EN EL EJEMPLO)
+         HERO SECTION CINEMATOGRÁFICO (REPRODUCCIÓN DEL ESTILO DE LA IMAGEN)
          ===================================================================== -->
-    <section id="inicio" class="hero-section">
-      <div class="container hero-grid">
-        
-        <!-- Columna Izquierda: Mensaje Contundente RUTA A -->
-        <div class="hero-content">
-          <div class="badge-route-a">
-            <span class="pulsing-dot"></span>
-            RUTA A: APRENDIZAJE PRÁCTICO & RETOS ETHAZI
-          </div>
-
-          <div class="hero-title-group">
-            <h2>FORMACIÓN PROFESIONAL DE VANGUARDIA EN BIZKAIA</h2>
-            <h1 class="hero-headline">
-              APRENDE CREANDO & <br>
-              <span class="highlight-blue">DOMINA LA TECNOLOGÍA</span> <br>
-              <span class="highlight-orange">POR RETOS REALES</span>
-            </h1>
-          </div>
-
-          <p class="hero-subtitle">
-            El Centro de Formación Somorrostro es tu plataforma de lanzamiento hacia el sector informático. Un espacio donde el compañerismo, la resolución práctica de desafíos empresariales (Ethazi) y las instalaciones de última generación convierten tu talento en tu profesión.
+    <section id="inicio" class="cinematic-hero">
+      <div class="hero-photo-backdrop"></div>
+      
+      <div class="container">
+        <div class="hero-content-wrap">
+          
+          <div class="hero-tagline">RUTA A // FORMACIÓN PROFESIONAL PRÁCTICA</div>
+          
+          <h1 class="hero-title-editorial">
+            Tecnología que inspira, <br>
+            vocación que perdura
+          </h1>
+          
+          <p class="hero-desc-editorial">
+            Bienvenido a Somorrostro, un espacio donde el aprendizaje cobra vida a través de los retos prácticos de informática: montaje de ordenadores, redes de telecomunicaciones y desarrollo web real.
           </p>
 
-          <!-- Botones de Acción (estilo imagen: Ver Planes / Contáctenos) -->
-          <div class="hero-actions">
-            <a href="#talleres" class="btn-pill-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-              EXPLORAR TALLERES
-            </a>
-            <a href="#contacto" class="btn-pill-secondary">
-              CONTÁCTANOS
+          <!-- Botón Píldora Azul Idéntico a la imagen -->
+          <div>
+            <a href="#talleres" class="btn-pill-action">
+              <span>Descubrir talleres</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </div>
 
-          <!-- Microcredenciales de confianza -->
-          <div class="hero-chips">
-            <div class="hero-chip-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>San Juan 10, Muskiz</span>
+          <!-- Indicador Mouse Scroll Down en la esquina inferior izquierda -->
+          <a href="#talleres" class="mouse-scroll-indicator" aria-label="Desplazar hacia abajo">
+            <div class="mouse-icon">
+              <span class="mouse-wheel"></span>
             </div>
-            <div class="hero-chip-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>Metodología Ethazi Activa</span>
-            </div>
-            <div class="hero-chip-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>+95% Inserción Laboral</span>
-            </div>
-          </div>
+            <span>↓</span>
+          </a>
+
         </div>
-
-        <!-- Columna Derecha: Mockup Visual Tecnológico 3D -->
-        <div class="hero-showcase">
-          <div class="mockup-stack">
-            
-            <!-- Ventana de Código / Pantalla Central -->
-            <div class="screen-main">
-              <div class="screen-bar">
-                <span class="window-dot dot-red"></span>
-                <span class="window-dot dot-yellow"></span>
-                <span class="window-dot dot-green"></span>
-                <span class="screen-title">somorrostro-ethazi-challenge.ts</span>
-              </div>
-              <div class="screen-body">
-                <div>
-                  <p class="code-line"><span class="code-comment">// Proyecto Intermodular Ethazi: Informática Somorrostro</span></p>
-                  <p class="code-line"><span class="code-keyword">import</span> { RetoHardware, RouterCisco, FullStackApp } <span class="code-keyword">from</span> <span class="code-str">'@somorrostro/core'</span>;</p>
-                  <br>
-                  <p class="code-line"><span class="code-keyword">export async function</span> <span class="code-fn">resolverRetoSemanal</span>(equipoEstudiantes) {</p>
-                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> hardware = <span class="code-keyword">await</span> RetoHardware.<span class="code-fn">ensamblarCluster</span>();</p>
-                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> redVLAN = <span class="code-keyword">await</span> RouterCisco.<span class="code-fn">configurarSeguridadPerimetral</span>();</p>
-                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> webApp = <span class="code-keyword">await</span> FullStackApp.<span class="code-fn">desplegarEnProduccion</span>();</p>
-                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">return</span> { estado: <span class="code-str">'¡Reto Superado con Éxito!'</span>, insercion: <span class="code-str">'100%'</span> };</p>
-                  <p class="code-line">}</p>
-                </div>
-                <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
-                  <span style="color: var(--accent-orange); font-size: 0.75rem;">Status: 🚀 Compilando en tiempo real</span>
-                  <span style="color: #64748b; font-size: 0.7rem;">Muskiz Campus Engine</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Subcard flotante Superior (Redes / Conexión) -->
-            <div class="floating-subcard subcard-top">
-              <div class="subcard-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
-              </div>
-              <div>
-                <p style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight:700;">Laboratorio de Redes</p>
-                <p style="font-size: 0.9rem; font-weight: 700; color:#fff;">Cisco & Fibra Óptica</p>
-              </div>
-            </div>
-
-            <!-- Subcard flotante Inferior (Compañerismo Ethazi) -->
-            <div class="floating-subcard subcard-bottom">
-              <div class="subcard-blue-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div>
-                <p style="font-size: 0.72rem; color: var(--primary-blue); font-weight: 700; text-transform: uppercase;">Aprendizaje en Equipo</p>
-                <p style="font-size: 0.88rem; font-weight: 700; color: #fff;">Metodología Ethazi Activa</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- =====================================================================
-         CONTADOR INTERACTIVO EN JAVASCRIPT: VIERNES 14:00 (ENTREGA DE RETOS)
-         ===================================================================== -->
-    <section id="contador-retos" class="countdown-section">
+       SPRINT COUNTDOWN BAR (VIERNES 14:00)
+       ===================================================================== -->
+    <section id="contador-retos" class="sprint-bar-section">
       <div class="container">
-        <div class="countdown-card-wrapper">
+        <div class="sprint-bar-inner">
           
-          <div class="countdown-info">
-            <span class="countdown-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              SPRINT SEMANAL ETHAZI
-            </span>
-            <h3>Cuenta Atrás: Viernes 14:00</h3>
-            <p>
-              En la metodología Ethazi de Somorrostro cada semana culmina con la entrega de soluciones a las 14:00 del viernes. Comprueba en tiempo real los días, horas y segundos que restan para la presentación ante el equipo.
-            </p>
+          <div class="sprint-left">
+            <div class="sprint-pulse"></div>
+            <div class="sprint-text">
+              <h4>Sprint Semanal Ethazi: Cierre Viernes a las 14:00</h4>
+              <p>Tiempo restante para la presentación de soluciones técnicas en el campus de Muskiz</p>
+            </div>
           </div>
 
           <!-- Display de Dígitos -->
-          <div class="countdown-timer-display" id="timerContainer" aria-live="polite">
-            <div class="time-slot">
-              <span class="time-number" id="daysValue">00</span>
-              <span class="time-label">Días</span>
+          <div class="countdown-digits-wrap" id="timerContainer">
+            <div class="count-unit">
+              <span class="count-num" id="daysValue">00</span>
+              <span class="count-lbl">Días</span>
             </div>
-            <span class="time-colon">:</span>
-            <div class="time-slot">
-              <span class="time-number" id="hoursValue">00</span>
-              <span class="time-label">Horas</span>
+            <span class="count-sep">:</span>
+            <div class="count-unit">
+              <span class="count-num" id="hoursValue">00</span>
+              <span class="count-lbl">Horas</span>
             </div>
-            <span class="time-colon">:</span>
-            <div class="time-slot">
-              <span class="time-number" id="minutesValue">00</span>
-              <span class="time-label">Min</span>
+            <span class="count-sep">:</span>
+            <div class="count-unit">
+              <span class="count-num" id="minutesValue">00</span>
+              <span class="count-lbl">Min</span>
             </div>
-            <span class="time-colon">:</span>
-            <div class="time-slot">
-              <span class="time-number" id="secondsValue" style="color: var(--accent-orange);">00</span>
-              <span class="time-label">Seg</span>
+            <span class="count-sep">:</span>
+            <div class="count-unit">
+              <span class="count-num" id="secondsValue" style="color: var(--accent-orange);">00</span>
+              <span class="count-lbl">Seg</span>
             </div>
-          </div>
-
-          <!-- Controles interactivos del temporizador -->
-          <div class="countdown-actions">
-            <button class="btn-timer-action" id="btnToggleTimer" title="Pausar o reanudar el contador">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-              <span id="btnTimerText">Pausar Reloj</span>
-            </button>
-            <button class="btn-timer-action" id="btnSimulateFinish" title="Simular entrega de reto">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v2h10v-2h-2c-.55 0-1-.45-1-1v-2.34c3.27-.8 5-3.3 5-6.66H4c0 3.36 1.73 5.86 5 6.66Z"/></svg>
-              <span>Celebrar Reto</span>
-            </button>
           </div>
 
         </div>
@@ -2320,323 +1365,94 @@
     </section>
 
     <!-- =====================================================================
-         TALLERES DE INFORMÁTICA (MONTAJE, REDES, DESARROLLO WEB)
-         ESTILO "PORTAFOLIO DE SERVICIOS" DE LA IMAGEN DE REFERENCIA
+         TALLERES DE INFORMÁTICA (ESTILO "MI OBRA" CON SUBRAYADO Y BOTÓN ESQUINA)
          ===================================================================== -->
-    <section id="talleres" class="workshops-section">
+    <section id="talleres" class="section-workshops">
       <div class="container">
         
-        <!-- Cabecera de Sección Centrada con Subrayado -->
-        <div class="section-header-center">
-          <span class="section-category">ESPECIALIDADES TECNOLÓGICAS</span>
-          <h2 class="section-title">PORTAFOLIO DE TALLERES PRÁCTICOS</h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle">
-            Instalaciones pioneras dotadas del mismo equipamiento profesional que encontrarás en las empresas punteras de Bizkaia. Aprende tocando, configurando y programando desde el primer día.
-          </p>
-        </div>
-
-        <!-- Barra de Búsqueda y Filtros Interactivos -->
-        <div class="workshop-filter-controls">
-          <div class="filter-pills-group" role="tablist">
-            <button class="filter-pill active" onclick="filterCategory('all')">Todos los Talleres</button>
-            <button class="filter-pill" onclick="filterCategory('hardware')">Montaje y Hardware</button>
-            <button class="filter-pill" onclick="filterCategory('networks')">Redes y Sistemas</button>
-            <button class="filter-pill" onclick="filterCategory('webdev')">Desarrollo Web</button>
+        <!-- Cabecera Editorial idéntica a la imagen de referencia -->
+        <div class="section-editorial-header">
+          <div class="editorial-title-box">
+            <h2>Talleres de Informática</h2>
+            <p class="editorial-subtitle">Una exploración constante del hardware, las redes de datos y el código.</p>
           </div>
-
-          <div class="live-search-box">
-            <svg class="live-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="workshopSearchInput" class="live-search-input" placeholder="Filtrar por tecnología o reto...">
-          </div>
-        </div>
-
-        <!-- Grid de Tarjetas (Mínimo 3 Tarjetas con Iconos) -->
-        <div class="workshops-grid" id="workshopsGrid">
           
-          <!-- TARJETA 1: MONTAJE DE COMPONENTES -->
-          <article class="workshop-card" data-category="hardware" data-keywords="hardware montaje cpu gpu ram refrigeracion servidores fuentes diagnostico bios">
-            <div class="workshop-icon-wrap icon-hardware">
-              <!-- CPU / Hardware Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                <rect x="9" y="9" width="6" height="6"/>
-                <path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/>
-                <path d="M20 9h3"/><path d="M20 14h3"/><path d="M1 9h3"/><path d="M1 14h3"/>
-              </svg>
-            </div>
-            <span class="workshop-badge-ethazi">Taller Práctico #01 • Ethazi</span>
-            <h3 class="workshop-title">Montaje y Mantenimiento de Hardware</h3>
-            <p class="workshop-desc">
-              Ensamblaje integral de estaciones de trabajo de alto rendimiento, bancos de diagnóstico de placa base, mediciones con multímetro, optimización térmica y mantenimiento correctivo de servidores físicos.
-            </p>
-            <div class="workshop-tags">
-              <span class="tag-badge">Arquitectura PC</span>
-              <span class="tag-badge">Diagnóstico UEFI</span>
-              <span class="tag-badge">Benchmarking</span>
-              <span class="tag-badge">Servidores Blade</span>
-            </div>
-            <button class="btn-workshop-detail" onclick="openWorkshopModal('hardware')">
-              <span>Saber más & Retos</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </article>
-
-          <!-- TARJETA 2: REDES LOCALES Y TELECOMUNICACIONES -->
-          <article class="workshop-card" data-category="networks" data-keywords="redes cisco router switch vlan fibra optica cableado ethernet seguridad perimetral firewalls mikrotik">
-            <div class="workshop-icon-wrap icon-networks">
-              <!-- Server / Router Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-                <line x1="6" y1="6" x2="6.01" y2="6"/>
-                <line x1="6" y1="18" x2="6.01" y2="18"/>
-                <path d="M18 10V6"/><path d="M18 18v-4"/>
-              </svg>
-            </div>
-            <span class="workshop-badge-ethazi">Taller Práctico #02 • Ethazi</span>
-            <h3 class="workshop-title">Redes Locales y Telecomunicaciones</h3>
-            <p class="workshop-desc">
-              Diseño y despliegue de infraestructuras corporativas: cableado estructurado categoría 6A y fusionado de fibra óptica, switches gestionables Cisco, configuración de VLANs, VPNs y cortafuegos.
-            </p>
-            <div class="workshop-tags">
-              <span class="tag-badge">Cisco Packet Tracer</span>
-              <span class="tag-badge">VLAN & Routing</span>
-              <span class="tag-badge">Fusionado Fibra</span>
-              <span class="tag-badge">Ciberseguridad</span>
-            </div>
-            <button class="btn-workshop-detail" onclick="openWorkshopModal('networks')">
-              <span>Saber más & Retos</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </article>
-
-          <!-- TARJETA 3: CREACIÓN Y DESARROLLO WEB -->
-          <article class="workshop-card" data-category="webdev" data-keywords="web desarrollo html css javascript typescript react node frontend backend ui ux apis git">
-            <div class="workshop-icon-wrap icon-webdev">
-              <!-- Code Browser Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2"/>
-                <path d="m10 10-2 2 2 2"/><path d="m14 14 2-2-2-2"/>
-                <path d="M6 8h.01"/>
-              </svg>
-            </div>
-            <span class="workshop-badge-ethazi">Taller Práctico #03 • Ethazi</span>
-            <h3 class="workshop-title">Creación y Desarrollo Web Moderno</h3>
-            <p class="workshop-desc">
-              Construcción de aplicaciones web interactivas, accesibles y adaptadas a todos los dispositivos móviles. Maquetación avanzada con CSS Grid/Flexbox, JavaScript reactivo, consumo de APIs y arquitecturas Cloud.
-            </p>
-            <div class="workshop-tags">
-              <span class="tag-badge">HTML5 / Modern CSS</span>
-              <span class="tag-badge">JavaScript ESNext</span>
-              <span class="tag-badge">Diseño UI/UX</span>
-              <span class="tag-badge">Despliegue Vercel</span>
-            </div>
-            <button class="btn-workshop-detail" onclick="openWorkshopModal('webdev')">
-              <span>Saber más & Retos</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         BLOQUE DE VIDA EN EL CENTRO (3 PUNTOS CLAVE DE LA RUTA A)
-         1. Metodología por Retos (Ethazi)
-         2. Compañerismo y Ecosistema de Apoyo
-         3. Oportunidad Real y Conexión Laboral
-         ===================================================================== -->
-    <section id="vida-centro" class="campus-life-section">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-category">RUTA A: IDENTIDAD SOMORROSTRO</span>
-          <h2 class="section-title">VIDA Y APRENDIZAJE EN EL CAMPUS</h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle">
-            Somorrostro es mucho más que aulas: es una comunidad de futuros profesionales donde cada día construyes soluciones codo con codo junto a tus compañeros y docentes.
-          </p>
+          <a href="#contacto" class="btn-outline-pill">
+            <span>Pedir información ›</span>
+          </a>
         </div>
 
-        <div class="life-cards-grid">
+        <!-- Grid de 4 Cards Fotográficas de Talleres -->
+        <div class="workshops-photo-grid" id="workshopsGrid">
           
-          <!-- Ventaja 1: Metodología por Retos Ethazi -->
-          <article class="life-card">
-            <span class="life-number">01</span>
-            <div class="life-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7-3 5 3 5"/><path d="m19 7 3 5-3 5"/></svg>
+          <!-- Card 1: Montaje y Hardware -->
+          <article class="photo-workshop-card" data-category="hardware">
+            <div class="card-photo-wrapper">
+              <span class="card-badge-overlay">Taller #01</span>
+              <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80" alt="Montaje de Hardware y Procesadores" class="card-photo-img" loading="lazy">
             </div>
-            <h3 class="life-title">Metodología Activa Ethazi</h3>
-            <p class="life-text">
-              Dile adiós a la memorización pasiva. Aquí aprendes afrontando desafíos prácticos reales como en una empresa tecnológica. Planificas en equipo, investigas, montas arquitecturas reales y defiendes tus proyectos los viernes a las 14:00 ante el auditorio.
-            </p>
-          </article>
-
-          <!-- Ventaja 2: Compañerismo y Apoyo Mutuo -->
-          <article class="life-card">
-            <span class="life-number">02</span>
-            <div class="life-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="life-title">Compañerismo & Mentoring</h3>
-            <p class="life-text">
-              Un ecosistema donde nadie se queda rezagado. Las mesas de trabajo colaborativo fomentan que quienes dominan el hardware apoyen a los programadores, y viceversa. Los profesores ejercen de guías técnicos e impulsores de tu vocación personal.
-            </p>
-          </article>
-
-          <!-- Ventaja 3: Oportunidad de Futuro y Empleabilidad -->
-          <article class="life-card">
-            <span class="life-number">03</span>
-            <div class="life-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <h3 class="life-title">Oportunidades & Empleabilidad</h3>
-            <p class="life-text">
-              Aquí aprendes a trabajar exactamente igual que en una empresa real de tecnología: compartes consola, montas racks en pareja, documentas tus fallos y defiendes tu trabajo cada viernes. Cuando sales de Somorrostro a tu empresa de prácticas o FP Dual, ya sabes desmontar un PC con los ojos cerrados y configurar una red sin que te tiemble el pulso.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
-         ===================================================================== -->
-
-    <!-- =====================================================================
-         SECCIÓN DE NOTICIAS // DIARIO Y ANÉCDOTAS DEL TALLER DE INFORMÁTICA
-         ===================================================================== -->
-    <section id="noticias" class="news-section">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-category">// DIARIO TÉCNICO DE LOS ALUMNOS</span>
-          <h2 class="section-title">CRÓNICAS DEL TALLER DE INFORMÁTICA</h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle">
-            Sin textos corporativos ni discursos aprendidos: estas son las anécdotas, averías complejas y batallas de consola reales vividas en primera persona por nosotros en los bancos de trabajo de Somorrostro.
-          </p>
-        </div>
-
-        <div class="news-grid">
-          
-          <!-- ENTRADA 1: REDES & CISCO -->
-          <article class="news-card">
-            <div class="news-card-header">
-              <span class="news-category-badge badge-networks">REDES // AULA 204</span>
-              <span class="news-read-time">⏱ 4 MIN DE LECTURA</span>
-            </div>
-            
-            <h3 class="news-card-title">El bucle de broadcast y el cable fantasma que tumbó la red a 15 min de la entrega</h3>
-            
-            <div class="news-card-author-meta">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Por Alex Álvarez &amp; Equipo Cisco • Jueves de Sprint</span>
-            </div>
-
-            <div class="news-card-body">
-              <p>
-                Eran las 12:45 de un jueves y el laboratorio de redes era un hervidero de cables UTP azules categoría 6A y conectores RJ45 desparramados por los bancos. Nuestro reto Ethazi consistía en segmentar el tráfico entre los bancos de montaje y los servidores mediante dos VLANs en un switch Cisco Catalyst 2960.
+            <div class="card-photo-content">
+              <h3 class="card-photo-title">Montaje y Hardware</h3>
+              <p class="card-photo-desc">
+                Ensamblaje integral de estaciones de trabajo, mediciones con multímetro, diagnóstico de BIOS/UEFI y optimización térmica de servidores.
               </p>
-              <p>
-                Todo iba sobre ruedas hasta que las máquinas reales empezaron a perder paquetes en masa. El comando <code>ping 192.168.10.1</code> devolvía un desolador <em>Request timed out</em> cada tres segundos y los leds de todos los puertos parpadeaban sincronizados como un árbol de Navidad enloquecido.
-              </p>
-              <p>
-                Tras media hora culpando al cortafuegos de Windows y recalculando la máscara de subred (<code>255.255.255.192</code> vs <code>255.255.255.0</code>), descubrimos el pastel: al ordenar el rack, alguien había conectado por error ambos extremos de un latiguillo sobrante a dos puertos del mismo switch, desatando una tormenta de broadcast que saturó la tabla CAM.
-              </p>
-              <div class="news-tech-callout">
-                > Diagnóstico: Desconexión del latiguillo en bucle + activación de Spanning Tree Protocol (STP) + exclusión de IPs estáticas en el pool DHCP. El led ámbar volvió al verde constante en 12 segundos.
-              </div>
-            </div>
-
-            <div class="news-card-footer">
-              <div class="news-tags-group">
-                <span class="news-tag">#CiscoCatalyst</span>
-                <span class="news-tag">#BroadcastStorm</span>
-                <span class="news-tag">#VLAN10</span>
-                <span class="news-tag">#DHCP</span>
+              <div class="card-footer-link" onclick="openWorkshopModal('hardware')">
+                <span>Ver detalles del reto</span>
+                <span>›</span>
               </div>
             </div>
           </article>
 
-          <!-- ENTRADA 2: HARDWARE & MONTAJE -->
-          <article class="news-card">
-            <div class="news-card-header">
-              <span class="news-category-badge badge-hardware">HARDWARE // BANCO #03</span>
-              <span class="news-read-time">⏱ 5 MIN DE LECTURA</span>
+          <!-- Card 2: Redes y Telecomunicaciones -->
+          <article class="photo-workshop-card" data-category="networks">
+            <div class="card-photo-wrapper">
+              <span class="card-badge-overlay">Taller #02</span>
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Laboratorio de Redes Cisco y Fibra" class="card-photo-img" loading="lazy">
             </div>
-            
-            <h3 class="news-card-title">Operación 'FrankenPC': los tres pitidos de la muerte y el misterio de los 98°C</h3>
-            
-            <div class="news-card-author-meta">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Por Equipo de Taller • Banco de Reparación</span>
-            </div>
-
-            <div class="news-card-body">
-              <p>
-                El reto de la semana en el taller de montaje parecía inocente: reconstruir cinco estaciones de trabajo a partir de componentes donados y dejarlas con la UEFI parametrizada para virtualización. El banco 3 bautizó a su máquina como <em>'FrankenPC'</em>: una placa base ATX con condensadores sólidos, 16 GB de RAM y una gráfica reciclada.
+            <div class="card-photo-content">
+              <h3 class="card-photo-title">Redes y Sistemas</h3>
+              <p class="card-photo-desc">
+                Cableado estructurado categoría 6A, fusión de fibra óptica por arco voltaico, switches Cisco Catalyst, segmentación de VLANs y routers.
               </p>
-              <p>
-                Pulsamos el botón del frontal y el altavoz piezoeléctrico soltó una sinfonía fúnebre: <em>bip... bip... bip...</em> Tres pitidos largos de la BIOS Award. Con la pulsera antiestática puesta, sacamos los módulos DDR4, limpiamos los pines con goma de borrar y alcohol isopropílico, y al encajarlos con el sonoro 'clic' en los slots A2-B2, la placa por fin dio vídeo.
-              </p>
-              <p>
-                Pero la odisea no acabó ahí: a los cinco minutos de arranque el ventilador aullaba como una turbina de reactor y el sensor térmico marcaba 98°C en reposo. Al desmontar el disipador descubrimos el clásico 'crimen informático': el ensamblador anterior había echado pasta térmica directamente encima de la pegatina plástica protectora que dice en mayúsculas <em>"REMOVE BEFORE USE"</em>.
-              </p>
-              <div class="news-tech-callout">
-                > Solución: Retirada del plástico derretido con rasqueta antiestática, limpieza con alcohol isopropílico y aplicación en grano de arroz de pasta térmica de alta conductividad. Temperatura en reposo: 34°C.
-              </div>
-            </div>
-
-            <div class="news-card-footer">
-              <div class="news-tags-group">
-                <span class="news-tag">#BeepCodes</span>
-                <span class="news-tag">#DDR4</span>
-                <span class="news-tag">#ThermalThrottling</span>
-                <span class="news-tag">#UEFI</span>
+              <div class="card-footer-link" onclick="openWorkshopModal('networks')">
+                <span>Ver detalles del reto</span>
+                <span>›</span>
               </div>
             </div>
           </article>
 
-          <!-- ENTRADA 3: DESARROLLO WEB & DEPLOY -->
-          <article class="news-card">
-            <div class="news-card-header">
-              <span class="news-category-badge badge-webdev">WEB // SPRINT ETHAZI</span>
-              <span class="news-read-time">⏱ 4 MIN DE LECTURA</span>
+          <!-- Card 3: Desarrollo Web -->
+          <article class="photo-workshop-card" data-category="webdev">
+            <div class="card-photo-wrapper">
+              <span class="card-badge-overlay">Taller #03</span>
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Programación y Desarrollo Web" class="card-photo-img" loading="lazy">
             </div>
-            
-            <h3 class="news-card-title">13:52 del viernes: el error que casi nos cuesta la demo del reto ante el auditorio</h3>
-            
-            <div class="news-card-author-meta">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Por Alex Álvarez • Terminal de Despliegue</span>
-            </div>
-
-            <div class="news-card-body">
-              <p>
-                Faltaban exactamente ocho minutos para las 14:00, la hora sagrada del viernes en Somorrostro cuando se cierra la entrega y el equipo presenta su solución ante los profesores y el resto de la clase. Teníamos la interfaz responsive perfecta en localhost, el contador funcionando y los filtros de búsqueda listos.
+            <div class="card-photo-content">
+              <h3 class="card-photo-title">Desarrollo Web & Apps</h3>
+              <p class="card-photo-desc">
+                Construcción de interfaces interactivas y responsive en HTML5, CSS Grid y JavaScript ES6+, consumo de APIs y despliegue continuo en la nube.
               </p>
-              <p>
-                Pero al hacer la prueba de fuego abriendo la URL de producción en un smartphone real con conexión 4G, el menú hamburguesa no se abría y el formulario no respondía al toque. Conectamos el móvil por depuración remota USB y la consola de Chrome arrojó el temido: <code>TypeError: Cannot read properties of null (reading 'addEventListener')</code>.
-              </p>
-              <p>
-                El script se estaba ejecutando en el móvil antes de que el navegador terminara de pintar el botón en la pantalla. Como un equipo de emergencias, reestructuramos la carga envolviendo la inicialización en <code>DOMContentLoaded</code>, hicimos un <code>git commit --amend</code> a toda velocidad y enviamos el push a GitHub.
-              </p>
-              <div class="news-tech-callout">
-                > Resultado: El deploy automático de Vercel pasó a verde a las 13:57:42. Proyectamos en el auditorio a las 14:00:00 exactas con la web funcionando al 100%. Esa adrenalina no te la da ningún libro de texto.
+              <div class="card-footer-link" onclick="openWorkshopModal('webdev')">
+                <span>Ver detalles del reto</span>
+                <span>›</span>
               </div>
             </div>
+          </article>
 
-            <div class="news-card-footer">
-              <div class="news-tags-group">
-                <span class="news-tag">#DevToolsRemote</span>
-                <span class="news-tag">#GitAmend</span>
-                <span class="news-tag">#VercelDeploy</span>
-                <span class="news-tag">#Adrenalina14h</span>
+          <!-- Card 4: Metodología Ethazi -->
+          <article class="photo-workshop-card" data-category="ethazi">
+            <div class="card-photo-wrapper">
+              <span class="card-badge-overlay">Metodología</span>
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Trabajo Colaborativo por Retos Ethazi" class="card-photo-img" loading="lazy">
+            </div>
+            <div class="card-photo-content">
+              <h3 class="card-photo-title">Retos de Innovación</h3>
+              <p class="card-photo-desc">
+                Aprendizaje basado en desafíos técnicos reales del tejido productivo. Gestión ágil con Scrum, sin exámenes memorísticos y con presentaciones los viernes.
+              </p>
+              <div class="card-footer-link" onclick="openWorkshopModal('ethazi')">
+                <span>Ver detalles del reto</span>
+                <span>›</span>
               </div>
             </div>
           </article>
@@ -2646,165 +1462,230 @@
       </div>
     </section>
 
-    <section id="contacto" class="contact-section">
+    <!-- =====================================================================
+         CRÓNICAS Y NOTICIAS DEL TALLER (ANÉCDOTAS NARRATIVAS DE ALUMNOS)
+         ===================================================================== -->
+    <section id="noticias" class="section-news">
       <div class="container">
         
-        <div class="contact-grid">
+        <div class="section-editorial-header">
+          <div class="editorial-title-box">
+            <h2>Crónicas del Taller</h2>
+            <p class="editorial-subtitle">Averías reales, batallas de consola y anécdotas de los estudiantes de informática.</p>
+          </div>
+        </div>
+
+        <div class="news-editorial-grid">
           
-          <!-- Panel Izquierdo: Información y Contacto -->
-          <div class="contact-info-panel">
-            <span class="section-category">ESTAMOS PARA AYUDARTE</span>
-            <h3>Impulsa tu Trayectoria en Somorrostro</h3>
+          <!-- Entrada 1: Redes -->
+          <article class="news-editorial-card">
+            <div class="news-meta-row">
+              <span class="news-category-tag">// REDES &amp; CISCO</span>
+              <span class="news-readtime">⏱ 4 min</span>
+            </div>
+            <h3 class="news-headline">El bucle de broadcast y el cable fantasma que tumbó la red a 15 min de la entrega</h3>
+            <p class="news-snippet">
+              A las 12:45 de un jueves el comando <code>ping 192.168.10.1</code> devolvía un desolador <em>Request timed out</em> continuo. Tras sospechar de la máscara de subred, descubrimos que alguien había puenteado ambos extremos de un latiguillo sobrante al mismo switch, saturando la tabla CAM.
+            </p>
+            <div class="news-callout-box">
+              > Diagnóstico: Latiguillo retirado + Spanning Tree Protocol (STP) activo. Red operativa en 12 segundos.
+            </div>
+          </article>
+
+          <!-- Entrada 2: Hardware -->
+          <article class="news-editorial-card">
+            <div class="news-meta-row">
+              <span class="news-category-tag">// HARDWARE &amp; MONTAJE</span>
+              <span class="news-readtime">⏱ 5 min</span>
+            </div>
+            <h3 class="news-headline">Operación 'FrankenPC': los tres pitidos de la muerte y el misterio de los 98°C</h3>
+            <p class="news-snippet">
+              Al pulsar el botón de encendido la placa soltó tres pitidos largos (RAM DDR4 mal encajada en el slot secundario). Al resolverlo, el procesador marcaba 98°C: el ensamblador anterior había aplicado la pasta térmica sobre la pegatina transparente que dice <em>"REMOVE BEFORE USE"</em>.
+            </p>
+            <div class="news-callout-box">
+              > Solución: Plástico retirado, limpieza con isopropílico y pasta térmica fresca. Reposo a 34°C.
+            </div>
+          </article>
+
+          <!-- Entrada 3: Web -->
+          <article class="news-editorial-card">
+            <div class="news-meta-row">
+              <span class="news-category-tag">// WEB &amp; CLOUD</span>
+              <span class="news-readtime">⏱ 4 min</span>
+            </div>
+            <h3 class="news-headline">13:52 del viernes: el error en mobile que casi nos cuesta la demo del reto</h3>
+            <p class="news-snippet">
+              Faltaban ocho minutos para las 14:00 y en el teléfono móvil la web arrojaba un fatal <code>TypeError: null (reading 'addEventListener')</code>. Reestructuramos la escucha con <code>DOMContentLoaded</code>, hicimos <code>git commit --amend</code> y Vercel desplegó en verde a las 13:57.
+            </p>
+            <div class="news-callout-box">
+              > Lección: Probar siempre en dispositivos reales antes del sprint final de entrega.
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         VIDA EN EL CENTRO (3 PUNTOS CLAVE DE LA RUTA A)
+         ===================================================================== -->
+    <section id="vida-centro" class="section-life">
+      <div class="container">
+        
+        <div class="section-editorial-header">
+          <div class="editorial-title-box">
+            <h2>Vida en Somorrostro</h2>
+            <p class="editorial-subtitle">Aprender haciendo, colaborar en equipo y crecer con un propósito profesional claro.</p>
+          </div>
+        </div>
+
+        <div class="life-editorial-grid">
+          
+          <article class="life-editorial-card">
+            <div class="life-num-accent">01</div>
+            <h3 class="life-card-title">Metodología Activa Ethazi</h3>
+            <p class="life-card-text">
+              Dile adiós a memorizar folios para un examen. Aquí te sientas ante un equipo real con tus compañeros, investigas averías, diseñas soluciones y defiendes tu trabajo cada viernes a las 14:00.
+            </p>
+          </article>
+
+          <article class="life-editorial-card">
+            <div class="life-num-accent">02</div>
+            <h3 class="life-card-title">Compañerismo &amp; Mentoring</h3>
+            <p class="life-card-text">
+              Un ambiente cercano en Muskiz donde nadie se queda rezagado. Los profesores ejercen de guías técnicos en las mesas de trabajo y los alumnos cooperan resolviendo dudas de software y cables.
+            </p>
+          </article>
+
+          <article class="life-editorial-card">
+            <div class="life-num-accent">03</div>
+            <h3 class="life-card-title">Salida Profesional Real</h3>
+            <p class="life-card-text">
+              Aprendes a trabajar con la misma disciplina y herramientas que usan las empresas de Bizkaia. Cuando sales a la FP Dual o al mercado laboral, ya sabes desmontar un PC y configurar un switch con total seguridad.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         FORMULARIO DE CONTACTO PROFESIONAL
+         ===================================================================== -->
+    <section id="contacto" class="section-contact">
+      <div class="container">
+        
+        <div class="contact-layout-grid">
+          
+          <!-- Info Izquierda -->
+          <div class="contact-left-card">
+            <div class="hero-tagline" style="margin-bottom:0.8rem;">CONTACTO DIRECTO</div>
+            <h3>Comienza tu Futuro en Somorrostro</h3>
             <p>
-              ¿Tienes dudas sobre los talleres de informática, la metodología Ethazi o el proceso de matrícula? Escríbenos directamente y nuestro equipo docente o el delegado estudiantil responderá a tu consulta.
+              ¿Tienes dudas sobre los talleres de FP Básica en Informática o quieres conocer el centro de primera mano? Escríbenos y te responderemos con rapidez.
             </p>
 
-            <div class="contact-details-list">
-              <!-- Dirección Real -->
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="contact-info-rows">
+              <div class="info-row-item">
+                <div class="info-icon-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
-                <div class="contact-detail-text">
-                  <h4>Sede y Dirección Real</h4>
+                <div class="info-row-text">
+                  <h5>Ubicación Real</h5>
                   <p>San Juan 10, Muskiz (48550, Bizkaia)</p>
                 </div>
               </div>
 
-              <!-- Correo de Estudiante -->
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <div class="info-row-item">
+                <div class="info-icon-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
-                <div class="contact-detail-text">
-                  <h4>Buzón Estudiantil</h4>
+                <div class="info-row-text">
+                  <h5>Buzón Estudiantil</h5>
                   <a href="mailto:alex.alvarez10@somo.eus">alex.alvarez10@somo.eus</a>
                 </div>
               </div>
 
-              <!-- Horario / Teléfono -->
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div class="info-row-item">
+                <div class="info-icon-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <div class="contact-detail-text">
-                  <h4>Horario del Centro</h4>
+                <div class="info-row-text">
+                  <h5>Horario de Talleres</h5>
                   <p>Lunes a Viernes: 08:00 - 15:00 h</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Panel Derecho: Formulario Neo-Brutalista con CSS Grid -->
-          <div class="brutalist-form-card">
-            
-            <!-- Terminal Status Bar -->
-            <div class="brutalist-terminal-bar">
-              <span class="brutalist-tag-label">// PROTOCOLO_ETHAZI_CONTACT</span>
-              <div class="brutalist-terminal-status">
-                <span class="status-dot-blink"></span>
-                <span>BUZÓN ACTIVO // SOMO.EUS</span>
-              </div>
-            </div>
-
-            <!-- Formulario con CSS Grid -->
-            <form id="mainContactForm" class="brutalist-grid-form" action="mailto:alex.alvarez10@somo.eus" method="GET" enctype="text/plain">
+          <!-- Formulario Derecha -->
+          <div class="contact-form-card">
+            <form id="mainContactForm" action="mailto:alex.alvarez10@somo.eus" method="GET" enctype="text/plain">
               
-              <!-- [01] Nombre Completo (Columna 1) -->
-              <div class="brutalist-field-wrap form-col-1">
-                <div class="brutalist-label-row">
-                  <span class="field-index-tag">[01]</span>
-                  <label for="contactName" class="brutalist-label-text">NOMBRE COMPLETO <span class="star-req">*</span></label>
+              <div class="form-grid-layout">
+                <div class="form-input-group col-span-1">
+                  <label for="contactName">* Nombre completo</label>
+                  <input type="text" id="contactName" name="name" class="input-pro-field" placeholder="Ej. Mikel García" required>
                 </div>
-                <input type="text" id="contactName" name="name" class="brutalist-input-field" placeholder="EJ. MIKEL GARCÍA" required>
-              </div>
 
-              <!-- [02] Correo Electrónico (Columna 1) -->
-              <div class="brutalist-field-wrap form-col-1">
-                <div class="brutalist-label-row">
-                  <span class="field-index-tag">[02]</span>
-                  <label for="contactEmail" class="brutalist-label-text">CORREO ELECTRÓNICO <span class="star-req">*</span></label>
+                <div class="form-input-group col-span-1">
+                  <label for="contactEmail">* Correo electrónico</label>
+                  <input type="email" id="contactEmail" name="email" class="input-pro-field" placeholder="tu-correo@ejemplo.com" required>
                 </div>
-                <input type="email" id="contactEmail" name="email" class="brutalist-input-field" placeholder="TU-CORREO@EJEMPLO.COM" required>
-              </div>
 
-              <!-- [03] Teléfono / GitHub / Discord (Columna 1) -->
-              <div class="brutalist-field-wrap form-col-1">
-                <div class="brutalist-label-row">
-                  <span class="field-index-tag">[03]</span>
-                  <label for="contactPhone" class="brutalist-label-text">TELÉFONO O GITHUB</label>
+                <div class="form-input-group col-span-1">
+                  <label for="contactPhone">Teléfono o GitHub</label>
+                  <input type="text" id="contactPhone" name="phone" class="input-pro-field" placeholder="+34 600 000 000">
                 </div>
-                <input type="text" id="contactPhone" name="phone" class="brutalist-input-field" placeholder="+34 600 000 000 ó @usuario">
-              </div>
 
-              <!-- [04] Taller o Área de Interés (Columna 1) -->
-              <div class="brutalist-field-wrap form-col-1">
-                <div class="brutalist-label-row">
-                  <span class="field-index-tag">[04]</span>
-                  <label for="contactInterest" class="brutalist-label-text">TALLER DE FORMACIÓN <span class="star-req">*</span></label>
+                <div class="form-input-group col-span-1">
+                  <label for="contactInterest">Taller de interés</label>
+                  <select id="contactInterest" name="taller" class="select-pro-field">
+                    <option value="Montaje y Mantenimiento de Hardware">Taller de Montaje y Hardware</option>
+                    <option value="Redes Locales y Telecomunicaciones">Taller de Redes y Telecomunicaciones</option>
+                    <option value="Creación y Desarrollo Web">Taller de Desarrollo Web</option>
+                    <option value="Información General Metodología Ethazi">Metodología por Retos Ethazi</option>
+                  </select>
                 </div>
-                <select id="contactInterest" name="taller" class="brutalist-select-field">
-                  <option value="Montaje y Mantenimiento de Hardware">Taller #01: Montaje & Mantenimiento Hardware</option>
-                  <option value="Redes Locales y Telecomunicaciones">Taller #02: Redes Locales & Cisco Routing</option>
-                  <option value="Creación y Desarrollo Web">Taller #03: Creación & Desarrollo Web</option>
-                  <option value="Información General Metodología Ethazi">Metodología Ethazi // Retos de Innovación</option>
-                </select>
-              </div>
 
-              <!-- [05] Mensaje o Reto a Plantear (Columna 2 / Span Completo) -->
-              <div class="brutalist-field-wrap form-col-2">
-                <div class="brutalist-label-row">
-                  <span class="field-index-tag">[05]</span>
-                  <label for="contactMessage" class="brutalist-label-text">MENSAJE O DESAFÍO TÉCNICO <span class="star-req">*</span></label>
+                <div class="form-input-group col-span-2">
+                  <label for="contactMessage">* Mensaje o consulta</label>
+                  <textarea id="contactMessage" name="body" class="textarea-pro-field" placeholder="Escribe aquí tu consulta o motivación para cursar los talleres de Somorrostro..." required></textarea>
                 </div>
-                <textarea id="contactMessage" name="body" class="brutalist-textarea-field" placeholder="Describe aquí tu consulta, motivación para cursar los talleres o reto tecnológico que deseas resolver con el equipo de Somorrostro..." required></textarea>
-              </div>
 
-              <!-- [06] Checkbox Compromiso Brutalista (Columna 2 / Span Completo) -->
-              <div class="form-col-2">
-                <div class="brutalist-checkbox-row">
-                  <input type="checkbox" id="contactConsent" class="brutalist-checkbox" required checked>
-                  <label for="contactConsent" class="brutalist-checkbox-label">
-                    Acepto el tratamiento de datos para contacto académico de Somorrostro y entiendo que mi consulta se remitirá al buzón estudiantil <strong>alex.alvarez10@somo.eus</strong>.
-                  </label>
+                <div class="col-span-2">
+                  <div id="formSuccessBanner" class="form-feedback-banner">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span>¡Mensaje preparado! Conectando con alex.alvarez10@somo.eus...</span>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Banner de Éxito Brutalista -->
-              <div class="form-col-2">
-                <div id="formSuccessBanner" class="form-feedback-banner">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span>¡CONSULTA PROCESADA! Conectando directamente con alex.alvarez10@somo.eus...</span>
+                <div class="col-span-2">
+                  <button type="submit" class="btn-submit-pro">
+                    <span>Enviar consulta a Somorrostro</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </button>
                 </div>
-              </div>
 
-              <!-- [07] Botón de Envío Brutalista con Transición Táctil en Hover -->
-              <div class="form-col-2">
-                <button type="submit" class="brutalist-btn-submit" id="btnSubmitContact">
-                  <span>DISPARAR MENSAJE A SOMORROSTRO</span>
-                  <svg class="btn-arrow-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </button>
               </div>
-
             </form>
           </div>
+
         </div>
 
       </div>
     </section>
   </main>
 
-
-
   <!-- =====================================================================
-       MODAL INFORMATIVO DE RETOS Y TALLERES (INTERACTIVO)
+       MODAL DE DETALLES DEL TALLER
        ===================================================================== -->
   <div id="workshopModal" class="modal-overlay" onclick="closeWorkshopModal(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
       <button class="modal-close-btn" onclick="closeWorkshopModal()" title="Cerrar modal">✕</button>
-      <div id="modalContent">
-        <!-- Contenido inyectado dinámicamente con JS -->
-      </div>
+      <div id="modalContent"></div>
     </div>
   </div>
 
@@ -2815,77 +1696,61 @@
   </div>
 
   <!-- =====================================================================
-       PIE DE PÁGINA (FOOTER CON NOMBRE, GITHUB, PORTFOLIO Y DIRECCIÓN REAL)
+       FOOTER PROFESIONAL CON FIRMA SOMORROSTRO
        ===================================================================== -->
-  <footer class="main-footer">
+  <footer class="editorial-footer">
     <div class="container">
       
-      <div class="footer-grid">
+      <div class="footer-content-grid">
         
-        <!-- Bloque Institucional -->
-        <div class="footer-brand">
-          <div class="brand-logo" style="margin-bottom: 0.8rem;">
-            <div class="brand-badge" style="width:36px; height:36px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
-            </div>
-            <div class="brand-text">
-              <h4 style="font-size:1.1rem; line-height:1;">SOMORROSTRO</h4>
-              <span style="font-size:0.65rem;">CENTRO DE FORMACIÓN</span>
-            </div>
-          </div>
+        <div class="footer-brand-side">
+          <h4>Somorrostro</h4>
           <p>
-            Centro referente en Formación Profesional y aprendizaje práctico por retos (Ethazi). Formamos a las personas y futuros técnicos que transforman el tejido tecnológico e industrial.
+            Centro de referencia en Formación Profesional y aprendizaje práctico por retos (Ethazi) en Muskiz. Formamos técnicos apasionados por la tecnología real.
           </p>
-          <p style="font-size:0.85rem; color: #fff; display: flex; align-items:center; gap:0.4rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-orange);"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p style="font-size:0.85rem; color:#fff;">
             <strong>Dirección real:</strong> San Juan 10, Muskiz (Bizkaia)
           </p>
         </div>
 
-        <!-- Enlaces Rápidos -->
-        <div class="footer-col">
+        <div class="footer-nav-col">
           <h5>Navegación</h5>
-          <ul class="footer-links-list">
-            <li class="footer-link-item"><a href="#inicio">› Inicio</a></li>
-            <li class="footer-link-item"><a href="#talleres">› Talleres de Informática</a></li>
-            <li class="footer-link-item"><a href="#contador-retos">› Retos Ethazi (Viernes 14:00)</a></li>
-            <li class="footer-link-item"><a href="#vida-centro">› Vida en el Centro</a></li>
-            <li class="footer-link-item"><a href="#noticias">› Crónicas del Taller de Informática</a></li>
-            <li class="footer-link-item"><a href="#contacto">› Buzón de Contacto</a></li>
+          <ul class="footer-list">
+            <li><a href="#inicio">› Inicio</a></li>
+            <li><a href="#talleres">› Talleres de Informática</a></li>
+            <li><a href="#contador-retos">› Retos Ethazi (Viernes 14h)</a></li>
+            <li><a href="#noticias">› Crónicas del Taller</a></li>
+            <li><a href="#contacto">› Contacto</a></li>
           </ul>
         </div>
 
-        <!-- Especialidades Informáticas -->
-        <div class="footer-col">
-          <h5>Talleres</h5>
-          <ul class="footer-links-list">
-            <li class="footer-link-item"><a href="#talleres" onclick="filterCategory('hardware')">› Montaje de Hardware</a></li>
-            <li class="footer-link-item"><a href="#talleres" onclick="filterCategory('networks')">› Redes & Cisco Routing</a></li>
-            <li class="footer-link-item"><a href="#talleres" onclick="filterCategory('webdev')">› Desarrollo Web Responsive</a></li>
-            <li class="footer-link-item"><a href="#talleres" onclick="openWorkshopModal('ethazi')">› Dinámicas de Grupo Ethazi</a></li>
+        <div class="footer-nav-col">
+          <h5>Especialidades</h5>
+          <ul class="footer-list">
+            <li><a href="#talleres" onclick="openWorkshopModal('hardware')">› Montaje de Hardware</a></li>
+            <li><a href="#talleres" onclick="openWorkshopModal('networks')">› Redes &amp; Cisco</a></li>
+            <li><a href="#talleres" onclick="openWorkshopModal('webdev')">› Desarrollo Web</a></li>
+            <li><a href="#talleres" onclick="openWorkshopModal('ethazi')">› Dinámica Ethazi</a></li>
           </ul>
         </div>
 
-        <!-- Tarjeta del Creador / Autor: Alex Álvarez -->
-        <div class="footer-col">
-          <h5>Diseño & Autoría</h5>
-          <div class="author-card-box">
+        <div class="footer-nav-col">
+          <h5>Autoría &amp; Créditos</h5>
+          <div class="footer-author-box">
             <div>
-              <p class="author-name-tag">Alex Álvarez</p>
-              <p class="author-role-tag">Estudiante & Desarrollador Web</p>
-              <p style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Buzón: alex.alvarez10@somo.eus</p>
+              <p class="author-title">Alex Álvarez</p>
+              <p class="author-subtitle">Estudiante de FP Informática</p>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">alex.alvarez10@somo.eus</p>
             </div>
             
-            <div class="author-btns">
-              <!-- Enlace a GitHub del usuario -->
-              <a href="https://github.com/alexalvarez10-ops/" target="_blank" rel="noopener noreferrer" class="author-btn-link" title="Visitar GitHub de Alex Álvarez">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                <span>GitHub de Alex Álvarez</span>
+            <div class="author-links-group">
+              <a href="https://github.com/alexalvarez10-ops/" target="_blank" rel="noopener noreferrer" class="author-pill-btn">
+                <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span>GitHub alexalvarez10-ops</span>
               </a>
 
-              <!-- Enlace a Portfolio Personal del usuario -->
-              <a href="https://portfolio-alex-alvarez.vercel.app/" target="_blank" rel="noopener noreferrer" class="author-btn-link portfolio" title="Visitar Portfolio Personal de Alex Álvarez">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              <a href="https://portfolio-alex-alvarez.vercel.app/" target="_blank" rel="noopener noreferrer" class="author-pill-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                 <span>Portfolio Personal (Vercel)</span>
               </a>
             </div>
@@ -2894,43 +1759,28 @@
 
       </div>
 
-      <!-- Barra Inferior de Copyright -->
-      <div class="footer-bottom-bar">
-        <p>© <span id="currentYear">2026</span> Centro de Formación Somorrostro • San Juan 10, Muskiz. Rediseño Web RUTA A.</p>
-        <div class="footer-badges">
-          <span class="footer-badge-pill">Fondo: #0b101b</span>
-          <span class="footer-badge-pill">Azul: #0084ff</span>
-          <span class="footer-badge-pill">Naranja: #ff7700</span>
-          <span class="footer-badge-pill">Metodología Ethazi</span>
-        </div>
+      <div class="footer-bottom-strip">
+        <p>© <span id="currentYear">2026</span> Centro de Formación Somorrostro • San Juan 10, Muskiz. RUTA A (Retos Ethazi).</p>
+        <p style="color:var(--text-muted);">Fondo #0b101b • Azul #0084ff • Naranja #ff7700</p>
       </div>
 
     </div>
   </footer>
 
   <!-- =====================================================================
-       SCRIPTS JAVASCRIPT: CONTADOR VIERNES 14:00, BUSCADOR, TEMAS Y FORMULARIO
+       JAVASCRIPT: CONTADOR VIERNES 14H, BÚSQUEDA Y FORMULARIO
        ===================================================================== -->
   <script>
-    // -------------------------------------------------------------
-    // 1. CONTADOR DINÁMICO INTERACTIVO PARA LAS 14:00 DEL VIERNES
-    // -------------------------------------------------------------
-    let timerRunning = true;
-    let timerInterval = null;
-
+    // 1. Contador Dinámico para las 14:00 del Viernes
     function getNextFridayTwoPM() {
       const now = new Date();
       const target = new Date(now.getTime());
-      const currentDay = now.getDay(); // 0: Dom, 1: Lun, ..., 5: Vie, 6: Sab
+      const currentDay = now.getDay(); // 0: Dom ... 5: Vie
       
-      // Calculamos días hasta el viernes (5)
       let daysUntilFriday = (5 - currentDay + 7) % 7;
-      
-      // Fijamos las 14:00:00.000
       target.setDate(now.getDate() + daysUntilFriday);
       target.setHours(14, 0, 0, 0);
 
-      // Si hoy es viernes y ya han pasado las 14:00, avanzamos 7 días al próximo viernes
       if (currentDay === 5 && now.getTime() >= target.getTime()) {
         target.setDate(target.getDate() + 7);
       } else if (daysUntilFriday === 0 && now.getTime() >= target.getTime()) {
@@ -2943,14 +1793,10 @@
     let targetDate = getNextFridayTwoPM();
 
     function updateCountdown() {
-      if (!timerRunning) return;
-
       const now = new Date().getTime();
       let diff = targetDate.getTime() - now;
 
-      // Si llegamos a la meta, se recalcula automáticamente
       if (diff <= 0) {
-        showToast("¡Ha llegado el viernes a las 14:00! ¡Sprint de Retos Ethazi Culminado!");
         targetDate = getNextFridayTwoPM();
         diff = targetDate.getTime() - new Date().getTime();
       }
@@ -2966,183 +1812,55 @@
       document.getElementById('secondsValue').textContent = String(seconds).padStart(2, '0');
     }
 
-    // Iniciar el temporizador a 1 segundo
-    timerInterval = setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Botón Pausar/Reanudar
-    const btnToggleTimer = document.getElementById('btnToggleTimer');
-    const btnTimerText = document.getElementById('btnTimerText');
-    btnToggleTimer.addEventListener('click', () => {
-      timerRunning = !timerRunning;
-      if (timerRunning) {
-        btnTimerText.textContent = 'Pausar Reloj';
-        showToast('Contador de retos reanudado');
-      } else {
-        btnTimerText.textContent = 'Reanudar Reloj';
-        showToast('Contador pausado en este instante');
-      }
-    });
-
-    // Botón Simular Celebración de Entrega de Reto
-    document.getElementById('btnSimulateFinish').addEventListener('click', () => {
-      showToast('🎉 ¡Reto Ethazi entregado con éxito a las 14:00! ¡Excelente trabajo en equipo!');
-      // Efecto visual rápido
-      const container = document.getElementById('timerContainer');
-      container.style.transform = 'scale(1.05)';
-      container.style.transition = 'all 0.3s ease';
-      setTimeout(() => {
-        container.style.transform = 'scale(1)';
-      }, 400);
-    });
-
-    // -------------------------------------------------------------
-    // 2. BUSCADOR INTERACTIVO Y FILTRO DE TALLERES EN TIEMPO REAL
-    // -------------------------------------------------------------
-    const workshopSearchInput = document.getElementById('workshopSearchInput');
+    // 2. Buscador en barra superior
     const topNavSearch = document.getElementById('topNavSearch');
-    const workshopCards = document.querySelectorAll('.workshop-card');
-    let activeFilter = 'all';
-
-    function performWorkshopFilter() {
-      const query = (workshopSearchInput.value || topNavSearch.value || '').toLowerCase().trim();
-
-      workshopCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        const keywords = card.getAttribute('data-keywords') || '';
-        const title = card.querySelector('.workshop-title').textContent.toLowerCase();
-        const desc = card.querySelector('.workshop-desc').textContent.toLowerCase();
-
-        const matchesCategory = (activeFilter === 'all' || category === activeFilter);
-        const matchesQuery = query === '' || 
-                             title.includes(query) || 
-                             desc.includes(query) || 
-                             keywords.includes(query);
-
-        if (matchesCategory && matchesQuery) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    if (workshopSearchInput) {
-      workshopSearchInput.addEventListener('input', () => {
-        topNavSearch.value = workshopSearchInput.value;
-        performWorkshopFilter();
-      });
-    }
-
     if (topNavSearch) {
-      topNavSearch.addEventListener('input', () => {
-        workshopSearchInput.value = topNavSearch.value;
-        performWorkshopFilter();
-        // Si no está en la sección de talleres, hacer un scroll suave
-        if (window.scrollY < 800 && topNavSearch.value.length > 1) {
-          const talleresSec = document.getElementById('talleres');
-          if (talleresSec) talleresSec.scrollIntoView({ behavior: 'smooth' });
-        }
+      topNavSearch.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.photo-workshop-card');
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (q === '' || text.includes(q)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
     }
 
-    function filterCategory(cat) {
-      activeFilter = cat;
-      const pills = document.querySelectorAll('.filter-pill');
-      pills.forEach(p => {
-        if (cat === 'all' && p.textContent.includes('Todos')) p.classList.add('active');
-        else if (cat === 'hardware' && p.textContent.includes('Hardware')) p.classList.add('active');
-        else if (cat === 'networks' && p.textContent.includes('Redes')) p.classList.add('active');
-        else if (cat === 'webdev' && p.textContent.includes('Desarrollo')) p.classList.add('active');
-        else p.classList.remove('active');
-      });
-      performWorkshopFilter();
-    }
-
-    // -------------------------------------------------------------
-    // 3. SELECTOR DE MODO / TEMA VISUAL (Default Azul / Naranja / Cyber)
-    // -------------------------------------------------------------
-    const themeSwitcher = document.getElementById('themeSwitcher');
-    const themes = ['default', 'orange', 'cyber'];
-    let currentThemeIndex = 0;
-
-    themeSwitcher.addEventListener('click', () => {
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      const newTheme = themes[currentThemeIndex];
-      document.documentElement.setAttribute('data-theme', newTheme);
-      
-      let themeName = 'Azul Institucional (#0084ff)';
-      if (newTheme === 'orange') themeName = 'Naranja Dinámico (#ff7700)';
-      if (newTheme === 'cyber') themeName = 'Cyber Somo Neón';
-
-      showToast(`Modo visual cambiado a: ${themeName}`);
-    });
-
-    // -------------------------------------------------------------
-    // 5. FORMULARIO PRINCIPAL DE CONTACTO
-    // -------------------------------------------------------------
-    const mainForm = document.getElementById('mainContactForm');
-    const formSuccessBanner = document.getElementById('formSuccessBanner');
-
-    mainForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('contactName').value.trim();
-      const email = document.getElementById('contactEmail').value.trim();
-      const phoneInput = document.getElementById('contactPhone');
-      const phone = phoneInput ? phoneInput.value.trim() : 'No aportado';
-      const taller = document.getElementById('contactInterest').value;
-      const message = document.getElementById('contactMessage').value.trim();
-
-      if (!name || !email || !message) {
-        showToast('Por favor completa todos los campos requeridos');
-        return;
-      }
-
-      formSuccessBanner.style.display = 'flex';
-
-      const subject = encodeURIComponent(`[Somorrostro RUTA A] Consulta de ${name} sobre ${taller}`);
-      const body = encodeURIComponent(
-        `[SOMORROSTRO - FORMULARIO BRUTALISTA]\nNombre: ${name}\nEmail: ${email}\nTeléfono/Contacto: ${phone}\nInterés formativo: ${taller}\n\nMensaje/Reto:\n${message}\n\n---\nRemitido automáticamente a: alex.alvarez10@somo.eus`
-      );
-
-      setTimeout(() => {
-        window.location.href = `mailto:alex.alvarez10@somo.eus?subject=${subject}&body=${body}`;
-        showToast('Buzón abierto con alex.alvarez10@somo.eus');
-      }, 700);
-    });
-
-    // -------------------------------------------------------------
-    // 6. MODAL INTERACTIVO DE DETALLES DEL TALLER
-    // -------------------------------------------------------------
+    // 3. Modal de Talleres
     const workshopData = {
       hardware: {
         title: "Taller de Montaje y Mantenimiento de Hardware",
-        category: "Arquitectura de Computadores & Diagnóstico",
-        desc: "En este taller dominarás la anatomía completa de los sistemas informáticos. Montarás bancos de prueba, diagnosticarás averías complejas a nivel de circuito y BIOS/UEFI, y configurarás servidores de almacenamiento en rack.",
-        ethazi: "Reto Ethazi Activo: Ensamblaje, parametrización de curvas de ventilación y prueba de estrés (benchmark) de un clúster de virtualización de 8 nodos para el campus.",
-        tools: ["Bancos de diagnóstico antiestáticos", "Multímetros y osciloscopios", "Pasta térmica de metal líquido / compuesto cerámico", "Estaciones de soldadura SMD", "Servidores HP ProLiant & Dell PowerEdge"]
+        category: "Arquitectura & Diagnóstico Físico",
+        desc: "Ensamblaje minucioso de estaciones de trabajo, comprobaciones de tensión con multímetro, análisis de códigos POST y parametrización de BIOS/UEFI.",
+        ethazi: "Reto Ethazi Activo: Ensamblar y certificar un clúster de servidores de bajo consumo para pruebas de red.",
+        tools: ["Bancos de diagnóstico antiestático", "Multímetros y comprobadores de fuentes", "Pasta térmica de alta conductividad", "Estaciones de soldadura", "Servidores Blade"]
       },
       networks: {
         title: "Taller de Redes Locales y Telecomunicaciones",
-        category: "Infraestructuras de Telecomunicaciones & Cisco",
-        desc: "Aprende a planificar, cablear, certificar y securizar redes de área local y telecomunicaciones. Desde el ponchado de patch panels hasta la segmentación por VLANs con switches administrables y cortafuegos de última generación.",
-        ethazi: "Reto Ethazi Activo: Despliegue de una infraestructura de red corporativa multi-sede con enlaces redundantes, túneles VPN cifrados y servidor DHCP/DNS seguro.",
-        tools: ["Switches Cisco Catalyst Gigabit", "Routers MikroTik RouterBOARD", "Fusionadora de fibra óptica por arco voltaico", "Certificador de cableado Fluke Networks", "Racks de servidores 42U con PDU monitorizadas"]
+        category: "Infraestructuras de Red & Cisco",
+        desc: "Ponchado y certificación de cableado estructurado categoría 6A, fusión de fibra óptica por arco voltaico, configuración de VLANs y routers Cisco.",
+        ethazi: "Reto Ethazi Activo: Despliegue de red corporativa multi-sede con túneles VPN cifrados y servidor DHCP seguro.",
+        tools: ["Switches Cisco Catalyst Gigabit", "Fusionadora de fibra óptica", "Certificador Fluke Networks", "Routers MikroTik", "Racks 42U con PDUs"]
       },
       webdev: {
         title: "Taller de Creación y Desarrollo Web Moderno",
-        category: "Ingeniería de Software Web & UI/UX",
-        desc: "Diseña y programa portales web y aplicaciones interactivas siguiendo las mejores prácticas de la industria: accesibilidad, maquetación responsive limpia, control de versiones con Git y despliegue continuo en la nube.",
-        ethazi: "Reto Ethazi Activo: Creación de la plataforma integral del centro para la gestión de proyectos de estudiantes, integrando autenticación, filtros reactivos y API en la nube.",
-        tools: ["Visual Studio Code & Git Workflow", "HTML5 Semántico, CSS Grid & Flexbox", "JavaScript ES6+ / TypeScript", "Figma para prototipado UI/UX", "Entornos Node.js & Vercel Cloud"]
+        category: "Ingeniería Web & UI/UX",
+        desc: "Diseño y desarrollo de sitios web accesibles, responsive y dinámicos utilizando HTML5 semántico, CSS moderno, JavaScript ES6+ y despliegue Cloud.",
+        ethazi: "Reto Ethazi Activo: Plataforma web interactiva para la gestión de proyectos de aula con base de datos en tiempo real.",
+        tools: ["VS Code & Git Workflow", "HTML5 Semántico & CSS Grid", "JavaScript ES6+", "Figma UI/UX", "Vercel Cloud Deploy"]
       },
       ethazi: {
-        title: "Metodología por Retos Ethazi en Somorrostro",
+        title: "Metodología por Retos Ethazi",
         category: "Modelo Pedagógico de Alto Impacto",
-        desc: "El aprendizaje colaborativo basado en retos sitúa al alumnado como protagonista absoluto. Trabajas en equipos autogestionados resolviendo problemas técnicos reales proporcionados por empresas de nuestro entorno.",
-        ethazi: "Dinámica Semanal: Sprint de lunes a viernes, con retrospectivas diarias y presentación oral de la solución técnica cada viernes a las 14:00.",
-        tools: ["Tableros Kanban y metodología Scrum", "Salas de trabajo colaborativo", "Equipos multidisciplinares (Hardware + Redes + Software)", "Evaluación por rúbricas y competencias blandas"]
+        desc: "El aprendizaje colaborativo basado en retos sitúa al alumnado como protagonista absoluto resolviendo problemas reales del tejido industrial.",
+        ethazi: "Sprint Semanal: Trabajo en equipos autónomos de lunes a viernes con entrega técnica a las 14:00.",
+        tools: ["Tableros Kanban y metodología Scrum", "Salas de trabajo colaborativo", "Equipos multidisciplinares", "Rúbricas de evaluación profesional"]
       }
     };
 
@@ -3168,8 +1886,8 @@
           ${toolsHtml}
         </ul>
 
-        <div style="display:flex; justify-content:flex-end; gap:0.8rem;">
-          <a href="#contacto" onclick="closeWorkshopModal()" class="btn-pill-primary" style="padding:0.6rem 1.4rem; font-size:0.82rem;">Pedir Información</a>
+        <div style="display:flex; justify-content:flex-end;">
+          <a href="#contacto" onclick="closeWorkshopModal()" class="btn-pill-action" style="padding:0.6rem 1.4rem; font-size:0.82rem;">Pedir Información</a>
         </div>
       `;
 
@@ -3181,9 +1899,38 @@
       document.getElementById('workshopModal').style.display = 'none';
     }
 
-    // -------------------------------------------------------------
-    // 7. TOAST NOTIFIER HELPER
-    // -------------------------------------------------------------
+    // 4. Formulario de Contacto
+    const mainForm = document.getElementById('mainContactForm');
+    const formSuccessBanner = document.getElementById('formSuccessBanner');
+
+    mainForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim() || 'No aportado';
+      const taller = document.getElementById('contactInterest').value;
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if (!name || !email || !message) {
+        showToast('Por favor completa los campos requeridos');
+        return;
+      }
+
+      formSuccessBanner.style.display = 'flex';
+
+      const subject = encodeURIComponent(`[Somorrostro FP] Consulta de ${name} sobre ${taller}`);
+      const body = encodeURIComponent(
+        `Nombre: ${name}\nEmail: ${email}\nTeléfono/Contacto: ${phone}\nTaller de interés: ${taller}\n\nMensaje:\n${message}\n\n---\nRemitido a: alex.alvarez10@somo.eus`
+      );
+
+      setTimeout(() => {
+        window.location.href = `mailto:alex.alvarez10@somo.eus?subject=${subject}&body=${body}`;
+        showToast('Abriendo buzón alex.alvarez10@somo.eus');
+      }, 700);
+    });
+
+    // 5. Toast Notifier
     function showToast(message) {
       const toast = document.getElementById('toastPopup');
       const toastMsg = document.getElementById('toastMessage');
@@ -3196,17 +1943,17 @@
       }, 3500);
     }
 
-    // Mobile menu toggle
+    // 6. Mobile Nav
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     mobileMenuBtn.addEventListener('click', () => {
-      const navLinks = document.querySelector('.nav-links');
+      const navLinks = document.querySelector('.main-nav-links');
       if (navLinks.style.display === 'flex') {
         navLinks.style.display = 'none';
       } else {
         navLinks.style.display = 'flex';
         navLinks.style.flexDirection = 'column';
         navLinks.style.position = 'absolute';
-        navLinks.style.top = '76px';
+        navLinks.style.top = '80px';
         navLinks.style.left = '0';
         navLinks.style.right = '0';
         navLinks.style.background = '#0b101b';
@@ -3215,7 +1962,7 @@
       }
     });
 
-    // Actualizar año actual en footer dinámicamente
+    // Actualizar año
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
