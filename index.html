@@ -2083,6 +2083,162 @@
         justify-content: center;
       }
     }
+  
+    /* =====================================================================
+       SECCIÓN DE NOTICIAS & CRÓNICAS TÉCNICAS DEL TALLER (ANÉCDOTAS REALES)
+       ===================================================================== */
+    .news-section {
+      padding: 5.5rem 0;
+      position: relative;
+      border-top: 1px solid var(--border-subtle);
+      background: linear-gradient(180deg, #090e18 0%, #0b101b 100%);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .news-card {
+      background: var(--bg-surface);
+      border: 2.5px solid rgba(0, 132, 255, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 6px 6px 0px rgba(0, 132, 255, 0.25);
+      transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .news-card:hover {
+      transform: translate(-4px, -4px);
+      border-color: var(--accent-orange);
+      box-shadow: 10px 10px 0px var(--accent-orange);
+    }
+
+    .news-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .news-category-badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      border: 1.5px solid currentColor;
+    }
+
+    .badge-networks {
+      color: var(--accent-orange);
+      background: rgba(255, 119, 0, 0.1);
+      border-color: var(--accent-orange);
+    }
+
+    .badge-hardware {
+      color: var(--primary-blue);
+      background: rgba(0, 132, 255, 0.1);
+      border-color: var(--primary-blue);
+    }
+
+    .badge-webdev {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border-color: #38bdf8;
+    }
+
+    .news-read-time {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-family: monospace;
+      font-weight: 600;
+    }
+
+    .news-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.3px;
+    }
+
+    .news-card-author-meta {
+      font-size: 0.76rem;
+      color: var(--primary-blue);
+      font-family: monospace;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .news-card-body {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .news-card-body p {
+      margin-bottom: 0.8rem;
+    }
+
+    .news-card-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .news-tech-callout {
+      background: rgba(11, 16, 27, 0.9);
+      border-left: 3.5px solid var(--accent-orange);
+      border-radius: 0 8px 8px 0;
+      padding: 0.75rem 0.95rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      margin-top: 0.8rem;
+    }
+
+    .news-card-footer {
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .news-tags-group {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .news-tag {
+      font-size: 0.7rem;
+      font-family: monospace;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 1024px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2154,6 +2310,9 @@
               <li><a href="#talleres" onclick="filterCategory('webdev')" class="dropdown-link">Desarrollo Web & Apps <span class="arrow">›</span></a></li>
               <li><a href="#contador-retos" class="dropdown-link">Retos Ethazi Viernes 14:00 <span class="arrow">›</span></a></li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#noticias" class="nav-link">CRÓNICAS TALLER</a>
           </li>
           <li class="nav-item">
             <a href="#contador-retos" class="nav-link">RETOS</a>
@@ -2538,7 +2697,7 @@
             </div>
             <h3 class="life-title">Oportunidades & Empleabilidad</h3>
             <p class="life-text">
-              Convenios directos con más de 400 empresas industriales y de servicios IT en Euskadi. Posibilidad de FP Dual remunerada, bolsa de empleo propia con más del 95% de colocación y continuidad directa hacia especializaciones o grados universitarios.
+              Aquí aprendes a trabajar exactamente igual que en una empresa real de tecnología: compartes consola, montas racks en pareja, documentas tus fallos y defiendes tu trabajo cada viernes. Cuando sales de Somorrostro a tu empresa de prácticas o FP Dual, ya sabes desmontar un PC con los ojos cerrados y configurar una red sin que te tiemble el pulso.
             </p>
           </article>
 
@@ -2550,6 +2709,146 @@
     <!-- =====================================================================
          FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
          ===================================================================== -->
+
+    <!-- =====================================================================
+         SECCIÓN DE NOTICIAS // DIARIO Y ANÉCDOTAS DEL TALLER DE INFORMÁTICA
+         ===================================================================== -->
+    <section id="noticias" class="news-section">
+      <div class="container">
+        
+        <div class="section-header-center">
+          <span class="section-category">// DIARIO TÉCNICO DE LOS ALUMNOS</span>
+          <h2 class="section-title">CRÓNICAS DEL TALLER DE INFORMÁTICA</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">
+            Sin textos corporativos ni discursos aprendidos: estas son las anécdotas, averías complejas y batallas de consola reales vividas en primera persona por nosotros en los bancos de trabajo de Somorrostro.
+          </p>
+        </div>
+
+        <div class="news-grid">
+          
+          <!-- ENTRADA 1: REDES & CISCO -->
+          <article class="news-card">
+            <div class="news-card-header">
+              <span class="news-category-badge badge-networks">REDES // AULA 204</span>
+              <span class="news-read-time">⏱ 4 MIN DE LECTURA</span>
+            </div>
+            
+            <h3 class="news-card-title">El bucle de broadcast y el cable fantasma que tumbó la red a 15 min de la entrega</h3>
+            
+            <div class="news-card-author-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Por Alex Álvarez &amp; Equipo Cisco • Jueves de Sprint</span>
+            </div>
+
+            <div class="news-card-body">
+              <p>
+                Eran las 12:45 de un jueves y el laboratorio de redes era un hervidero de cables UTP azules categoría 6A y conectores RJ45 desparramados por los bancos. Nuestro reto Ethazi consistía en segmentar el tráfico entre los bancos de montaje y los servidores mediante dos VLANs en un switch Cisco Catalyst 2960.
+              </p>
+              <p>
+                Todo iba sobre ruedas hasta que las máquinas reales empezaron a perder paquetes en masa. El comando <code>ping 192.168.10.1</code> devolvía un desolador <em>Request timed out</em> cada tres segundos y los leds de todos los puertos parpadeaban sincronizados como un árbol de Navidad enloquecido.
+              </p>
+              <p>
+                Tras media hora culpando al cortafuegos de Windows y recalculando la máscara de subred (<code>255.255.255.192</code> vs <code>255.255.255.0</code>), descubrimos el pastel: al ordenar el rack, alguien había conectado por error ambos extremos de un latiguillo sobrante a dos puertos del mismo switch, desatando una tormenta de broadcast que saturó la tabla CAM.
+              </p>
+              <div class="news-tech-callout">
+                > Diagnóstico: Desconexión del latiguillo en bucle + activación de Spanning Tree Protocol (STP) + exclusión de IPs estáticas en el pool DHCP. El led ámbar volvió al verde constante en 12 segundos.
+              </div>
+            </div>
+
+            <div class="news-card-footer">
+              <div class="news-tags-group">
+                <span class="news-tag">#CiscoCatalyst</span>
+                <span class="news-tag">#BroadcastStorm</span>
+                <span class="news-tag">#VLAN10</span>
+                <span class="news-tag">#DHCP</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ENTRADA 2: HARDWARE & MONTAJE -->
+          <article class="news-card">
+            <div class="news-card-header">
+              <span class="news-category-badge badge-hardware">HARDWARE // BANCO #03</span>
+              <span class="news-read-time">⏱ 5 MIN DE LECTURA</span>
+            </div>
+            
+            <h3 class="news-card-title">Operación 'FrankenPC': los tres pitidos de la muerte y el misterio de los 98°C</h3>
+            
+            <div class="news-card-author-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Por Equipo de Taller • Banco de Reparación</span>
+            </div>
+
+            <div class="news-card-body">
+              <p>
+                El reto de la semana en el taller de montaje parecía inocente: reconstruir cinco estaciones de trabajo a partir de componentes donados y dejarlas con la UEFI parametrizada para virtualización. El banco 3 bautizó a su máquina como <em>'FrankenPC'</em>: una placa base ATX con condensadores sólidos, 16 GB de RAM y una gráfica reciclada.
+              </p>
+              <p>
+                Pulsamos el botón del frontal y el altavoz piezoeléctrico soltó una sinfonía fúnebre: <em>bip... bip... bip...</em> Tres pitidos largos de la BIOS Award. Con la pulsera antiestática puesta, sacamos los módulos DDR4, limpiamos los pines con goma de borrar y alcohol isopropílico, y al encajarlos con el sonoro 'clic' en los slots A2-B2, la placa por fin dio vídeo.
+              </p>
+              <p>
+                Pero la odisea no acabó ahí: a los cinco minutos de arranque el ventilador aullaba como una turbina de reactor y el sensor térmico marcaba 98°C en reposo. Al desmontar el disipador descubrimos el clásico 'crimen informático': el ensamblador anterior había echado pasta térmica directamente encima de la pegatina plástica protectora que dice en mayúsculas <em>"REMOVE BEFORE USE"</em>.
+              </p>
+              <div class="news-tech-callout">
+                > Solución: Retirada del plástico derretido con rasqueta antiestática, limpieza con alcohol isopropílico y aplicación en grano de arroz de pasta térmica de alta conductividad. Temperatura en reposo: 34°C.
+              </div>
+            </div>
+
+            <div class="news-card-footer">
+              <div class="news-tags-group">
+                <span class="news-tag">#BeepCodes</span>
+                <span class="news-tag">#DDR4</span>
+                <span class="news-tag">#ThermalThrottling</span>
+                <span class="news-tag">#UEFI</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ENTRADA 3: DESARROLLO WEB & DEPLOY -->
+          <article class="news-card">
+            <div class="news-card-header">
+              <span class="news-category-badge badge-webdev">WEB // SPRINT ETHAZI</span>
+              <span class="news-read-time">⏱ 4 MIN DE LECTURA</span>
+            </div>
+            
+            <h3 class="news-card-title">13:52 del viernes: el error que casi nos cuesta la demo del reto ante el auditorio</h3>
+            
+            <div class="news-card-author-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Por Alex Álvarez • Terminal de Despliegue</span>
+            </div>
+
+            <div class="news-card-body">
+              <p>
+                Faltaban exactamente ocho minutos para las 14:00, la hora sagrada del viernes en Somorrostro cuando se cierra la entrega y el equipo presenta su solución ante los profesores y el resto de la clase. Teníamos la interfaz responsive perfecta en localhost, el contador funcionando y los filtros de búsqueda listos.
+              </p>
+              <p>
+                Pero al hacer la prueba de fuego abriendo la URL de producción en un smartphone real con conexión 4G, el menú hamburguesa no se abría y el formulario no respondía al toque. Conectamos el móvil por depuración remota USB y la consola de Chrome arrojó el temido: <code>TypeError: Cannot read properties of null (reading 'addEventListener')</code>.
+              </p>
+              <p>
+                El script se estaba ejecutando en el móvil antes de que el navegador terminara de pintar el botón en la pantalla. Como un equipo de emergencias, reestructuramos la carga envolviendo la inicialización en <code>DOMContentLoaded</code>, hicimos un <code>git commit --amend</code> a toda velocidad y enviamos el push a GitHub.
+              </p>
+              <div class="news-tech-callout">
+                > Resultado: El deploy automático de Vercel pasó a verde a las 13:57:42. Proyectamos en el auditorio a las 14:00:00 exactas con la web funcionando al 100%. Esa adrenalina no te la da ningún libro de texto.
+              </div>
+            </div>
+
+            <div class="news-card-footer">
+              <div class="news-tags-group">
+                <span class="news-tag">#DevToolsRemote</span>
+                <span class="news-tag">#GitAmend</span>
+                <span class="news-tag">#VercelDeploy</span>
+                <span class="news-tag">#Adrenalina14h</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
     <section id="contacto" class="contact-section">
       <div class="container">
         
@@ -2696,347 +2995,6 @@
 
       </div>
     </section>
-
-    <!-- =====================================================================
-         CONTADOR INTERACTIVO EN JAVASCRIPT: VIERNES 14:00 (ENTREGA DE RETOS)
-         ===================================================================== -->
-    <section id="contador-retos" class="countdown-section">
-      <div class="container">
-        <div class="countdown-card-wrapper">
-          
-          <div class="countdown-info">
-            <span class="countdown-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              SPRINT SEMANAL ETHAZI
-            </span>
-            <h3>Cuenta Atrás: Viernes 14:00</h3>
-            <p>
-              En la metodología Ethazi de Somorrostro cada semana culmina con la entrega de soluciones a las 14:00 del viernes. Comprueba en tiempo real los días, horas y segundos que restan para la presentación ante el equipo.
-            </p>
-          </div>
-
-          <!-- Display de Dígitos -->
-          <div class="countdown-timer-display" id="timerContainer" aria-live="polite">
-            <div class="time-slot">
-              <span class="time-number" id="daysValue">00</span>
-              <span class="time-label">Días</span>
-            </div>
-            <span class="time-colon">:</span>
-            <div class="time-slot">
-              <span class="time-number" id="hoursValue">00</span>
-              <span class="time-label">Horas</span>
-            </div>
-            <span class="time-colon">:</span>
-            <div class="time-slot">
-              <span class="time-number" id="minutesValue">00</span>
-              <span class="time-label">Min</span>
-            </div>
-            <span class="time-colon">:</span>
-            <div class="time-slot">
-              <span class="time-number" id="secondsValue" style="color: var(--accent-orange);">00</span>
-              <span class="time-label">Seg</span>
-            </div>
-          </div>
-
-          <!-- Controles interactivos del temporizador -->
-          <div class="countdown-actions">
-            <button class="btn-timer-action" id="btnToggleTimer" title="Pausar o reanudar el contador">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-              <span id="btnTimerText">Pausar Reloj</span>
-            </button>
-            <button class="btn-timer-action" id="btnSimulateFinish" title="Simular entrega de reto">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v2h10v-2h-2c-.55 0-1-.45-1-1v-2.34c3.27-.8 5-3.3 5-6.66H4c0 3.36 1.73 5.86 5 6.66Z"/></svg>
-              <span>Celebrar Reto</span>
-            </button>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         TALLERES DE INFORMÁTICA (MONTAJE, REDES, DESARROLLO WEB)
-         ESTILO "PORTAFOLIO DE SERVICIOS" DE LA IMAGEN DE REFERENCIA
-         ===================================================================== -->
-    <section id="talleres" class="workshops-section">
-      <div class="container">
-        
-        <!-- Cabecera de Sección Centrada con Subrayado -->
-        <div class="section-header-center">
-          <span class="section-category">ESPECIALIDADES TECNOLÓGICAS</span>
-          <h2 class="section-title">PORTAFOLIO DE TALLERES PRÁCTICOS</h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle">
-            Instalaciones pioneras dotadas del mismo equipamiento profesional que encontrarás en las empresas punteras de Bizkaia. Aprende tocando, configurando y programando desde el primer día.
-          </p>
-        </div>
-
-        <!-- Barra de Búsqueda y Filtros Interactivos -->
-        <div class="workshop-filter-controls">
-          <div class="filter-pills-group" role="tablist">
-            <button class="filter-pill active" onclick="filterCategory('all')">Todos los Talleres</button>
-            <button class="filter-pill" onclick="filterCategory('hardware')">Montaje y Hardware</button>
-            <button class="filter-pill" onclick="filterCategory('networks')">Redes y Sistemas</button>
-            <button class="filter-pill" onclick="filterCategory('webdev')">Desarrollo Web</button>
-          </div>
-
-          <div class="live-search-box">
-            <svg class="live-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="workshopSearchInput" class="live-search-input" placeholder="Filtrar por tecnología o reto...">
-          </div>
-        </div>
-
-        <!-- Grid de Tarjetas (Mínimo 3 Tarjetas con Iconos) -->
-        <div class="workshops-grid" id="workshopsGrid">
-          
-          <!-- TARJETA 1: MONTAJE DE COMPONENTES -->
-          <article class="workshop-card" data-category="hardware" data-keywords="hardware montaje cpu gpu ram refrigeracion servidores fuentes diagnostico bios">
-            <div class="workshop-icon-wrap icon-hardware">
-              <!-- CPU / Hardware Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                <rect x="9" y="9" width="6" height="6"/>
-                <path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/>
-                <path d="M20 9h3"/><path d="M20 14h3"/><path d="M1 9h3"/><path d="M1 14h3"/>
-              </svg>
-            </div>
-            <span class="workshop-badge-ethazi">Taller Práctico #01 • Ethazi</span>
-            <h3 class="workshop-title">Montaje y Mantenimiento de Hardware</h3>
-            <p class="workshop-desc">
-              Ensamblaje integral de estaciones de trabajo de alto rendimiento, bancos de diagnóstico de placa base, mediciones con multímetro, optimización térmica y mantenimiento correctivo de servidores físicos.
-            </p>
-            <div class="workshop-tags">
-              <span class="tag-badge">Arquitectura PC</span>
-              <span class="tag-badge">Diagnóstico UEFI</span>
-              <span class="tag-badge">Benchmarking</span>
-              <span class="tag-badge">Servidores Blade</span>
-            </div>
-            <button class="btn-workshop-detail" onclick="openWorkshopModal('hardware')">
-              <span>Saber más & Retos</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </article>
-
-          <!-- TARJETA 2: REDES LOCALES Y TELECOMUNICACIONES -->
-          <article class="workshop-card" data-category="networks" data-keywords="redes cisco router switch vlan fibra optica cableado ethernet seguridad perimetral firewalls mikrotik">
-            <div class="workshop-icon-wrap icon-networks">
-              <!-- Server / Router Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-                <line x1="6" y1="6" x2="6.01" y2="6"/>
-                <line x1="6" y1="18" x2="6.01" y2="18"/>
-                <path d="M18 10V6"/><path d="M18 18v-4"/>
-              </svg>
-            </div>
-            <span class="workshop-badge-ethazi">Taller Práctico #02 • Ethazi</span>
-            <h3 class="workshop-title">Redes Locales y Telecomunicaciones</h3>
-            <p class="workshop-desc">
-              Diseño y despliegue de infraestructuras corporativas: cableado estructurado categoría 6A y fusionado de fibra óptica, switches gestionables Cisco, configuración de VLANs, VPNs y cortafuegos.
-            </p>
-            <div class="workshop-tags">
-              <span class="tag-badge">Cisco Packet Tracer</span>
-              <span class="tag-badge">VLAN & Routing</span>
-              <span class="tag-badge">Fusionado Fibra</span>
-              <span class="tag-badge">Ciberseguridad</span>
-            </div>
-            <button class="btn-workshop-detail" onclick="openWorkshopModal('networks')">
-              <span>Saber más & Retos</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </article>
-
-          <!-- TARJETA 3: CREACIÓN Y DESARROLLO WEB -->
-          <article class="workshop-card" data-category="webdev" data-keywords="web desarrollo html css javascript typescript react node frontend backend ui ux apis git">
-            <div class="workshop-icon-wrap icon-webdev">
-              <!-- Code Browser Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2"/>
-                <path d="m10 10-2 2 2 2"/><path d="m14 14 2-2-2-2"/>
-                <path d="M6 8h.01"/>
-              </svg>
-            </div>
-            <span class="workshop-badge-ethazi">Taller Práctico #03 • Ethazi</span>
-            <h3 class="workshop-title">Creación y Desarrollo Web Moderno</h3>
-            <p class="workshop-desc">
-              Construcción de aplicaciones web interactivas, accesibles y adaptadas a todos los dispositivos móviles. Maquetación avanzada con CSS Grid/Flexbox, JavaScript reactivo, consumo de APIs y arquitecturas Cloud.
-            </p>
-            <div class="workshop-tags">
-              <span class="tag-badge">HTML5 / Modern CSS</span>
-              <span class="tag-badge">JavaScript ESNext</span>
-              <span class="tag-badge">Diseño UI/UX</span>
-              <span class="tag-badge">Despliegue Vercel</span>
-            </div>
-            <button class="btn-workshop-detail" onclick="openWorkshopModal('webdev')">
-              <span>Saber más & Retos</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         BLOQUE DE VIDA EN EL CENTRO (3 PUNTOS CLAVE DE LA RUTA A)
-         1. Metodología por Retos (Ethazi)
-         2. Compañerismo y Ecosistema de Apoyo
-         3. Oportunidad Real y Conexión Laboral
-         ===================================================================== -->
-    <section id="vida-centro" class="campus-life-section">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-category">RUTA A: IDENTIDAD SOMORROSTRO</span>
-          <h2 class="section-title">VIDA Y APRENDIZAJE EN EL CAMPUS</h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle">
-            Somorrostro es mucho más que aulas: es una comunidad de futuros profesionales donde cada día construyes soluciones codo con codo junto a tus compañeros y docentes.
-          </p>
-        </div>
-
-        <div class="life-cards-grid">
-          
-          <!-- Ventaja 1: Metodología por Retos Ethazi -->
-          <article class="life-card">
-            <span class="life-number">01</span>
-            <div class="life-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7-3 5 3 5"/><path d="m19 7 3 5-3 5"/></svg>
-            </div>
-            <h3 class="life-title">Metodología Activa Ethazi</h3>
-            <p class="life-text">
-              Dile adiós a la memorización pasiva. Aquí aprendes afrontando desafíos prácticos reales como en una empresa tecnológica. Planificas en equipo, investigas, montas arquitecturas reales y defiendes tus proyectos los viernes a las 14:00 ante el auditorio.
-            </p>
-          </article>
-
-          <!-- Ventaja 2: Compañerismo y Apoyo Mutuo -->
-          <article class="life-card">
-            <span class="life-number">02</span>
-            <div class="life-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="life-title">Compañerismo & Mentoring</h3>
-            <p class="life-text">
-              Un ecosistema donde nadie se queda rezagado. Las mesas de trabajo colaborativo fomentan que quienes dominan el hardware apoyen a los programadores, y viceversa. Los profesores ejercen de guías técnicos e impulsores de tu vocación personal.
-            </p>
-          </article>
-
-          <!-- Ventaja 3: Oportunidad de Futuro y Empleabilidad -->
-          <article class="life-card">
-            <span class="life-number">03</span>
-            <div class="life-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <h3 class="life-title">Oportunidades & Empleabilidad</h3>
-            <p class="life-text">
-              Convenios directos con más de 400 empresas industriales y de servicios IT en Euskadi. Posibilidad de FP Dual remunerada, bolsa de empleo propia con más del 95% de colocación y continuidad directa hacia especializaciones o grados universitarios.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
-         ===================================================================== -->
-    <section id="contacto" class="contact-section">
-      <div class="container">
-        
-        <div class="contact-grid">
-          
-          <!-- Panel Izquierdo: Información y Contacto -->
-          <div class="contact-info-panel">
-            <span class="section-category">ESTAMOS PARA AYUDARTE</span>
-            <h3>Impulsa tu Trayectoria en Somorrostro</h3>
-            <p>
-              ¿Tienes dudas sobre los talleres de informática, la metodología Ethazi o el proceso de matrícula? Escríbenos directamente y nuestro equipo docente o el delegado estudiantil responderá a tu consulta.
-            </p>
-
-            <div class="contact-details-list">
-              <!-- Dirección Real -->
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div class="contact-detail-text">
-                  <h4>Sede y Dirección Real</h4>
-                  <p>San Juan 10, Muskiz (48550, Bizkaia)</p>
-                </div>
-              </div>
-
-              <!-- Correo de Estudiante -->
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                </div>
-                <div class="contact-detail-text">
-                  <h4>Buzón Estudiantil</h4>
-                  <a href="mailto:alex.alvarez10@somo.eus">alex.alvarez10@somo.eus</a>
-                </div>
-              </div>
-
-              <!-- Horario / Teléfono -->
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <div class="contact-detail-text">
-                  <h4>Horario del Centro</h4>
-                  <p>Lunes a Viernes: 08:00 - 15:00 h</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel Derecho: Formulario Interactivo Enlazado a alex.alvarez10@somo.eus -->
-          <div>
-            <form id="mainContactForm" class="contact-form" action="mailto:alex.alvarez10@somo.eus" method="GET" enctype="text/plain">
-              
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="contactName">* Nombre Completo</label>
-                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Ej. Mikel García" required>
-                </div>
-                <div class="form-group">
-                  <label for="contactEmail">* Correo Electrónico</label>
-                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="tu-correo@ejemplo.com" required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="contactInterest">Taller o Área de Interés</label>
-                <select id="contactInterest" name="taller" class="form-select">
-                  <option value="Montaje y Mantenimiento de Componentes">Taller de Montaje y Hardware</option>
-                  <option value="Redes Locales y Telecomunicaciones">Taller de Redes y Telecomunicaciones</option>
-                  <option value="Creación y Desarrollo Web">Taller de Creación y Desarrollo Web</option>
-                  <option value="Información General Metodología Ethazi">Información General Metodología Ethazi</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="contactMessage">* Mensaje o Consulta</label>
-                <textarea id="contactMessage" name="body" class="form-textarea" placeholder="Escribe aquí tu consulta o motivación para unirte a los talleres de Somorrostro..." required></textarea>
-              </div>
-
-              <div id="formSuccessBanner" class="form-feedback-banner">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>¡Mensaje preparado! Abriendo cliente para enviar a alex.alvarez10@somo.eus...</span>
-              </div>
-
-              <button type="submit" class="btn-submit-contact">
-                <span>Enviar Consulta a Somorrostro</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </button>
-
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
   </main>
 
   <!-- =====================================================================
@@ -3127,6 +3085,7 @@
             <li class="footer-link-item"><a href="#talleres">› Talleres de Informática</a></li>
             <li class="footer-link-item"><a href="#contador-retos">› Retos Ethazi (Viernes 14:00)</a></li>
             <li class="footer-link-item"><a href="#vida-centro">› Vida en el Centro</a></li>
+            <li class="footer-link-item"><a href="#noticias">› Crónicas del Taller de Informática</a></li>
             <li class="footer-link-item"><a href="#contacto">› Buzón de Contacto</a></li>
           </ul>
         </div>
