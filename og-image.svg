@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b101b" />
+      <stop offset="60%" stop-color="#0f1626" />
+      <stop offset="100%" stop-color="#070b13" />
+    </linearGradient>
+
+    <!-- Radial Glows -->
+    <radialGradient id="blueGlow" cx="20%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#0084ff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#0084ff" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="orangeGlow" cx="85%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#ff7700" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ff7700" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <circle cx="250" cy="200" r="450" fill="url(#blueGlow)" />
+  <circle cx="1000" cy="450" r="450" fill="url(#orangeGlow)" />
+
+  <!-- Outer Brutalist Border Frame -->
+  <rect x="30" y="30" width="1140" height="570" rx="20" fill="none" stroke="#0084ff" stroke-width="3" opacity="0.6" />
+  <rect x="36" y="36" width="1128" height="558" rx="16" fill="none" stroke="#ff7700" stroke-width="1.5" opacity="0.3" stroke-dasharray="10 10" />
+
+  <!-- Brand Badge Top Left -->
+  <g transform="translate(80, 80)">
+    <rect width="54" height="54" rx="12" fill="#0084ff" />
+    <!-- Graduation / Tech Icon -->
+    <path d="M14 27 L27 20 L40 27 L27 34 Z M18 31 L18 38 C18 42 36 42 36 38 L36 31" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="70" y="30" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="-0.5">SOMORROSTRO</text>
+    <text x="70" y="50" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#ff7700" letter-spacing="3">CENTRO DE FORMACIÓN // MUSKIZ</text>
+  </g>
+
+  <!-- Route A Badge Top Right -->
+  <g transform="translate(820, 80)">
+    <rect width="300" height="44" rx="22" fill="rgba(0, 132, 255, 0.15)" stroke="#0084ff" stroke-width="2" />
+    <circle cx="24" cy="22" r="6" fill="#ff7700" />
+    <text x="42" y="27" font-family="monospace" font-weight="700" font-size="13" fill="#60a5fa" letter-spacing="1">RUTA A: RETOS ETHAZI</text>
+  </g>
+
+  <!-- Main Headline -->
+  <g transform="translate(80, 230)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" fill="#ffffff" letter-spacing="-1">
+      FP BÁSICA EN INFORMÁTICA
+    </text>
+    <text y="68" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" fill="#0084ff" letter-spacing="-1">
+      &amp; COMUNICACIONES
+    </text>
+    
+    <text y="125" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="22" fill="#94a3b8">
+      Aprende creando en talleres reales de montaje de equipos, redes Cisco y desarrollo web.
+    </text>
+    <text y="155" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" fill="#ff7700">
+      San Juan 10, Muskiz (Bizkaia) • Metodología por retos sin exámenes memorísticos
+    </text>
+  </g>
+
+  <!-- 3 Workshop Badges Bottom -->
+  <g transform="translate(80, 480)">
+    <!-- Badge 1: Hardware -->
+    <rect width="280" height="64" rx="14" fill="#111726" stroke="rgba(0, 132, 255, 0.5)" stroke-width="2" />
+    <text x="24" y="32" font-family="system-ui, sans-serif" font-weight="800" font-size="16" fill="#ffffff">🛠️ MONTAJE &amp; HARDWARE</text>
+    <text x="24" y="50" font-family="monospace" font-size="11" fill="#94a3b8">Arquitectura, UEFI &amp; Servidores</text>
+
+    <!-- Badge 2: Redes -->
+    <rect x="300" width="280" height="64" rx="14" fill="#111726" stroke="rgba(255, 119, 0, 0.5)" stroke-width="2" />
+    <text x="324" y="32" font-family="system-ui, sans-serif" font-weight="800" font-size="16" fill="#ffffff">🌐 REDES &amp; FIBRA ÓPTICA</text>
+    <text x="324" y="50" font-family="monospace" font-size="11" fill="#94a3b8">Cisco IOS, VLANs &amp; Seguridad</text>
+
+    <!-- Badge 3: Web -->
+    <rect x="600" width="280" height="64" rx="14" fill="#111726" stroke="rgba(56, 189, 248, 0.5)" stroke-width="2" />
+    <text x="624" y="32" font-family="system-ui, sans-serif" font-weight="800" font-size="16" fill="#ffffff">💻 DESARROLLO WEB</text>
+    <text x="624" y="50" font-family="monospace" font-size="11" fill="#94a3b8">HTML5, JavaScript &amp; UI/UX</text>
+
+    <!-- Stat Pill -->
+    <rect x="900" width="140" height="64" rx="14" fill="#0084ff" />
+    <text x="970" y="32" font-family="system-ui, sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">+95%</text>
+    <text x="970" y="50" font-family="system-ui, sans-serif" font-weight="700" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1">INSERCIÓN</text>
+  </g>
+</svg>
