@@ -1,0 +1,2827 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Formación Somorrostro | RUTA A: Retos Ethazi & Tecnología</title>
+  <meta name="description" content="Rediseño oficial para Centro de Formación Somorrostro (Muskiz). Formación práctica por retos (Ethazi), talleres de montaje, redes y desarrollo web.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =====================================================================
+       VARIABLES DE COLOR Y DISEÑO (ESTILO RUTA A: #0b101b, #0084ff, #ff7700)
+       ===================================================================== */
+    :root {
+      --bg-dark: #0b101b;
+      --bg-surface: #111726;
+      --bg-surface-elevated: #162035;
+      --bg-surface-subtle: rgba(255, 255, 255, 0.03);
+      --primary-blue: #0084ff;
+      --primary-blue-hover: #0070db;
+      --primary-blue-glow: rgba(0, 132, 255, 0.35);
+      --accent-orange: #ff7700;
+      --accent-orange-hover: #e66b00;
+      --accent-orange-glow: rgba(255, 119, 0, 0.35);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-bright: rgba(0, 132, 255, 0.3);
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-pill: 9999px;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 25px var(--primary-blue-glow);
+    }
+
+    [data-theme="orange"] {
+      --primary-blue: #ff7700;
+      --primary-blue-hover: #e66b00;
+      --primary-blue-glow: rgba(255, 119, 0, 0.4);
+      --accent-orange: #0084ff;
+      --accent-orange-hover: #0070db;
+      --accent-orange-glow: rgba(0, 132, 255, 0.4);
+      --border-bright: rgba(255, 119, 0, 0.35);
+      --shadow-glow: 0 0 25px var(--primary-blue-glow);
+    }
+
+    [data-theme="cyber"] {
+      --bg-dark: #05080f;
+      --bg-surface: #0c121e;
+      --bg-surface-elevated: #131c2e;
+      --primary-blue: #00e5ff;
+      --primary-blue-glow: rgba(0, 229, 255, 0.45);
+      --accent-orange: #ff3366;
+      --accent-orange-glow: rgba(255, 51, 102, 0.45);
+      --border-bright: rgba(0, 229, 255, 0.4);
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Subtle background grid pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 132, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(255, 119, 0, 0.06) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+      color: inherit;
+      border: none;
+      outline: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =====================================================================
+       DOCK SOCIAL FLOTANTE (ESTILO IMAGEN DE REFERENCIA: COSTADO IZQUIERDO)
+       ===================================================================== */
+    .floating-social-bar {
+      position: fixed;
+      left: 1.25rem;
+      top: 38%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      z-index: 90;
+    }
+
+    .social-dock-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 23, 38, 0.85);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      transition: var(--transition-smooth);
+    }
+
+    .social-dock-btn:hover {
+      transform: translateX(4px) scale(1.1);
+      color: #fff;
+    }
+
+    .social-dock-btn.fb:hover { background: #1877f2; border-color: #1877f2; }
+    .social-dock-btn.tw:hover { background: #000; border-color: #333; }
+    .social-dock-btn.yt:hover { background: #ff0000; border-color: #ff0000; }
+    .social-dock-btn.gh:hover { background: #333; border-color: var(--primary-blue); color: var(--primary-blue); }
+
+    /* =====================================================================
+       NAVBAR SUPERIOR Y DROPDOWNS
+       ===================================================================== */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 16, 27, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    /* Logo Brand */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 800;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--primary-blue), #0056b3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 0 15px var(--primary-blue-glow);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      font-weight: 700;
+    }
+
+    /* Menu Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      padding: 0.6rem 0.95rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link.active {
+      background: rgba(0, 132, 255, 0.15);
+      color: var(--primary-blue);
+      border: 1px solid rgba(0, 132, 255, 0.3);
+    }
+
+    /* Dropdown Menus (estilo screenshot) */
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 240px;
+      background: #111726;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      padding: 0.5rem 0;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition-smooth);
+      z-index: 105;
+    }
+
+    .nav-item:hover .dropdown-menu,
+    .nav-item:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: var(--transition-smooth);
+    }
+
+    .dropdown-link:hover {
+      background: rgba(0, 132, 255, 0.12);
+      color: #fff;
+      padding-left: 1.5rem;
+    }
+
+    .dropdown-link span.arrow {
+      font-size: 0.75rem;
+      color: var(--accent-orange);
+    }
+
+    /* Right actions in navbar */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    /* Search Bar in Nav */
+    .nav-search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-search-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1rem 0.5rem 2.2rem;
+      font-size: 0.82rem;
+      width: 170px;
+      color: var(--text-primary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-search-input:focus {
+      width: 220px;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 10px var(--primary-blue-glow);
+    }
+
+    .nav-search-icon {
+      position: absolute;
+      left: 0.75rem;
+      width: 15px;
+      height: 15px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Theme Switcher Button */
+    .theme-mode-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .theme-mode-btn:hover {
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+      transform: rotate(20deg);
+    }
+
+    /* Primary Nav CTA */
+    .btn-nav-cta {
+      background: var(--primary-blue);
+      color: #fff;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 4px 14px var(--primary-blue-glow);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-nav-cta:hover {
+      background: var(--primary-blue-hover);
+      box-shadow: 0 6px 20px var(--primary-blue-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile hamburger */
+    .mobile-menu-toggle {
+      display: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* =====================================================================
+       HERO PRINCIPAL (BASADO EN EL LAYOUT Y TIPOGRAFÍA DE LA IMAGEN)
+       ===================================================================== */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .badge-route-a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0, 132, 255, 0.12);
+      border: 1px solid rgba(0, 132, 255, 0.35);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #60a5fa;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .pulsing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      box-shadow: 0 0 10px var(--accent-orange);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+
+    .hero-title-group h2 {
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.2px;
+      color: #fff;
+    }
+
+    .highlight-blue {
+      color: var(--primary-blue);
+      text-shadow: 0 0 25px var(--primary-blue-glow);
+    }
+
+    .highlight-orange {
+      color: var(--accent-orange);
+      text-shadow: 0 0 25px var(--accent-orange-glow);
+    }
+
+    .hero-subtitle {
+      font-size: 1.08rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.65;
+    }
+
+    /* Hero CTA Button pair (como en la imagen: un botón azul/color y otro blanco) */
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn-pill-primary {
+      background: var(--primary-blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 24px var(--primary-blue-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-pill-primary:hover {
+      background: var(--primary-blue-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px var(--primary-blue-glow);
+    }
+
+    .btn-pill-secondary {
+      background: #ffffff;
+      color: #0b101b;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-pill-secondary:hover {
+      background: #e2e8f0;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .hero-chip-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-chip-item svg {
+      color: var(--accent-orange);
+    }
+
+    /* Hero Visual Mockup (Representando pantallas y taller tecnológico) */
+    .hero-showcase {
+      position: relative;
+    }
+
+    .mockup-stack {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screen-main {
+      width: 90%;
+      height: 310px;
+      background: #0f172a;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0, 132, 255, 0.4);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px var(--primary-blue-glow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+      transform: perspective(1000px) rotateY(-6deg) rotateX(4deg);
+      transition: var(--transition-smooth);
+    }
+
+    .screen-main:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+    }
+
+    .screen-bar {
+      height: 32px;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      padding: 0 0.8rem;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #eab308; }
+    .dot-green { background: #22c55e; }
+
+    .screen-title {
+      margin-left: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      font-family: monospace;
+    }
+
+    .screen-body {
+      padding: 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(145deg, #0f172a 0%, #090e18 100%);
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: #38bdf8;
+    }
+
+    .code-line {
+      line-height: 1.5;
+    }
+    .code-keyword { color: var(--accent-orange); font-weight: bold; }
+    .code-fn { color: #60a5fa; }
+    .code-str { color: #4ade80; }
+    .code-comment { color: #64748b; font-style: italic; }
+
+    .floating-subcard {
+      position: absolute;
+      background: rgba(17, 23, 38, 0.95);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+      z-index: 3;
+    }
+
+    .subcard-top {
+      top: -12px;
+      right: 5px;
+      border-color: rgba(255, 119, 0, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .subcard-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 119, 0, 0.15);
+      color: var(--accent-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .subcard-bottom {
+      bottom: -15px;
+      left: 10px;
+      border-color: rgba(0, 132, 255, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .subcard-blue-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 132, 255, 0.15);
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* =====================================================================
+       CONTADOR INTERACTIVO JAVASCRIPT: VIERNES 14:00 (RETOS ETHAZI)
+       ===================================================================== */
+    .countdown-section {
+      background: linear-gradient(180deg, rgba(17, 23, 38, 0.7) 0%, rgba(11, 16, 27, 0.9) 100%);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 2.8rem 0;
+      position: relative;
+    }
+
+    .countdown-card-wrapper {
+      background: radial-gradient(circle at 50% 50%, rgba(0, 132, 255, 0.08) 0%, transparent 80%),
+                  var(--bg-surface);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      flex-wrap: wrap;
+    }
+
+    .countdown-info {
+      max-width: 480px;
+    }
+
+    .countdown-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .countdown-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .countdown-info p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    .countdown-timer-display {
+      display: flex;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .time-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #0b101b;
+      border: 1px solid rgba(0, 132, 255, 0.25);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1.1rem;
+      min-width: 76px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .time-slot:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-2px);
+    }
+
+    .time-number {
+      font-family: var(--font-display);
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .time-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-top: 0.35rem;
+    }
+
+    .time-colon {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-top: -15px;
+    }
+
+    .countdown-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .btn-timer-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.45rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-timer-action:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+      color: #fff;
+    }
+
+    /* =====================================================================
+       SECCIÓN TALLERES DE INFORMÁTICA (ESTILO PORTAFOLIO DE SERVICIOS)
+       ===================================================================== */
+    .workshops-section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-category {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .section-divider {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+      margin: 1rem auto 1.25rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    /* Search & Filter Bar */
+    .workshop-filter-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+    }
+
+    .filter-pills-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-pill:hover,
+    .filter-pill.active {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      color: #fff;
+    }
+
+    .live-search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .live-search-input {
+      width: 100%;
+      background: #0b101b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1rem 0.5rem 2.2rem;
+      font-size: 0.85rem;
+      color: #fff;
+      transition: var(--transition-smooth);
+    }
+
+    .live-search-input:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 12px var(--primary-blue-glow);
+    }
+
+    .live-search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      color: var(--text-muted);
+    }
+
+    /* Cards Grid */
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .workshop-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition-smooth);
+    }
+
+    .workshop-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-bright);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), var(--shadow-glow);
+    }
+
+    .workshop-card:hover::before {
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+    }
+
+    .workshop-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .icon-hardware {
+      background: rgba(0, 132, 255, 0.12);
+      color: var(--primary-blue);
+      border: 1px solid rgba(0, 132, 255, 0.3);
+    }
+
+    .icon-networks {
+      background: rgba(255, 119, 0, 0.12);
+      color: var(--accent-orange);
+      border: 1px solid rgba(255, 119, 0, 0.3);
+    }
+
+    .icon-webdev {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .workshop-card:hover .workshop-icon-wrap {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .workshop-badge-ethazi {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent-orange);
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .workshop-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 0.9rem;
+    }
+
+    .workshop-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+      flex: 1;
+    }
+
+    .workshop-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .tag-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 0.22rem 0.65rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .btn-workshop-detail {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.65rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-workshop-detail:hover {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      box-shadow: 0 4px 15px var(--primary-blue-glow);
+    }
+
+    /* =====================================================================
+       BLOQUE DE VIDA EN EL CENTRO (RUTA A: 3 PUNTOS CLAVE)
+       ===================================================================== */
+    .campus-life-section {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, var(--bg-dark) 0%, #0d1322 100%);
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .life-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .life-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 2rem;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .life-card:hover {
+      border-color: rgba(255, 119, 0, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .life-number {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.08);
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .life-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 119, 0, 0.12);
+      border: 1px solid rgba(255, 119, 0, 0.3);
+      color: var(--accent-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .life-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .life-text {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* =====================================================================
+       FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
+       ===================================================================== */
+    .contact-section {
+      padding: 5.5rem 0;
+      position: relative;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-info-panel h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info-panel p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 132, 255, 0.12);
+      border: 1px solid rgba(0, 132, 255, 0.3);
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text h4 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent-orange);
+      font-weight: 700;
+    }
+
+    .contact-detail-text p,
+    .contact-detail-text a {
+      font-size: 0.95rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .contact-detail-text a:hover {
+      color: var(--primary-blue);
+      text-decoration: underline;
+    }
+
+    /* Form Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: #0b101b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.15rem;
+      font-size: 0.9rem;
+      color: #fff;
+      transition: var(--transition-smooth);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 14px var(--primary-blue-glow);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit-contact {
+      background: var(--primary-blue);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      padding: 0.95rem 2rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      box-shadow: 0 8px 20px var(--primary-blue-glow);
+      transition: var(--transition-smooth);
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit-contact:hover {
+      background: var(--primary-blue-hover);
+      box-shadow: 0 12px 28px var(--primary-blue-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Notification Banner */
+    .form-feedback-banner {
+      display: none;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.2rem;
+      font-size: 0.86rem;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* =====================================================================
+       WIDGET FLOTANTE DE MENSAJE (RÉPLICA EXACTA DE LA IMAGEN: ESQUINA INFERIOR IZQ)
+       "Por favor deje su mensaje"
+       ===================================================================== */
+    .floating-chat-widget {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 320px;
+      background: #ffffff;
+      color: #1e293b;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: var(--transition-smooth);
+      font-size: 0.85rem;
+    }
+
+    .floating-chat-widget.minimized {
+      height: 44px;
+      overflow: hidden;
+    }
+
+    .floating-chat-widget.closed {
+      display: none;
+    }
+
+    .chat-header {
+      background: #004b87;
+      color: #ffffff;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .chat-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
+    .chat-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .chat-btn-action {
+      background: transparent;
+      color: #ffffff;
+      opacity: 0.85;
+      cursor: pointer;
+      font-size: 0.9rem;
+      line-height: 1;
+      padding: 2px;
+      transition: var(--transition-smooth);
+    }
+
+    .chat-btn-action:hover {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    .chat-body {
+      padding: 1.1rem;
+      background: #ffffff;
+    }
+
+    .chat-notice {
+      color: #475569;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      margin-bottom: 0.9rem;
+    }
+
+    .chat-input-field {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.82rem;
+      color: #1e293b;
+      margin-bottom: 0.55rem;
+    }
+
+    .chat-input-field:focus {
+      border-color: #0084ff;
+      outline: none;
+    }
+
+    .chat-textarea {
+      resize: none;
+      min-height: 65px;
+    }
+
+    .chat-submit-btn {
+      width: 100%;
+      background: #004b87;
+      color: #ffffff;
+      padding: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .chat-submit-btn:hover {
+      background: #003662;
+    }
+
+    /* Launcher button when chat is closed */
+    .chat-launcher-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #004b87;
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 98;
+      border: 2px solid #ffffff;
+      transition: var(--transition-smooth);
+    }
+
+    .chat-launcher-btn:hover {
+      transform: scale(1.08);
+      background: #0084ff;
+    }
+
+    /* =====================================================================
+       MODAL INTERACTIVO DE DETALLES DEL TALLER (ETHAZI)
+       ===================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 16, 27, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.5rem;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      max-width: 650px;
+      width: 100%;
+      padding: 2.2rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      position: relative;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--accent-orange);
+    }
+
+    /* =====================================================================
+       PIE DE PÁGINA (FOOTER CON NOMBRE, GITHUB, PORTFOLIO Y DIRECCIÓN REAL)
+       ===================================================================== */
+    .main-footer {
+      background: #070b14;
+      border-top: 1px solid var(--border-subtle);
+      padding: 4.5rem 0 2rem;
+      margin-top: auto;
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col h5 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-orange);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-link-item a {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-link-item a:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* Author spotlight card in footer */
+    .author-card-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .author-name-tag {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .author-role-tag {
+      font-size: 0.78rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .author-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .author-btn-link {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .author-btn-link:hover {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      color: #fff;
+    }
+
+    .author-btn-link.portfolio:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-badges {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .footer-badge-pill {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #111726;
+      border: 1px solid var(--primary-blue);
+      color: #fff;
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      animation: toastIn 0.3s ease;
+    }
+
+    @keyframes toastIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* =====================================================================
+       RESPONSIVE BREAKPOINTS
+       ===================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .mockup-stack {
+        height: 290px;
+      }
+      .workshops-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .life-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .nav-search-box {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .workshops-grid {
+        grid-template-columns: 1fr;
+      }
+      .floating-social-bar {
+        display: none; /* Se oculta o integra en mobile */
+      }
+      .countdown-card-wrapper {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+      .countdown-actions {
+        flex-direction: row;
+      }
+      .floating-chat-widget {
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-pill-primary, .btn-pill-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================================
+       BARRA SOCIAL FLOTANTE LATERAL (COMO EN LA IMAGEN DE REFERENCIA)
+       ===================================================================== -->
+  <aside class="floating-social-bar" aria-label="Redes Sociales Somorrostro">
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-dock-btn fb" title="Facebook Somorrostro">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-dock-btn tw" title="Twitter / X">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-dock-btn yt" title="YouTube Somorrostro">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://github.com/alexalvarez10-ops/" target="_blank" rel="noopener noreferrer" class="social-dock-btn gh" title="GitHub Alumno Creador">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+  </aside>
+
+  <!-- =====================================================================
+       NAVBAR PRINCIPAL CON LOGO, MENÚS DROPDOWN Y ACCIONES
+       ===================================================================== -->
+  <header class="top-navbar">
+    <div class="container nav-wrapper">
+      
+      <!-- Logo Somorrostro -->
+      <a href="#inicio" class="brand-logo" aria-label="Ir a Inicio Centro Somorrostro">
+        <div class="brand-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+            <path d="M6 6h10"></path>
+            <path d="M6 10h10"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>SOMORROSTRO</h1>
+          <span>CENTRO DE FORMACIÓN</span>
+        </div>
+      </a>
+
+      <!-- Menú de Enlaces con Dropdown (como en la imagen de ejemplo) -->
+      <nav aria-label="Navegación Principal">
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="#inicio" class="nav-link active">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a href="#vida-centro" class="nav-link">
+              NOSOTROS
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#vida-centro" class="dropdown-link">Metodología Ethazi <span class="arrow">›</span></a></li>
+              <li><a href="#vida-centro" class="dropdown-link">Compañerismo & Campus <span class="arrow">›</span></a></li>
+              <li><a href="#vida-centro" class="dropdown-link">Salidas Profesionales <span class="arrow">›</span></a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#talleres" class="nav-link">
+              TALLERES
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#talleres" onclick="filterCategory('hardware')" class="dropdown-link">Montaje de Componentes <span class="arrow">›</span></a></li>
+              <li><a href="#talleres" onclick="filterCategory('networks')" class="dropdown-link">Redes y Telecom <span class="arrow">›</span></a></li>
+              <li><a href="#talleres" onclick="filterCategory('webdev')" class="dropdown-link">Desarrollo Web & Apps <span class="arrow">›</span></a></li>
+              <li><a href="#contador-retos" class="dropdown-link">Retos Ethazi Viernes 14:00 <span class="arrow">›</span></a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#contador-retos" class="nav-link">RETOS</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contacto" class="nav-link">CONTACTO</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Acciones de Cabecera: Buscador Rápido, Selector de Modo y Botón CTA -->
+      <div class="nav-actions">
+        <!-- Buscador integrado en barra -->
+        <div class="nav-search-box" title="Buscador de talleres e información">
+          <svg class="nav-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="topNavSearch" class="nav-search-input" placeholder="Buscar taller...">
+        </div>
+
+        <!-- Selector de Modo / Tema (Default Azul Somo / Naranja Ethazi / Cyber) -->
+        <button id="themeSwitcher" class="theme-mode-btn" title="Cambiar tema de color / Modo de visualización" aria-label="Cambiar tema">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        </button>
+
+        <!-- Botón de Acción Destacado -->
+        <a href="#contacto" class="btn-nav-cta">
+          <span>MATRÍCULA 2026</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+
+        <!-- Botón Mobile -->
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú móvil">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         CABECERA PRINCIPAL (HERO SECTION - INSPIRADA EN EL EJEMPLO)
+         ===================================================================== -->
+    <section id="inicio" class="hero-section">
+      <div class="container hero-grid">
+        
+        <!-- Columna Izquierda: Mensaje Contundente RUTA A -->
+        <div class="hero-content">
+          <div class="badge-route-a">
+            <span class="pulsing-dot"></span>
+            RUTA A: APRENDIZAJE PRÁCTICO & RETOS ETHAZI
+          </div>
+
+          <div class="hero-title-group">
+            <h2>FORMACIÓN PROFESIONAL DE VANGUARDIA EN BIZKAIA</h2>
+            <h1 class="hero-headline">
+              APRENDE CREANDO & <br>
+              <span class="highlight-blue">DOMINA LA TECNOLOGÍA</span> <br>
+              <span class="highlight-orange">POR RETOS REALES</span>
+            </h1>
+          </div>
+
+          <p class="hero-subtitle">
+            El Centro de Formación Somorrostro es tu plataforma de lanzamiento hacia el sector informático. Un espacio donde el compañerismo, la resolución práctica de desafíos empresariales (Ethazi) y las instalaciones de última generación convierten tu talento en tu profesión.
+          </p>
+
+          <!-- Botones de Acción (estilo imagen: Ver Planes / Contáctenos) -->
+          <div class="hero-actions">
+            <a href="#talleres" class="btn-pill-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              EXPLORAR TALLERES
+            </a>
+            <a href="#contacto" class="btn-pill-secondary">
+              CONTÁCTANOS
+            </a>
+          </div>
+
+          <!-- Microcredenciales de confianza -->
+          <div class="hero-chips">
+            <div class="hero-chip-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>San Juan 10, Muskiz</span>
+            </div>
+            <div class="hero-chip-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Metodología Ethazi Activa</span>
+            </div>
+            <div class="hero-chip-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>+95% Inserción Laboral</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Mockup Visual Tecnológico 3D -->
+        <div class="hero-showcase">
+          <div class="mockup-stack">
+            
+            <!-- Ventana de Código / Pantalla Central -->
+            <div class="screen-main">
+              <div class="screen-bar">
+                <span class="window-dot dot-red"></span>
+                <span class="window-dot dot-yellow"></span>
+                <span class="window-dot dot-green"></span>
+                <span class="screen-title">somorrostro-ethazi-challenge.ts</span>
+              </div>
+              <div class="screen-body">
+                <div>
+                  <p class="code-line"><span class="code-comment">// Proyecto Intermodular Ethazi: Informática Somorrostro</span></p>
+                  <p class="code-line"><span class="code-keyword">import</span> { RetoHardware, RouterCisco, FullStackApp } <span class="code-keyword">from</span> <span class="code-str">'@somorrostro/core'</span>;</p>
+                  <br>
+                  <p class="code-line"><span class="code-keyword">export async function</span> <span class="code-fn">resolverRetoSemanal</span>(equipoEstudiantes) {</p>
+                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> hardware = <span class="code-keyword">await</span> RetoHardware.<span class="code-fn">ensamblarCluster</span>();</p>
+                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> redVLAN = <span class="code-keyword">await</span> RouterCisco.<span class="code-fn">configurarSeguridadPerimetral</span>();</p>
+                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> webApp = <span class="code-keyword">await</span> FullStackApp.<span class="code-fn">desplegarEnProduccion</span>();</p>
+                  <p class="code-line">&nbsp;&nbsp;<span class="code-keyword">return</span> { estado: <span class="code-str">'¡Reto Superado con Éxito!'</span>, insercion: <span class="code-str">'100%'</span> };</p>
+                  <p class="code-line">}</p>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
+                  <span style="color: var(--accent-orange); font-size: 0.75rem;">Status: 🚀 Compilando en tiempo real</span>
+                  <span style="color: #64748b; font-size: 0.7rem;">Muskiz Campus Engine</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subcard flotante Superior (Redes / Conexión) -->
+            <div class="floating-subcard subcard-top">
+              <div class="subcard-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              </div>
+              <div>
+                <p style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight:700;">Laboratorio de Redes</p>
+                <p style="font-size: 0.9rem; font-weight: 700; color:#fff;">Cisco & Fibra Óptica</p>
+              </div>
+            </div>
+
+            <!-- Subcard flotante Inferior (Compañerismo Ethazi) -->
+            <div class="floating-subcard subcard-bottom">
+              <div class="subcard-blue-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <p style="font-size: 0.72rem; color: var(--primary-blue); font-weight: 700; text-transform: uppercase;">Aprendizaje en Equipo</p>
+                <p style="font-size: 0.88rem; font-weight: 700; color: #fff;">Metodología Ethazi Activa</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTADOR INTERACTIVO EN JAVASCRIPT: VIERNES 14:00 (ENTREGA DE RETOS)
+         ===================================================================== -->
+    <section id="contador-retos" class="countdown-section">
+      <div class="container">
+        <div class="countdown-card-wrapper">
+          
+          <div class="countdown-info">
+            <span class="countdown-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              SPRINT SEMANAL ETHAZI
+            </span>
+            <h3>Cuenta Atrás: Viernes 14:00</h3>
+            <p>
+              En la metodología Ethazi de Somorrostro cada semana culmina con la entrega de soluciones a las 14:00 del viernes. Comprueba en tiempo real los días, horas y segundos que restan para la presentación ante el equipo.
+            </p>
+          </div>
+
+          <!-- Display de Dígitos -->
+          <div class="countdown-timer-display" id="timerContainer" aria-live="polite">
+            <div class="time-slot">
+              <span class="time-number" id="daysValue">00</span>
+              <span class="time-label">Días</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-slot">
+              <span class="time-number" id="hoursValue">00</span>
+              <span class="time-label">Horas</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-slot">
+              <span class="time-number" id="minutesValue">00</span>
+              <span class="time-label">Min</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-slot">
+              <span class="time-number" id="secondsValue" style="color: var(--accent-orange);">00</span>
+              <span class="time-label">Seg</span>
+            </div>
+          </div>
+
+          <!-- Controles interactivos del temporizador -->
+          <div class="countdown-actions">
+            <button class="btn-timer-action" id="btnToggleTimer" title="Pausar o reanudar el contador">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <span id="btnTimerText">Pausar Reloj</span>
+            </button>
+            <button class="btn-timer-action" id="btnSimulateFinish" title="Simular entrega de reto">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v2h10v-2h-2c-.55 0-1-.45-1-1v-2.34c3.27-.8 5-3.3 5-6.66H4c0 3.36 1.73 5.86 5 6.66Z"/></svg>
+              <span>Celebrar Reto</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TALLERES DE INFORMÁTICA (MONTAJE, REDES, DESARROLLO WEB)
+         ESTILO "PORTAFOLIO DE SERVICIOS" DE LA IMAGEN DE REFERENCIA
+         ===================================================================== -->
+    <section id="talleres" class="workshops-section">
+      <div class="container">
+        
+        <!-- Cabecera de Sección Centrada con Subrayado -->
+        <div class="section-header-center">
+          <span class="section-category">ESPECIALIDADES TECNOLÓGICAS</span>
+          <h2 class="section-title">PORTAFOLIO DE TALLERES PRÁCTICOS</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">
+            Instalaciones pioneras dotadas del mismo equipamiento profesional que encontrarás en las empresas punteras de Bizkaia. Aprende tocando, configurando y programando desde el primer día.
+          </p>
+        </div>
+
+        <!-- Barra de Búsqueda y Filtros Interactivos -->
+        <div class="workshop-filter-controls">
+          <div class="filter-pills-group" role="tablist">
+            <button class="filter-pill active" onclick="filterCategory('all')">Todos los Talleres</button>
+            <button class="filter-pill" onclick="filterCategory('hardware')">Montaje y Hardware</button>
+            <button class="filter-pill" onclick="filterCategory('networks')">Redes y Sistemas</button>
+            <button class="filter-pill" onclick="filterCategory('webdev')">Desarrollo Web</button>
+          </div>
+
+          <div class="live-search-box">
+            <svg class="live-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="workshopSearchInput" class="live-search-input" placeholder="Filtrar por tecnología o reto...">
+          </div>
+        </div>
+
+        <!-- Grid de Tarjetas (Mínimo 3 Tarjetas con Iconos) -->
+        <div class="workshops-grid" id="workshopsGrid">
+          
+          <!-- TARJETA 1: MONTAJE DE COMPONENTES -->
+          <article class="workshop-card" data-category="hardware" data-keywords="hardware montaje cpu gpu ram refrigeracion servidores fuentes diagnostico bios">
+            <div class="workshop-icon-wrap icon-hardware">
+              <!-- CPU / Hardware Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/>
+                <path d="M20 9h3"/><path d="M20 14h3"/><path d="M1 9h3"/><path d="M1 14h3"/>
+              </svg>
+            </div>
+            <span class="workshop-badge-ethazi">Taller Práctico #01 • Ethazi</span>
+            <h3 class="workshop-title">Montaje y Mantenimiento de Hardware</h3>
+            <p class="workshop-desc">
+              Ensamblaje integral de estaciones de trabajo de alto rendimiento, bancos de diagnóstico de placa base, mediciones con multímetro, optimización térmica y mantenimiento correctivo de servidores físicos.
+            </p>
+            <div class="workshop-tags">
+              <span class="tag-badge">Arquitectura PC</span>
+              <span class="tag-badge">Diagnóstico UEFI</span>
+              <span class="tag-badge">Benchmarking</span>
+              <span class="tag-badge">Servidores Blade</span>
+            </div>
+            <button class="btn-workshop-detail" onclick="openWorkshopModal('hardware')">
+              <span>Saber más & Retos</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </article>
+
+          <!-- TARJETA 2: REDES LOCALES Y TELECOMUNICACIONES -->
+          <article class="workshop-card" data-category="networks" data-keywords="redes cisco router switch vlan fibra optica cableado ethernet seguridad perimetral firewalls mikrotik">
+            <div class="workshop-icon-wrap icon-networks">
+              <!-- Server / Router Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                <path d="M18 10V6"/><path d="M18 18v-4"/>
+              </svg>
+            </div>
+            <span class="workshop-badge-ethazi">Taller Práctico #02 • Ethazi</span>
+            <h3 class="workshop-title">Redes Locales y Telecomunicaciones</h3>
+            <p class="workshop-desc">
+              Diseño y despliegue de infraestructuras corporativas: cableado estructurado categoría 6A y fusionado de fibra óptica, switches gestionables Cisco, configuración de VLANs, VPNs y cortafuegos.
+            </p>
+            <div class="workshop-tags">
+              <span class="tag-badge">Cisco Packet Tracer</span>
+              <span class="tag-badge">VLAN & Routing</span>
+              <span class="tag-badge">Fusionado Fibra</span>
+              <span class="tag-badge">Ciberseguridad</span>
+            </div>
+            <button class="btn-workshop-detail" onclick="openWorkshopModal('networks')">
+              <span>Saber más & Retos</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </article>
+
+          <!-- TARJETA 3: CREACIÓN Y DESARROLLO WEB -->
+          <article class="workshop-card" data-category="webdev" data-keywords="web desarrollo html css javascript typescript react node frontend backend ui ux apis git">
+            <div class="workshop-icon-wrap icon-webdev">
+              <!-- Code Browser Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m10 10-2 2 2 2"/><path d="m14 14 2-2-2-2"/>
+                <path d="M6 8h.01"/>
+              </svg>
+            </div>
+            <span class="workshop-badge-ethazi">Taller Práctico #03 • Ethazi</span>
+            <h3 class="workshop-title">Creación y Desarrollo Web Moderno</h3>
+            <p class="workshop-desc">
+              Construcción de aplicaciones web interactivas, accesibles y adaptadas a todos los dispositivos móviles. Maquetación avanzada con CSS Grid/Flexbox, JavaScript reactivo, consumo de APIs y arquitecturas Cloud.
+            </p>
+            <div class="workshop-tags">
+              <span class="tag-badge">HTML5 / Modern CSS</span>
+              <span class="tag-badge">JavaScript ESNext</span>
+              <span class="tag-badge">Diseño UI/UX</span>
+              <span class="tag-badge">Despliegue Vercel</span>
+            </div>
+            <button class="btn-workshop-detail" onclick="openWorkshopModal('webdev')">
+              <span>Saber más & Retos</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         BLOQUE DE VIDA EN EL CENTRO (3 PUNTOS CLAVE DE LA RUTA A)
+         1. Metodología por Retos (Ethazi)
+         2. Compañerismo y Ecosistema de Apoyo
+         3. Oportunidad Real y Conexión Laboral
+         ===================================================================== -->
+    <section id="vida-centro" class="campus-life-section">
+      <div class="container">
+        
+        <div class="section-header-center">
+          <span class="section-category">RUTA A: IDENTIDAD SOMORROSTRO</span>
+          <h2 class="section-title">VIDA Y APRENDIZAJE EN EL CAMPUS</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">
+            Somorrostro es mucho más que aulas: es una comunidad de futuros profesionales donde cada día construyes soluciones codo con codo junto a tus compañeros y docentes.
+          </p>
+        </div>
+
+        <div class="life-cards-grid">
+          
+          <!-- Ventaja 1: Metodología por Retos Ethazi -->
+          <article class="life-card">
+            <span class="life-number">01</span>
+            <div class="life-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7-3 5 3 5"/><path d="m19 7 3 5-3 5"/></svg>
+            </div>
+            <h3 class="life-title">Metodología Activa Ethazi</h3>
+            <p class="life-text">
+              Dile adiós a la memorización pasiva. Aquí aprendes afrontando desafíos prácticos reales como en una empresa tecnológica. Planificas en equipo, investigas, montas arquitecturas reales y defiendes tus proyectos los viernes a las 14:00 ante el auditorio.
+            </p>
+          </article>
+
+          <!-- Ventaja 2: Compañerismo y Apoyo Mutuo -->
+          <article class="life-card">
+            <span class="life-number">02</span>
+            <div class="life-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="life-title">Compañerismo & Mentoring</h3>
+            <p class="life-text">
+              Un ecosistema donde nadie se queda rezagado. Las mesas de trabajo colaborativo fomentan que quienes dominan el hardware apoyen a los programadores, y viceversa. Los profesores ejercen de guías técnicos e impulsores de tu vocación personal.
+            </p>
+          </article>
+
+          <!-- Ventaja 3: Oportunidad de Futuro y Empleabilidad -->
+          <article class="life-card">
+            <span class="life-number">03</span>
+            <div class="life-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="life-title">Oportunidades & Empleabilidad</h3>
+            <p class="life-text">
+              Convenios directos con más de 400 empresas industriales y de servicios IT en Euskadi. Posibilidad de FP Dual remunerada, bolsa de empleo propia con más del 95% de colocación y continuidad directa hacia especializaciones o grados universitarios.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
+         ===================================================================== -->
+    <section id="contacto" class="contact-section">
+      <div class="container">
+        
+        <div class="contact-grid">
+          
+          <!-- Panel Izquierdo: Información y Contacto -->
+          <div class="contact-info-panel">
+            <span class="section-category">ESTAMOS PARA AYUDARTE</span>
+            <h3>Impulsa tu Trayectoria en Somorrostro</h3>
+            <p>
+              ¿Tienes dudas sobre los talleres de informática, la metodología Ethazi o el proceso de matrícula? Escríbenos directamente y nuestro equipo docente o el delegado estudiantil responderá a tu consulta.
+            </p>
+
+            <div class="contact-details-list">
+              <!-- Dirección Real -->
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-detail-text">
+                  <h4>Sede y Dirección Real</h4>
+                  <p>San Juan 10, Muskiz (48550, Bizkaia)</p>
+                </div>
+              </div>
+
+              <!-- Correo de Estudiante -->
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div class="contact-detail-text">
+                  <h4>Buzón Estudiantil</h4>
+                  <a href="mailto:alex.alvarez10@somo.eus">alex.alvarez10@somo.eus</a>
+                </div>
+              </div>
+
+              <!-- Horario / Teléfono -->
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="contact-detail-text">
+                  <h4>Horario del Centro</h4>
+                  <p>Lunes a Viernes: 08:00 - 15:00 h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel Derecho: Formulario Interactivo Enlazado a alex.alvarez10@somo.eus -->
+          <div>
+            <form id="mainContactForm" class="contact-form" action="mailto:alex.alvarez10@somo.eus" method="GET" enctype="text/plain">
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contactName">* Nombre Completo</label>
+                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Ej. Mikel García" required>
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">* Correo Electrónico</label>
+                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="tu-correo@ejemplo.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactInterest">Taller o Área de Interés</label>
+                <select id="contactInterest" name="taller" class="form-select">
+                  <option value="Montaje y Mantenimiento de Componentes">Taller de Montaje y Hardware</option>
+                  <option value="Redes Locales y Telecomunicaciones">Taller de Redes y Telecomunicaciones</option>
+                  <option value="Creación y Desarrollo Web">Taller de Creación y Desarrollo Web</option>
+                  <option value="Información General Metodología Ethazi">Información General Metodología Ethazi</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage">* Mensaje o Consulta</label>
+                <textarea id="contactMessage" name="body" class="form-textarea" placeholder="Escribe aquí tu consulta o motivación para unirte a los talleres de Somorrostro..." required></textarea>
+              </div>
+
+              <div id="formSuccessBanner" class="form-feedback-banner">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>¡Mensaje preparado! Abriendo cliente para enviar a alex.alvarez10@somo.eus...</span>
+              </div>
+
+              <button type="submit" class="btn-submit-contact">
+                <span>Enviar Consulta a Somorrostro</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       WIDGET FLOTANTE DE MENSAJE (COMO EN LA IMAGEN DE REFERENCIA)
+       "Por favor deje su mensaje" (Esquina Inferior Izquierda)
+       ===================================================================== -->
+  <aside id="floatingChatWidget" class="floating-chat-widget" aria-label="Widget de asistencia rápida">
+    <div class="chat-header" id="chatHeaderToggle" title="Click para minimizar o desplegar">
+      <span class="chat-title">Por favor deje su mensaje</span>
+      <div class="chat-header-actions">
+        <button type="button" class="chat-btn-action" id="btnMinimizeChat" title="Minimizar">⌄</button>
+        <button type="button" class="chat-btn-action" id="btnExpandChat" title="Ajustar">⤢</button>
+        <button type="button" class="chat-btn-action" id="btnCloseChat" title="Cerrar">✕</button>
+      </div>
+    </div>
+    
+    <div class="chat-body" id="chatBody">
+      <p class="chat-notice">
+        En este momento estamos en prácticas de taller, pero eso no significa que no podamos ayudarte. Déjanos tus datos y te contactaremos lo antes posible.
+      </p>
+      
+      <form id="widgetChatForm" onsubmit="handleWidgetChatSubmit(event)">
+        <input type="text" id="widgetName" class="chat-input-field" placeholder="* Nombre" required>
+        <input type="email" id="widgetEmail" class="chat-input-field" placeholder="* Correo electrónico" required>
+        <textarea id="widgetMsg" class="chat-input-field chat-textarea" placeholder="* Mensaje" required></textarea>
+        
+        <button type="submit" class="chat-submit-btn">Enviar</button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Botón lanzador para reabrir el chat si se cierra -->
+  <button id="chatLauncherBtn" class="chat-launcher-btn" title="Abrir mensajería rápida">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+
+  <!-- =====================================================================
+       MODAL INFORMATIVO DE RETOS Y TALLERES (INTERACTIVO)
+       ===================================================================== -->
+  <div id="workshopModal" class="modal-overlay" onclick="closeWorkshopModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeWorkshopModal()" title="Cerrar modal">✕</button>
+      <div id="modalContent">
+        <!-- Contenido inyectado dinámicamente con JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifier -->
+  <div id="toastPopup" class="toast-popup">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+    <span id="toastMessage">Operación realizada con éxito</span>
+  </div>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA (FOOTER CON NOMBRE, GITHUB, PORTFOLIO Y DIRECCIÓN REAL)
+       ===================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <!-- Bloque Institucional -->
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 0.8rem;">
+            <div class="brand-badge" style="width:36px; height:36px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+            </div>
+            <div class="brand-text">
+              <h4 style="font-size:1.1rem; line-height:1;">SOMORROSTRO</h4>
+              <span style="font-size:0.65rem;">CENTRO DE FORMACIÓN</span>
+            </div>
+          </div>
+          <p>
+            Centro referente en Formación Profesional y aprendizaje práctico por retos (Ethazi). Formamos a las personas y futuros técnicos que transforman el tejido tecnológico e industrial.
+          </p>
+          <p style="font-size:0.85rem; color: #fff; display: flex; align-items:center; gap:0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-orange);"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <strong>Dirección real:</strong> San Juan 10, Muskiz (Bizkaia)
+          </p>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#inicio">› Inicio</a></li>
+            <li class="footer-link-item"><a href="#talleres">› Talleres de Informática</a></li>
+            <li class="footer-link-item"><a href="#contador-retos">› Retos Ethazi (Viernes 14:00)</a></li>
+            <li class="footer-link-item"><a href="#vida-centro">› Vida en el Centro</a></li>
+            <li class="footer-link-item"><a href="#contacto">› Buzón de Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Especialidades Informáticas -->
+        <div class="footer-col">
+          <h5>Talleres</h5>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#talleres" onclick="filterCategory('hardware')">› Montaje de Hardware</a></li>
+            <li class="footer-link-item"><a href="#talleres" onclick="filterCategory('networks')">› Redes & Cisco Routing</a></li>
+            <li class="footer-link-item"><a href="#talleres" onclick="filterCategory('webdev')">› Desarrollo Web Responsive</a></li>
+            <li class="footer-link-item"><a href="#talleres" onclick="openWorkshopModal('ethazi')">› Dinámicas de Grupo Ethazi</a></li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta del Creador / Autor: Alex Álvarez -->
+        <div class="footer-col">
+          <h5>Diseño & Autoría</h5>
+          <div class="author-card-box">
+            <div>
+              <p class="author-name-tag">Alex Álvarez</p>
+              <p class="author-role-tag">Estudiante & Desarrollador Web</p>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Buzón: alex.alvarez10@somo.eus</p>
+            </div>
+            
+            <div class="author-btns">
+              <!-- Enlace a GitHub del usuario -->
+              <a href="https://github.com/alexalvarez10-ops/" target="_blank" rel="noopener noreferrer" class="author-btn-link" title="Visitar GitHub de Alex Álvarez">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span>GitHub de Alex Álvarez</span>
+              </a>
+
+              <!-- Enlace a Portfolio Personal del usuario -->
+              <a href="https://portfolio-alex-alvarez.vercel.app/" target="_blank" rel="noopener noreferrer" class="author-btn-link portfolio" title="Visitar Portfolio Personal de Alex Álvarez">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <span>Portfolio Personal (Vercel)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra Inferior de Copyright -->
+      <div class="footer-bottom-bar">
+        <p>© <span id="currentYear">2026</span> Centro de Formación Somorrostro • San Juan 10, Muskiz. Rediseño Web RUTA A.</p>
+        <div class="footer-badges">
+          <span class="footer-badge-pill">Fondo: #0b101b</span>
+          <span class="footer-badge-pill">Azul: #0084ff</span>
+          <span class="footer-badge-pill">Naranja: #ff7700</span>
+          <span class="footer-badge-pill">Metodología Ethazi</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       SCRIPTS JAVASCRIPT: CONTADOR VIERNES 14:00, BUSCADOR, TEMAS Y FORMULARIO
+       ===================================================================== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. CONTADOR DINÁMICO INTERACTIVO PARA LAS 14:00 DEL VIERNES
+    // -------------------------------------------------------------
+    let timerRunning = true;
+    let timerInterval = null;
+
+    function getNextFridayTwoPM() {
+      const now = new Date();
+      const target = new Date(now.getTime());
+      const currentDay = now.getDay(); // 0: Dom, 1: Lun, ..., 5: Vie, 6: Sab
+      
+      // Calculamos días hasta el viernes (5)
+      let daysUntilFriday = (5 - currentDay + 7) % 7;
+      
+      // Fijamos las 14:00:00.000
+      target.setDate(now.getDate() + daysUntilFriday);
+      target.setHours(14, 0, 0, 0);
+
+      // Si hoy es viernes y ya han pasado las 14:00, avanzamos 7 días al próximo viernes
+      if (currentDay === 5 && now.getTime() >= target.getTime()) {
+        target.setDate(target.getDate() + 7);
+      } else if (daysUntilFriday === 0 && now.getTime() >= target.getTime()) {
+        target.setDate(target.getDate() + 7);
+      }
+
+      return target;
+    }
+
+    let targetDate = getNextFridayTwoPM();
+
+    function updateCountdown() {
+      if (!timerRunning) return;
+
+      const now = new Date().getTime();
+      let diff = targetDate.getTime() - now;
+
+      // Si llegamos a la meta, se recalcula automáticamente
+      if (diff <= 0) {
+        showToast("¡Ha llegado el viernes a las 14:00! ¡Sprint de Retos Ethazi Culminado!");
+        targetDate = getNextFridayTwoPM();
+        diff = targetDate.getTime() - new Date().getTime();
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('daysValue').textContent = String(days).padStart(2, '0');
+      document.getElementById('hoursValue').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutesValue').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('secondsValue').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Iniciar el temporizador a 1 segundo
+    timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Botón Pausar/Reanudar
+    const btnToggleTimer = document.getElementById('btnToggleTimer');
+    const btnTimerText = document.getElementById('btnTimerText');
+    btnToggleTimer.addEventListener('click', () => {
+      timerRunning = !timerRunning;
+      if (timerRunning) {
+        btnTimerText.textContent = 'Pausar Reloj';
+        showToast('Contador de retos reanudado');
+      } else {
+        btnTimerText.textContent = 'Reanudar Reloj';
+        showToast('Contador pausado en este instante');
+      }
+    });
+
+    // Botón Simular Celebración de Entrega de Reto
+    document.getElementById('btnSimulateFinish').addEventListener('click', () => {
+      showToast('🎉 ¡Reto Ethazi entregado con éxito a las 14:00! ¡Excelente trabajo en equipo!');
+      // Efecto visual rápido
+      const container = document.getElementById('timerContainer');
+      container.style.transform = 'scale(1.05)';
+      container.style.transition = 'all 0.3s ease';
+      setTimeout(() => {
+        container.style.transform = 'scale(1)';
+      }, 400);
+    });
+
+    // -------------------------------------------------------------
+    // 2. BUSCADOR INTERACTIVO Y FILTRO DE TALLERES EN TIEMPO REAL
+    // -------------------------------------------------------------
+    const workshopSearchInput = document.getElementById('workshopSearchInput');
+    const topNavSearch = document.getElementById('topNavSearch');
+    const workshopCards = document.querySelectorAll('.workshop-card');
+    let activeFilter = 'all';
+
+    function performWorkshopFilter() {
+      const query = (workshopSearchInput.value || topNavSearch.value || '').toLowerCase().trim();
+
+      workshopCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = card.getAttribute('data-keywords') || '';
+        const title = card.querySelector('.workshop-title').textContent.toLowerCase();
+        const desc = card.querySelector('.workshop-desc').textContent.toLowerCase();
+
+        const matchesCategory = (activeFilter === 'all' || category === activeFilter);
+        const matchesQuery = query === '' || 
+                             title.includes(query) || 
+                             desc.includes(query) || 
+                             keywords.includes(query);
+
+        if (matchesCategory && matchesQuery) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    if (workshopSearchInput) {
+      workshopSearchInput.addEventListener('input', () => {
+        topNavSearch.value = workshopSearchInput.value;
+        performWorkshopFilter();
+      });
+    }
+
+    if (topNavSearch) {
+      topNavSearch.addEventListener('input', () => {
+        workshopSearchInput.value = topNavSearch.value;
+        performWorkshopFilter();
+        // Si no está en la sección de talleres, hacer un scroll suave
+        if (window.scrollY < 800 && topNavSearch.value.length > 1) {
+          const talleresSec = document.getElementById('talleres');
+          if (talleresSec) talleresSec.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    function filterCategory(cat) {
+      activeFilter = cat;
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(p => {
+        if (cat === 'all' && p.textContent.includes('Todos')) p.classList.add('active');
+        else if (cat === 'hardware' && p.textContent.includes('Hardware')) p.classList.add('active');
+        else if (cat === 'networks' && p.textContent.includes('Redes')) p.classList.add('active');
+        else if (cat === 'webdev' && p.textContent.includes('Desarrollo')) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+      performWorkshopFilter();
+    }
+
+    // -------------------------------------------------------------
+    // 3. SELECTOR DE MODO / TEMA VISUAL (Default Azul / Naranja / Cyber)
+    // -------------------------------------------------------------
+    const themeSwitcher = document.getElementById('themeSwitcher');
+    const themes = ['default', 'orange', 'cyber'];
+    let currentThemeIndex = 0;
+
+    themeSwitcher.addEventListener('click', () => {
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      const newTheme = themes[currentThemeIndex];
+      document.documentElement.setAttribute('data-theme', newTheme);
+      
+      let themeName = 'Azul Institucional (#0084ff)';
+      if (newTheme === 'orange') themeName = 'Naranja Dinámico (#ff7700)';
+      if (newTheme === 'cyber') themeName = 'Cyber Somo Neón';
+
+      showToast(`Modo visual cambiado a: ${themeName}`);
+    });
+
+    // -------------------------------------------------------------
+    // 4. WIDGET FLOTANTE DE MENSAJE ("Por favor deje su mensaje")
+    // -------------------------------------------------------------
+    const chatWidget = document.getElementById('floatingChatWidget');
+    const chatBody = document.getElementById('chatBody');
+    const btnMinimizeChat = document.getElementById('btnMinimizeChat');
+    const btnExpandChat = document.getElementById('btnExpandChat');
+    const btnCloseChat = document.getElementById('btnCloseChat');
+    const chatLauncherBtn = document.getElementById('chatLauncherBtn');
+
+    // Minimizar / Restaurar
+    btnMinimizeChat.addEventListener('click', (e) => {
+      e.stopPropagation();
+      chatWidget.classList.toggle('minimized');
+      btnMinimizeChat.textContent = chatWidget.classList.contains('minimized') ? '⌃' : '⌄';
+    });
+
+    document.getElementById('chatHeaderToggle').addEventListener('click', () => {
+      chatWidget.classList.toggle('minimized');
+      btnMinimizeChat.textContent = chatWidget.classList.contains('minimized') ? '⌃' : '⌄';
+    });
+
+    // Expandir / Normal
+    btnExpandChat.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (chatWidget.style.width === '380px') {
+        chatWidget.style.width = '320px';
+      } else {
+        chatWidget.style.width = '380px';
+      }
+    });
+
+    // Cerrar
+    btnCloseChat.addEventListener('click', (e) => {
+      e.stopPropagation();
+      chatWidget.classList.add('closed');
+      chatLauncherBtn.style.display = 'flex';
+    });
+
+    // Reabrir
+    chatLauncherBtn.addEventListener('click', () => {
+      chatWidget.classList.remove('closed');
+      chatWidget.classList.remove('minimized');
+      btnMinimizeChat.textContent = '⌄';
+      chatLauncherBtn.style.display = 'none';
+    });
+
+    // Envío del Widget -> Enlace a alex.alvarez10@somo.eus
+    function handleWidgetChatSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('widgetName').value.trim();
+      const email = document.getElementById('widgetEmail').value.trim();
+      const msg = document.getElementById('widgetMsg').value.trim();
+
+      const subject = encodeURIComponent(`[Somorrostro Web] Mensaje rápido de: ${name}`);
+      const body = encodeURIComponent(
+        `Nombre: ${name}\nCorreo de contacto: ${email}\n\nMensaje:\n${msg}\n\n---\nEnviado desde el widget flotante de la web de Somorrostro.`
+      );
+
+      // Redirigir al correo de estudiante
+      window.location.href = `mailto:alex.alvarez10@somo.eus?subject=${subject}&body=${body}`;
+
+      showToast(`¡Gracias ${name}! Conectando con alex.alvarez10@somo.eus...`);
+      document.getElementById('widgetChatForm').reset();
+      chatWidget.classList.add('minimized');
+      btnMinimizeChat.textContent = '⌃';
+    }
+
+    // -------------------------------------------------------------
+    // 5. FORMULARIO PRINCIPAL DE CONTACTO
+    // -------------------------------------------------------------
+    const mainForm = document.getElementById('mainContactForm');
+    const formSuccessBanner = document.getElementById('formSuccessBanner');
+
+    mainForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const taller = document.getElementById('contactInterest').value;
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if (!name || !email || !message) {
+        showToast('Por favor completa todos los campos requeridos');
+        return;
+      }
+
+      formSuccessBanner.style.display = 'flex';
+
+      const subject = encodeURIComponent(`[Somorrostro RUTA A] Consulta de ${name} sobre ${taller}`);
+      const body = encodeURIComponent(
+        `Nombre: ${name}\nEmail: ${email}\nInterés formativo: ${taller}\n\nMensaje:\n${message}\n\n---\nRemitido a: alex.alvarez10@somo.eus`
+      );
+
+      setTimeout(() => {
+        window.location.href = `mailto:alex.alvarez10@somo.eus?subject=${subject}&body=${body}`;
+        showToast('Buzón abierto con alex.alvarez10@somo.eus');
+      }, 700);
+    });
+
+    // -------------------------------------------------------------
+    // 6. MODAL INTERACTIVO DE DETALLES DEL TALLER
+    // -------------------------------------------------------------
+    const workshopData = {
+      hardware: {
+        title: "Taller de Montaje y Mantenimiento de Hardware",
+        category: "Arquitectura de Computadores & Diagnóstico",
+        desc: "En este taller dominarás la anatomía completa de los sistemas informáticos. Montarás bancos de prueba, diagnosticarás averías complejas a nivel de circuito y BIOS/UEFI, y configurarás servidores de almacenamiento en rack.",
+        ethazi: "Reto Ethazi Activo: Ensamblaje, parametrización de curvas de ventilación y prueba de estrés (benchmark) de un clúster de virtualización de 8 nodos para el campus.",
+        tools: ["Bancos de diagnóstico antiestáticos", "Multímetros y osciloscopios", "Pasta térmica de metal líquido / compuesto cerámico", "Estaciones de soldadura SMD", "Servidores HP ProLiant & Dell PowerEdge"]
+      },
+      networks: {
+        title: "Taller de Redes Locales y Telecomunicaciones",
+        category: "Infraestructuras de Telecomunicaciones & Cisco",
+        desc: "Aprende a planificar, cablear, certificar y securizar redes de área local y telecomunicaciones. Desde el ponchado de patch panels hasta la segmentación por VLANs con switches administrables y cortafuegos de última generación.",
+        ethazi: "Reto Ethazi Activo: Despliegue de una infraestructura de red corporativa multi-sede con enlaces redundantes, túneles VPN cifrados y servidor DHCP/DNS seguro.",
+        tools: ["Switches Cisco Catalyst Gigabit", "Routers MikroTik RouterBOARD", "Fusionadora de fibra óptica por arco voltaico", "Certificador de cableado Fluke Networks", "Racks de servidores 42U con PDU monitorizadas"]
+      },
+      webdev: {
+        title: "Taller de Creación y Desarrollo Web Moderno",
+        category: "Ingeniería de Software Web & UI/UX",
+        desc: "Diseña y programa portales web y aplicaciones interactivas siguiendo las mejores prácticas de la industria: accesibilidad, maquetación responsive limpia, control de versiones con Git y despliegue continuo en la nube.",
+        ethazi: "Reto Ethazi Activo: Creación de la plataforma integral del centro para la gestión de proyectos de estudiantes, integrando autenticación, filtros reactivos y API en la nube.",
+        tools: ["Visual Studio Code & Git Workflow", "HTML5 Semántico, CSS Grid & Flexbox", "JavaScript ES6+ / TypeScript", "Figma para prototipado UI/UX", "Entornos Node.js & Vercel Cloud"]
+      },
+      ethazi: {
+        title: "Metodología por Retos Ethazi en Somorrostro",
+        category: "Modelo Pedagógico de Alto Impacto",
+        desc: "El aprendizaje colaborativo basado en retos sitúa al alumnado como protagonista absoluto. Trabajas en equipos autogestionados resolviendo problemas técnicos reales proporcionados por empresas de nuestro entorno.",
+        ethazi: "Dinámica Semanal: Sprint de lunes a viernes, con retrospectivas diarias y presentación oral de la solución técnica cada viernes a las 14:00.",
+        tools: ["Tableros Kanban y metodología Scrum", "Salas de trabajo colaborativo", "Equipos multidisciplinares (Hardware + Redes + Software)", "Evaluación por rúbricas y competencias blandas"]
+      }
+    };
+
+    function openWorkshopModal(type) {
+      const data = workshopData[type];
+      if (!data) return;
+
+      const modalContent = document.getElementById('modalContent');
+      let toolsHtml = data.tools.map(t => `<li style="margin-bottom:0.4rem; color:var(--text-secondary); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--accent-orange);">✔</span> ${t}</li>`).join('');
+
+      modalContent.innerHTML = `
+        <span style="font-size:0.75rem; font-weight:700; color:var(--accent-orange); text-transform:uppercase; letter-spacing:1px;">${data.category}</span>
+        <h3 style="font-family:var(--font-display); font-size:1.6rem; color:#fff; margin:0.4rem 0 1rem; line-height:1.2;">${data.title}</h3>
+        <p style="color:var(--text-secondary); font-size:0.92rem; line-height:1.6; margin-bottom:1.25rem;">${data.desc}</p>
+        
+        <div style="background:rgba(0,132,255,0.08); border-left:4px solid var(--primary-blue); padding:1rem; border-radius:0 8px 8px 0; margin-bottom:1.5rem;">
+          <h4 style="color:#fff; font-size:0.88rem; margin-bottom:0.3rem;">🎯 Enfoque Ethazi:</h4>
+          <p style="color:#94a3b8; font-size:0.85rem; line-height:1.5;">${data.ethazi}</p>
+        </div>
+
+        <h4 style="color:#fff; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.75rem;">Equipamiento & Herramientas:</h4>
+        <ul style="list-style:none; padding-left:0; font-size:0.86rem; margin-bottom:1.8rem;">
+          ${toolsHtml}
+        </ul>
+
+        <div style="display:flex; justify-content:flex-end; gap:0.8rem;">
+          <a href="#contacto" onclick="closeWorkshopModal()" class="btn-pill-primary" style="padding:0.6rem 1.4rem; font-size:0.82rem;">Pedir Información</a>
+        </div>
+      `;
+
+      document.getElementById('workshopModal').style.display = 'flex';
+    }
+
+    function closeWorkshopModal(event) {
+      if (event && event.target !== document.getElementById('workshopModal')) return;
+      document.getElementById('workshopModal').style.display = 'none';
+    }
+
+    // -------------------------------------------------------------
+    // 7. TOAST NOTIFIER HELPER
+    // -------------------------------------------------------------
+    function showToast(message) {
+      const toast = document.getElementById('toastPopup');
+      const toastMsg = document.getElementById('toastMessage');
+      toastMsg.textContent = message;
+      toast.style.display = 'flex';
+
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    mobileMenuBtn.addEventListener('click', () => {
+      const navLinks = document.querySelector('.nav-links');
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '76px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = '#0b101b';
+        navLinks.style.padding = '1.5rem';
+        navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+      }
+    });
+
+    // Actualizar año actual en footer dinámicamente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
