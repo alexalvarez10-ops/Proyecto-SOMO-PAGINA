@@ -1223,93 +1223,350 @@
       text-decoration: underline;
     }
 
-    /* Form Styles */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .form-row {
+    /* =====================================================================
+       FORMULARIO DE CONTACTO NEO-BRUTALISTA (RUTA A: CSS GRID & TECH BRUTALISM)
+       ===================================================================== */
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info-panel {
+      background: var(--bg-surface);
+      border: 3px solid rgba(0, 132, 255, 0.45);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 8px 8px 0px var(--primary-blue);
+      position: relative;
+    }
+
+    .contact-info-panel h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .contact-info-panel p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .contact-details-list {
+      display: flex;
+      flex-direction: column;
       gap: 1.25rem;
     }
 
-    .form-group {
+    .contact-detail-item {
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .form-group label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-      background: #0b101b;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
+      align-items: center;
+      gap: 1rem;
+      background: rgba(11, 16, 27, 0.7);
+      border: 2px solid var(--border-subtle);
+      border-radius: 12px;
       padding: 0.85rem 1.15rem;
-      font-size: 0.9rem;
-      color: #fff;
       transition: var(--transition-smooth);
     }
 
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
+    .contact-detail-item:hover {
       border-color: var(--primary-blue);
-      box-shadow: 0 0 14px var(--primary-blue-glow);
+      transform: translateX(4px);
+      box-shadow: 4px 4px 0px var(--primary-blue);
     }
 
-    .form-textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .btn-submit-contact {
-      background: var(--primary-blue);
-      color: #fff;
-      border-radius: var(--radius-pill);
-      padding: 0.95rem 2rem;
-      font-size: 0.92rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      cursor: pointer;
-      display: inline-flex;
+    .contact-detail-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(0, 132, 255, 0.15);
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      box-shadow: 0 8px 20px var(--primary-blue-glow);
-      transition: var(--transition-smooth);
-      margin-top: 0.5rem;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 0px var(--accent-orange);
     }
 
-    .btn-submit-contact:hover {
-      background: var(--primary-blue-hover);
-      box-shadow: 0 12px 28px var(--primary-blue-glow);
+    .contact-detail-text h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-orange);
+      font-weight: 800;
+      font-family: var(--font-display);
+    }
+
+    .contact-detail-text p,
+    .contact-detail-text a {
+      font-size: 0.92rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Panel Contenedor Brutalista */
+    .brutalist-form-card {
+      background: #0f1626;
+      border: 3.5px solid var(--primary-blue);
+      border-radius: var(--radius-lg);
+      box-shadow: 10px 10px 0px var(--accent-orange);
+      padding: 2.2rem 2.4rem;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .brutalist-form-card:hover {
+      box-shadow: 12px 12px 0px var(--accent-orange);
+    }
+
+    /* Cabecera Terminal de Formulario */
+    .brutalist-terminal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px dashed rgba(0, 132, 255, 0.4);
+      padding-bottom: 1.1rem;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .brutalist-tag-label {
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      color: var(--accent-orange);
+      background: rgba(255, 119, 0, 0.12);
+      border: 2px solid var(--accent-orange);
+      border-radius: 8px;
+      padding: 0.3rem 0.75rem;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0px rgba(0, 132, 255, 0.3);
+    }
+
+    .brutalist-terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+      font-family: monospace;
+      color: #4ade80;
+      font-weight: 800;
+    }
+
+    .status-dot-blink {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 1.4s infinite;
+    }
+
+    /* Rejilla CSS Grid del Formulario Brutalista */
+    .brutalist-grid-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+    }
+
+    .form-col-1 {
+      grid-column: span 1;
+    }
+
+    .form-col-2 {
+      grid-column: 1 / -1;
+    }
+
+    .brutalist-field-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .brutalist-label-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .field-index-tag {
+      font-family: monospace;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+      background: rgba(255, 119, 0, 0.1);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    .brutalist-label-text {
+      font-family: var(--font-display);
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .star-req {
+      color: var(--primary-blue);
+      font-weight: 800;
+    }
+
+    /* Campos con bordes redondeados y estilo Brutalista */
+    .brutalist-input-field,
+    .brutalist-select-field,
+    .brutalist-textarea-field {
+      width: 100%;
+      background: #080d17;
+      color: #ffffff;
+      border: 2.5px solid rgba(0, 132, 255, 0.45);
+      border-radius: 12px;
+      padding: 0.95rem 1.25rem;
+      font-size: 0.94rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      box-shadow: 4px 4px 0px rgba(0, 132, 255, 0.3);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .brutalist-input-field::placeholder,
+    .brutalist-textarea-field::placeholder {
+      color: #64748b;
+      font-size: 0.88rem;
+    }
+
+    .brutalist-input-field:hover,
+    .brutalist-select-field:hover,
+    .brutalist-textarea-field:hover {
+      border-color: var(--primary-blue);
+      box-shadow: 6px 6px 0px rgba(0, 132, 255, 0.5);
       transform: translateY(-2px);
     }
 
-    /* Notification Banner */
+    .brutalist-input-field:focus,
+    .brutalist-select-field:focus,
+    .brutalist-textarea-field:focus {
+      outline: none;
+      border-color: var(--accent-orange);
+      background: #0c1424;
+      box-shadow: 6px 6px 0px var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    .brutalist-textarea-field {
+      min-height: 125px;
+      resize: vertical;
+    }
+
+    /* Checkbox de Compromiso Ethazi Brutalista */
+    .brutalist-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 132, 255, 0.08);
+      border: 2px dashed rgba(0, 132, 255, 0.4);
+      border-radius: 12px;
+      padding: 0.85rem 1.15rem;
+    }
+
+    .brutalist-checkbox {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--accent-orange);
+      cursor: pointer;
+    }
+
+    .brutalist-checkbox-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+
+    /* Botón de Envío Brutalista con Transición Táctil en Hover */
+    .brutalist-btn-submit {
+      width: 100%;
+      background: var(--primary-blue);
+      color: #ffffff;
+      border: 3px solid #ffffff;
+      border-radius: 14px;
+      padding: 1.2rem 2.2rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      box-shadow: 6px 6px 0px var(--accent-orange);
+      transform: translate(0, 0);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Efecto Hover del Botón Brutalista */
+    .brutalist-btn-submit:hover {
+      background: var(--accent-orange);
+      color: #0b101b;
+      border-color: #ffffff;
+      box-shadow: 10px 10px 0px var(--primary-blue);
+      transform: translate(-4px, -4px);
+    }
+
+    .brutalist-btn-submit:hover .btn-arrow-svg {
+      transform: translateX(8px) scale(1.15);
+    }
+
+    .btn-arrow-svg {
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Efecto Active (Pulsado Físico Brutalista) */
+    .brutalist-btn-submit:active {
+      transform: translate(4px, 4px);
+      box-shadow: 2px 2px 0px var(--primary-blue);
+      transition: all 0.05s ease;
+    }
+
+    /* Feedback Banner Brutalista */
     .form-feedback-banner {
       display: none;
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.4);
+      background: #092015;
+      border: 2.5px solid #22c55e;
+      box-shadow: 5px 5px 0px #22c55e;
       color: #4ade80;
-      border-radius: var(--radius-md);
-      padding: 0.9rem 1.2rem;
-      font-size: 0.86rem;
+      border-radius: 12px;
+      padding: 0.95rem 1.25rem;
+      font-size: 0.88rem;
+      font-weight: 700;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .brutalist-grid-form {
+        grid-template-columns: 1fr;
+      }
+      .form-col-1 {
+        grid-column: 1 / -1;
+      }
     }
 
     /* =====================================================================
@@ -2253,6 +2510,397 @@
             </div>
           </div>
 
+          <!-- Panel Derecho: Formulario Neo-Brutalista con CSS Grid -->
+          <div class="brutalist-form-card">
+            
+            <!-- Terminal Status Bar -->
+            <div class="brutalist-terminal-bar">
+              <span class="brutalist-tag-label">// PROTOCOLO_ETHAZI_CONTACT</span>
+              <div class="brutalist-terminal-status">
+                <span class="status-dot-blink"></span>
+                <span>BUZÓN ACTIVO // SOMO.EUS</span>
+              </div>
+            </div>
+
+            <!-- Formulario con CSS Grid -->
+            <form id="mainContactForm" class="brutalist-grid-form" action="mailto:alex.alvarez10@somo.eus" method="GET" enctype="text/plain">
+              
+              <!-- [01] Nombre Completo (Columna 1) -->
+              <div class="brutalist-field-wrap form-col-1">
+                <div class="brutalist-label-row">
+                  <span class="field-index-tag">[01]</span>
+                  <label for="contactName" class="brutalist-label-text">NOMBRE COMPLETO <span class="star-req">*</span></label>
+                </div>
+                <input type="text" id="contactName" name="name" class="brutalist-input-field" placeholder="EJ. MIKEL GARCÍA" required>
+              </div>
+
+              <!-- [02] Correo Electrónico (Columna 1) -->
+              <div class="brutalist-field-wrap form-col-1">
+                <div class="brutalist-label-row">
+                  <span class="field-index-tag">[02]</span>
+                  <label for="contactEmail" class="brutalist-label-text">CORREO ELECTRÓNICO <span class="star-req">*</span></label>
+                </div>
+                <input type="email" id="contactEmail" name="email" class="brutalist-input-field" placeholder="TU-CORREO@EJEMPLO.COM" required>
+              </div>
+
+              <!-- [03] Teléfono / GitHub / Discord (Columna 1) -->
+              <div class="brutalist-field-wrap form-col-1">
+                <div class="brutalist-label-row">
+                  <span class="field-index-tag">[03]</span>
+                  <label for="contactPhone" class="brutalist-label-text">TELÉFONO O GITHUB</label>
+                </div>
+                <input type="text" id="contactPhone" name="phone" class="brutalist-input-field" placeholder="+34 600 000 000 ó @usuario">
+              </div>
+
+              <!-- [04] Taller o Área de Interés (Columna 1) -->
+              <div class="brutalist-field-wrap form-col-1">
+                <div class="brutalist-label-row">
+                  <span class="field-index-tag">[04]</span>
+                  <label for="contactInterest" class="brutalist-label-text">TALLER DE FORMACIÓN <span class="star-req">*</span></label>
+                </div>
+                <select id="contactInterest" name="taller" class="brutalist-select-field">
+                  <option value="Montaje y Mantenimiento de Hardware">Taller #01: Montaje & Mantenimiento Hardware</option>
+                  <option value="Redes Locales y Telecomunicaciones">Taller #02: Redes Locales & Cisco Routing</option>
+                  <option value="Creación y Desarrollo Web">Taller #03: Creación & Desarrollo Web</option>
+                  <option value="Información General Metodología Ethazi">Metodología Ethazi // Retos de Innovación</option>
+                </select>
+              </div>
+
+              <!-- [05] Mensaje o Reto a Plantear (Columna 2 / Span Completo) -->
+              <div class="brutalist-field-wrap form-col-2">
+                <div class="brutalist-label-row">
+                  <span class="field-index-tag">[05]</span>
+                  <label for="contactMessage" class="brutalist-label-text">MENSAJE O DESAFÍO TÉCNICO <span class="star-req">*</span></label>
+                </div>
+                <textarea id="contactMessage" name="body" class="brutalist-textarea-field" placeholder="Describe aquí tu consulta, motivación para cursar los talleres o reto tecnológico que deseas resolver con el equipo de Somorrostro..." required></textarea>
+              </div>
+
+              <!-- [06] Checkbox Compromiso Brutalista (Columna 2 / Span Completo) -->
+              <div class="form-col-2">
+                <div class="brutalist-checkbox-row">
+                  <input type="checkbox" id="contactConsent" class="brutalist-checkbox" required checked>
+                  <label for="contactConsent" class="brutalist-checkbox-label">
+                    Acepto el tratamiento de datos para contacto académico de Somorrostro y entiendo que mi consulta se remitirá al buzón estudiantil <strong>alex.alvarez10@somo.eus</strong>.
+                  </label>
+                </div>
+              </div>
+
+              <!-- Banner de Éxito Brutalista -->
+              <div class="form-col-2">
+                <div id="formSuccessBanner" class="form-feedback-banner">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>¡CONSULTA PROCESADA! Conectando directamente con alex.alvarez10@somo.eus...</span>
+                </div>
+              </div>
+
+              <!-- [07] Botón de Envío Brutalista con Transición Táctil en Hover -->
+              <div class="form-col-2">
+                <button type="submit" class="brutalist-btn-submit" id="btnSubmitContact">
+                  <span>DISPARAR MENSAJE A SOMORROSTRO</span>
+                  <svg class="btn-arrow-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTADOR INTERACTIVO EN JAVASCRIPT: VIERNES 14:00 (ENTREGA DE RETOS)
+         ===================================================================== -->
+    <section id="contador-retos" class="countdown-section">
+      <div class="container">
+        <div class="countdown-card-wrapper">
+          
+          <div class="countdown-info">
+            <span class="countdown-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              SPRINT SEMANAL ETHAZI
+            </span>
+            <h3>Cuenta Atrás: Viernes 14:00</h3>
+            <p>
+              En la metodología Ethazi de Somorrostro cada semana culmina con la entrega de soluciones a las 14:00 del viernes. Comprueba en tiempo real los días, horas y segundos que restan para la presentación ante el equipo.
+            </p>
+          </div>
+
+          <!-- Display de Dígitos -->
+          <div class="countdown-timer-display" id="timerContainer" aria-live="polite">
+            <div class="time-slot">
+              <span class="time-number" id="daysValue">00</span>
+              <span class="time-label">Días</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-slot">
+              <span class="time-number" id="hoursValue">00</span>
+              <span class="time-label">Horas</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-slot">
+              <span class="time-number" id="minutesValue">00</span>
+              <span class="time-label">Min</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-slot">
+              <span class="time-number" id="secondsValue" style="color: var(--accent-orange);">00</span>
+              <span class="time-label">Seg</span>
+            </div>
+          </div>
+
+          <!-- Controles interactivos del temporizador -->
+          <div class="countdown-actions">
+            <button class="btn-timer-action" id="btnToggleTimer" title="Pausar o reanudar el contador">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <span id="btnTimerText">Pausar Reloj</span>
+            </button>
+            <button class="btn-timer-action" id="btnSimulateFinish" title="Simular entrega de reto">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v2h10v-2h-2c-.55 0-1-.45-1-1v-2.34c3.27-.8 5-3.3 5-6.66H4c0 3.36 1.73 5.86 5 6.66Z"/></svg>
+              <span>Celebrar Reto</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TALLERES DE INFORMÁTICA (MONTAJE, REDES, DESARROLLO WEB)
+         ESTILO "PORTAFOLIO DE SERVICIOS" DE LA IMAGEN DE REFERENCIA
+         ===================================================================== -->
+    <section id="talleres" class="workshops-section">
+      <div class="container">
+        
+        <!-- Cabecera de Sección Centrada con Subrayado -->
+        <div class="section-header-center">
+          <span class="section-category">ESPECIALIDADES TECNOLÓGICAS</span>
+          <h2 class="section-title">PORTAFOLIO DE TALLERES PRÁCTICOS</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">
+            Instalaciones pioneras dotadas del mismo equipamiento profesional que encontrarás en las empresas punteras de Bizkaia. Aprende tocando, configurando y programando desde el primer día.
+          </p>
+        </div>
+
+        <!-- Barra de Búsqueda y Filtros Interactivos -->
+        <div class="workshop-filter-controls">
+          <div class="filter-pills-group" role="tablist">
+            <button class="filter-pill active" onclick="filterCategory('all')">Todos los Talleres</button>
+            <button class="filter-pill" onclick="filterCategory('hardware')">Montaje y Hardware</button>
+            <button class="filter-pill" onclick="filterCategory('networks')">Redes y Sistemas</button>
+            <button class="filter-pill" onclick="filterCategory('webdev')">Desarrollo Web</button>
+          </div>
+
+          <div class="live-search-box">
+            <svg class="live-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="workshopSearchInput" class="live-search-input" placeholder="Filtrar por tecnología o reto...">
+          </div>
+        </div>
+
+        <!-- Grid de Tarjetas (Mínimo 3 Tarjetas con Iconos) -->
+        <div class="workshops-grid" id="workshopsGrid">
+          
+          <!-- TARJETA 1: MONTAJE DE COMPONENTES -->
+          <article class="workshop-card" data-category="hardware" data-keywords="hardware montaje cpu gpu ram refrigeracion servidores fuentes diagnostico bios">
+            <div class="workshop-icon-wrap icon-hardware">
+              <!-- CPU / Hardware Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/>
+                <path d="M20 9h3"/><path d="M20 14h3"/><path d="M1 9h3"/><path d="M1 14h3"/>
+              </svg>
+            </div>
+            <span class="workshop-badge-ethazi">Taller Práctico #01 • Ethazi</span>
+            <h3 class="workshop-title">Montaje y Mantenimiento de Hardware</h3>
+            <p class="workshop-desc">
+              Ensamblaje integral de estaciones de trabajo de alto rendimiento, bancos de diagnóstico de placa base, mediciones con multímetro, optimización térmica y mantenimiento correctivo de servidores físicos.
+            </p>
+            <div class="workshop-tags">
+              <span class="tag-badge">Arquitectura PC</span>
+              <span class="tag-badge">Diagnóstico UEFI</span>
+              <span class="tag-badge">Benchmarking</span>
+              <span class="tag-badge">Servidores Blade</span>
+            </div>
+            <button class="btn-workshop-detail" onclick="openWorkshopModal('hardware')">
+              <span>Saber más & Retos</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </article>
+
+          <!-- TARJETA 2: REDES LOCALES Y TELECOMUNICACIONES -->
+          <article class="workshop-card" data-category="networks" data-keywords="redes cisco router switch vlan fibra optica cableado ethernet seguridad perimetral firewalls mikrotik">
+            <div class="workshop-icon-wrap icon-networks">
+              <!-- Server / Router Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                <path d="M18 10V6"/><path d="M18 18v-4"/>
+              </svg>
+            </div>
+            <span class="workshop-badge-ethazi">Taller Práctico #02 • Ethazi</span>
+            <h3 class="workshop-title">Redes Locales y Telecomunicaciones</h3>
+            <p class="workshop-desc">
+              Diseño y despliegue de infraestructuras corporativas: cableado estructurado categoría 6A y fusionado de fibra óptica, switches gestionables Cisco, configuración de VLANs, VPNs y cortafuegos.
+            </p>
+            <div class="workshop-tags">
+              <span class="tag-badge">Cisco Packet Tracer</span>
+              <span class="tag-badge">VLAN & Routing</span>
+              <span class="tag-badge">Fusionado Fibra</span>
+              <span class="tag-badge">Ciberseguridad</span>
+            </div>
+            <button class="btn-workshop-detail" onclick="openWorkshopModal('networks')">
+              <span>Saber más & Retos</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </article>
+
+          <!-- TARJETA 3: CREACIÓN Y DESARROLLO WEB -->
+          <article class="workshop-card" data-category="webdev" data-keywords="web desarrollo html css javascript typescript react node frontend backend ui ux apis git">
+            <div class="workshop-icon-wrap icon-webdev">
+              <!-- Code Browser Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m10 10-2 2 2 2"/><path d="m14 14 2-2-2-2"/>
+                <path d="M6 8h.01"/>
+              </svg>
+            </div>
+            <span class="workshop-badge-ethazi">Taller Práctico #03 • Ethazi</span>
+            <h3 class="workshop-title">Creación y Desarrollo Web Moderno</h3>
+            <p class="workshop-desc">
+              Construcción de aplicaciones web interactivas, accesibles y adaptadas a todos los dispositivos móviles. Maquetación avanzada con CSS Grid/Flexbox, JavaScript reactivo, consumo de APIs y arquitecturas Cloud.
+            </p>
+            <div class="workshop-tags">
+              <span class="tag-badge">HTML5 / Modern CSS</span>
+              <span class="tag-badge">JavaScript ESNext</span>
+              <span class="tag-badge">Diseño UI/UX</span>
+              <span class="tag-badge">Despliegue Vercel</span>
+            </div>
+            <button class="btn-workshop-detail" onclick="openWorkshopModal('webdev')">
+              <span>Saber más & Retos</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         BLOQUE DE VIDA EN EL CENTRO (3 PUNTOS CLAVE DE LA RUTA A)
+         1. Metodología por Retos (Ethazi)
+         2. Compañerismo y Ecosistema de Apoyo
+         3. Oportunidad Real y Conexión Laboral
+         ===================================================================== -->
+    <section id="vida-centro" class="campus-life-section">
+      <div class="container">
+        
+        <div class="section-header-center">
+          <span class="section-category">RUTA A: IDENTIDAD SOMORROSTRO</span>
+          <h2 class="section-title">VIDA Y APRENDIZAJE EN EL CAMPUS</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">
+            Somorrostro es mucho más que aulas: es una comunidad de futuros profesionales donde cada día construyes soluciones codo con codo junto a tus compañeros y docentes.
+          </p>
+        </div>
+
+        <div class="life-cards-grid">
+          
+          <!-- Ventaja 1: Metodología por Retos Ethazi -->
+          <article class="life-card">
+            <span class="life-number">01</span>
+            <div class="life-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7-3 5 3 5"/><path d="m19 7 3 5-3 5"/></svg>
+            </div>
+            <h3 class="life-title">Metodología Activa Ethazi</h3>
+            <p class="life-text">
+              Dile adiós a la memorización pasiva. Aquí aprendes afrontando desafíos prácticos reales como en una empresa tecnológica. Planificas en equipo, investigas, montas arquitecturas reales y defiendes tus proyectos los viernes a las 14:00 ante el auditorio.
+            </p>
+          </article>
+
+          <!-- Ventaja 2: Compañerismo y Apoyo Mutuo -->
+          <article class="life-card">
+            <span class="life-number">02</span>
+            <div class="life-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="life-title">Compañerismo & Mentoring</h3>
+            <p class="life-text">
+              Un ecosistema donde nadie se queda rezagado. Las mesas de trabajo colaborativo fomentan que quienes dominan el hardware apoyen a los programadores, y viceversa. Los profesores ejercen de guías técnicos e impulsores de tu vocación personal.
+            </p>
+          </article>
+
+          <!-- Ventaja 3: Oportunidad de Futuro y Empleabilidad -->
+          <article class="life-card">
+            <span class="life-number">03</span>
+            <div class="life-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="life-title">Oportunidades & Empleabilidad</h3>
+            <p class="life-text">
+              Convenios directos con más de 400 empresas industriales y de servicios IT en Euskadi. Posibilidad de FP Dual remunerada, bolsa de empleo propia con más del 95% de colocación y continuidad directa hacia especializaciones o grados universitarios.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         FORMULARIO DE CONTACTO Y BUZÓN INSTITUCIONAL (alex.alvarez10@somo.eus)
+         ===================================================================== -->
+    <section id="contacto" class="contact-section">
+      <div class="container">
+        
+        <div class="contact-grid">
+          
+          <!-- Panel Izquierdo: Información y Contacto -->
+          <div class="contact-info-panel">
+            <span class="section-category">ESTAMOS PARA AYUDARTE</span>
+            <h3>Impulsa tu Trayectoria en Somorrostro</h3>
+            <p>
+              ¿Tienes dudas sobre los talleres de informática, la metodología Ethazi o el proceso de matrícula? Escríbenos directamente y nuestro equipo docente o el delegado estudiantil responderá a tu consulta.
+            </p>
+
+            <div class="contact-details-list">
+              <!-- Dirección Real -->
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-detail-text">
+                  <h4>Sede y Dirección Real</h4>
+                  <p>San Juan 10, Muskiz (48550, Bizkaia)</p>
+                </div>
+              </div>
+
+              <!-- Correo de Estudiante -->
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div class="contact-detail-text">
+                  <h4>Buzón Estudiantil</h4>
+                  <a href="mailto:alex.alvarez10@somo.eus">alex.alvarez10@somo.eus</a>
+                </div>
+              </div>
+
+              <!-- Horario / Teléfono -->
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="contact-detail-text">
+                  <h4>Horario del Centro</h4>
+                  <p>Lunes a Viernes: 08:00 - 15:00 h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Panel Derecho: Formulario Interactivo Enlazado a alex.alvarez10@somo.eus -->
           <div>
             <form id="mainContactForm" class="contact-form" action="mailto:alex.alvarez10@somo.eus" method="GET" enctype="text/plain">
@@ -2696,6 +3344,8 @@
 
       const name = document.getElementById('contactName').value.trim();
       const email = document.getElementById('contactEmail').value.trim();
+      const phoneInput = document.getElementById('contactPhone');
+      const phone = phoneInput ? phoneInput.value.trim() : 'No aportado';
       const taller = document.getElementById('contactInterest').value;
       const message = document.getElementById('contactMessage').value.trim();
 
@@ -2708,7 +3358,7 @@
 
       const subject = encodeURIComponent(`[Somorrostro RUTA A] Consulta de ${name} sobre ${taller}`);
       const body = encodeURIComponent(
-        `Nombre: ${name}\nEmail: ${email}\nInterés formativo: ${taller}\n\nMensaje:\n${message}\n\n---\nRemitido a: alex.alvarez10@somo.eus`
+        `[SOMORROSTRO - FORMULARIO BRUTALISTA]\nNombre: ${name}\nEmail: ${email}\nTeléfono/Contacto: ${phone}\nInterés formativo: ${taller}\n\nMensaje/Reto:\n${message}\n\n---\nRemitido automáticamente a: alex.alvarez10@somo.eus`
       );
 
       setTimeout(() => {
